@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CompleteLevel : MonoBehaviour
 {
-	public string menuSceneName = "MainMenu";
+	public string menuSceneName = "RiskMap";
 	public SceneFader sceneFader;
 
-	public string nextLevel = "Level02";
+	public string nextLevel = "RiskMap";
 	public int levelToUnlock = 2;
 
 	public void Continue()

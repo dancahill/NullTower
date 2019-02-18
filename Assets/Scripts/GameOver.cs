@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-	public string menuSceneName = "MainMenu";
+	public string menuSceneName = "RiskMenu";
 	public SceneFader sceneFader;
 
 	public void Retry()
@@ -13,8 +13,8 @@ public class GameOver : MonoBehaviour
 
 	public void Menu()
 	{
-		Debug.Log("Go To Menu");
-		Time.timeScale = 1;
+		Debug.Log("Go To Menu " + menuSceneName);
+		//Time.timeScale = 1;
 		sceneFader.FadeTo(menuSceneName);
 	}
 }

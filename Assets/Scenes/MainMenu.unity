@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ed1f43e0099a24a9c664e6164cd701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: LevelSelect
+  levelToLoad: RiskMap
   sceneFader: {fileID: 1602433102}
 --- !u!4 &2032469563
 Transform:

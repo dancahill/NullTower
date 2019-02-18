@@ -16,6 +16,11 @@ public class WaveSpawner : MonoBehaviour
 	public GameManager gameManager;
 	private int waveIndex = 0;
 
+	private void Start()
+	{
+		EnemiesAlive = 0;
+	}
+
 	private void Update()
 	{
 		if (EnemiesAlive > 0)

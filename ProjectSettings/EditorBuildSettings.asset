@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 56d4eff869d6a584397e79cfe7be42f1
   - enabled: 1
+    path: Assets/RiskMap/RiskMap.unity
+    guid: 650295d8f4553ca45ad9bd295d89b8a9
+  - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 0873a835eea66224e98de2e2b8298ee7
   - enabled: 1

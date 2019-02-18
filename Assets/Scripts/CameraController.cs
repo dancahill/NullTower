@@ -16,6 +16,12 @@ public class CameraController : MonoBehaviour
 			this.enabled = false;
 			return;
 		}
+
+		if (Input.GetKey("f"))
+		{
+			Time.timeScale = 4;
+		}
+
 		//if (Input.GetKeyDown(KeyCode.Escape))
 		//{
 		//	doMovement = !doMovement;

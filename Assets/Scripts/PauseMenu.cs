@@ -29,14 +29,14 @@ public class PauseMenu : MonoBehaviour
 
 	public void Retry()
 	{
-		Time.timeScale = 1;
+		//Time.timeScale = 1;
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		sceneFader.FadeTo(SceneManager.GetActiveScene().name);
 	}
 
 	public void Menu()
 	{
-		Time.timeScale = 1;
-		sceneFader.FadeTo("MainMenu");
+		//Time.timeScale = 1;
+		sceneFader.FadeTo("RiskMap");
 	}
 }

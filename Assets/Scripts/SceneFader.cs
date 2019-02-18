@@ -15,6 +15,7 @@ public class SceneFader : MonoBehaviour
 
 	public void FadeTo(string scene)
 	{
+		Time.timeScale = 1;
 		StartCoroutine(FadeOut(scene));
 	}
 
@@ -42,6 +43,7 @@ public class SceneFader : MonoBehaviour
 			img.color = new Color(0, 0, 0, a);
 			yield return 0;
 		}
+		Time.timeScale = 1;
 		SceneManager.LoadScene(scene);
 	}
 }
