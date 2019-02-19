@@ -3,7 +3,7 @@
 public class BuildManager : MonoBehaviour
 {
 	public static BuildManager instance;
-    // change to push
+	// change to push
 	private void Awake()
 	{
 		if (instance != null)
