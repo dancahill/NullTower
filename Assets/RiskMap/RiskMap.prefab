@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2802408307206718904}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2802408305374383277
 PolygonCollider2D:
@@ -74,12 +74,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408305374383274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  turrets: {fileID: 0}
   turretprefab: {fileID: 0}
   territories: []
   sprite: {fileID: 2802408306655059393}
@@ -116,7 +117,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2802408307206718904}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2802408305815497980
 PolygonCollider2D:
@@ -160,12 +161,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408305815497977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  turrets: {fileID: 0}
   turretprefab: {fileID: 0}
   territories: []
   sprite: {fileID: 2802408306655059393}
@@ -202,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2802408307206718904}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2802408305850938589
 PolygonCollider2D:
@@ -240,12 +242,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408305850938586}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  turrets: {fileID: 0}
   turretprefab: {fileID: 0}
   territories: []
   sprite: {fileID: 2802408306655059393}
@@ -262,8 +265,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2802408307206718904}
   - component: {fileID: 2802408306655059393}
-  - component: {fileID: 2802408306655059396}
-  - component: {fileID: 2802408306655059395}
   - component: {fileID: 2802408306655059394}
   m_Layer: 0
   m_Name: RiskMap
@@ -283,10 +284,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 90, y: 90, z: 1}
   m_Children:
+  - {fileID: 2802408305850938587}
   - {fileID: 2802408305815497978}
   - {fileID: 2802408305374383275}
   - {fileID: 2802408307021354128}
-  - {fileID: 2802408305850938587}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -338,72 +339,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2802408306655059396
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2802408306655059392}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 4.97}
-    newSize: {x: 8, y: 4.97}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 1
-  m_Points:
-    m_Paths:
-    - - {x: -3.5165539, y: 1.7994536}
-      - {x: -3.7685368, y: 1.7167119}
-      - {x: -3.902137, y: 1.4144303}
-      - {x: -3.8825314, y: 1.1476028}
-      - {x: -3.7664363, y: 1.1699629}
-      - {x: -3.629568, y: 1.2418513}
-      - {x: -3.417964, y: 1.3900162}
-      - {x: -3.2529006, y: 1.3069011}
-      - {x: -2.9885938, y: 1.0228717}
-      - {x: -3.1296165, y: 1.3386674}
-      - {x: -3.1963701, y: 1.3634082}
-      - {x: -3.1943629, y: 1.7231072}
---- !u!60 &2802408306655059395
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2802408306655059392}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 4.97}
-    newSize: {x: 8, y: 4.97}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 1
-  m_Points:
-    m_Paths:
-    - - {x: -3.066364, y: 1.7417328}
-      - {x: -3.011981, y: 1.3310584}
-      - {x: -2.1456318, y: 1.3491939}
-      - {x: -2.218127, y: 1.6782936}
 --- !u!114 &2802408306655059394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  turrets: {fileID: 0}
   turretprefab: {fileID: 2027353805, guid: c824412222c5dc841bcb6f0489c9da8b, type: 3}
   territories: []
   sprite: {fileID: 2802408306655059393}
@@ -453,7 +389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2802408307206718904}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2802408307021354130
 PolygonCollider2D:
@@ -495,12 +431,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408307021354127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  turrets: {fileID: 0}
   turretprefab: {fileID: 0}
   territories: []
   sprite: {fileID: 2802408306655059393}

@@ -2,10 +2,11 @@
 using UnityEngine.UI;
 using System;
 
-[RequireComponent(typeof(PolygonCollider2D))]
+//[RequireComponent(typeof(PolygonCollider2D))]
 public class RiskMap : MonoBehaviour
 {
 	public GameObject canvas;
+	public GameObject turrets;
 	public GameObject turretprefab;
 	public MapTerritory[] territories;
 	public SpriteRenderer sprite;
@@ -19,6 +20,62 @@ public class RiskMap : MonoBehaviour
 	}
 
 	void Start()
+	{
+		try
+		{
+			// how does Start() run five times and fail the first four?
+			//
+			// i think this is because the class was attached to the territory gameobjects as well as the map
+			// test later
+			if (turretprefab == null)
+			{
+				turretprefab = (GameObject)Resources.Load("StandardTurret", typeof(GameObject));
+			}
+			if (turretprefab == null)
+			{
+				print("turretprefab is still null");
+				return;
+			}
+			else
+			{
+				print("found turretprefab");
+			}
+			MapSetupRisk();
+			turrets = new GameObject("Turrets On Map");
+			foreach (MapTerritory territory in territories)
+			{
+				territory.gameobject = Instantiate(turretprefab, new Vector3(territory.mapx, territory.mapy), canvas.transform.rotation, turrets.transform);
+				territory.gameobject.transform.localScale = new Vector3(5, 5, 5);
+				territory.gameobject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+			}
+		}
+		catch (Exception ex)
+		{
+			print("Exception: " + ex.ToString());
+		}
+	}
+
+	private void OnMouseEnter()
+	{
+		//Debug.Log("RiskMap OnMouseEnter: " + TerritoryName);
+		TerritoryLabel.text = TerritoryName;
+	}
+
+	private void OnMouseExit()
+	{
+		//Debug.Log("RiskMap OnMouseExit: " + TerritoryName);
+		TerritoryLabel.text = "";
+	}
+
+	private void OnMouseUp()
+	{
+		//Debug.Log("RiskMap OnMouseUp: " + TerritoryName);
+		TerritoryLabel.text = TerritoryName + " clicked";
+		string maptoload = TerritoryName == "Ontario" ? "Level01" : "Level02";
+		sceneFader.FadeTo(maptoload);
+	}
+
+	private void MapSetupRisk()
 	{
 		territories = new MapTerritory[] {
 			// north america
@@ -70,44 +127,5 @@ public class RiskMap : MonoBehaviour
 			new MapTerritory { name="WesternAustralia",    mapx =  211, mapy = -145, neighbours = new[] { -1 } }, // 40
 			new MapTerritory { name="EasternAustralia",    mapx =  275, mapy = -160, neighbours = new[] { -1 } }  // 41
 		};
-		try
-		{
-			if (turretprefab == null)
-			{
-				turretprefab = (GameObject)Resources.Load("StandardTurret", typeof(GameObject));
-			}
-			foreach (MapTerritory territory in territories)
-			{
-				territory.gameobject = Instantiate(turretprefab, new Vector3(territory.mapx, territory.mapy), canvas.transform.rotation);
-				territory.gameobject.transform.localScale = new Vector3(5, 5, 5);
-				// needs a reference to whatever is actually rotated, and then this can be rotated/positioned based on that
-				// just cheat for now
-				territory.gameobject.transform.rotation = Quaternion.Euler(-90, 0, 0);
-			}
-		}
-		catch (Exception ex)
-		{
-			print("Exception: " + ex.ToString());
-		}
-	}
-
-	private void OnMouseEnter()
-	{
-		Debug.Log("RiskMap OnMouseEnter: " + TerritoryName);
-		TerritoryLabel.text = TerritoryName;
-	}
-
-	private void OnMouseExit()
-	{
-		Debug.Log("RiskMap OnMouseExit: " + TerritoryName);
-		TerritoryLabel.text = "";
-	}
-
-	private void OnMouseUp()
-	{
-		Debug.Log("RiskMap OnMouseUp: " + TerritoryName);
-		TerritoryLabel.text = TerritoryName + " clicked";
-		string maptoload = TerritoryName == "Ontario" ? "Level01" : "Level02";
-		sceneFader.FadeTo(maptoload);
 	}
 }

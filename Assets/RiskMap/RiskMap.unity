@@ -1015,5 +1015,6 @@ PrefabInstance:
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 1827816876}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2802408306655059396, guid: ab0c6bb7cb7cbe545844eef73d2f82c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ab0c6bb7cb7cbe545844eef73d2f82c7, type: 3}
