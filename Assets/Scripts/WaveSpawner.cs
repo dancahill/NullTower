@@ -18,6 +18,7 @@ public class WaveSpawner : MonoBehaviour
 
 	private void Start()
 	{
+		spawnPoint = null;
 		EnemiesAlive = 0;
 	}
 
@@ -57,6 +58,10 @@ public class WaveSpawner : MonoBehaviour
 	}
 	private void SpawnEnemy(GameObject enemy)
 	{
+		if (spawnPoint == null)
+		{
+			spawnPoint = GameObject.Find("Start").transform;
+		}
 		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
 	}
 }

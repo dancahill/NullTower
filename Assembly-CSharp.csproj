@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LevelBuilder.cs" />
     <Compile Include="Assets\RiskMap\MapTerritory.cs" />
     <Compile Include="Assets\RiskMap\RiskMap.cs" />
     <Compile Include="Assets\Scripts\BuildManager.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\LevelBuilder.cs" />
     <Compile Include="Assets\Scripts\LevelSelector.cs" />
     <Compile Include="Assets\Scripts\LivesUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />

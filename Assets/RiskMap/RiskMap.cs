@@ -70,8 +70,15 @@ public class RiskMap : MonoBehaviour
 	private void OnMouseUp()
 	{
 		//Debug.Log("RiskMap OnMouseUp: " + TerritoryName);
-		TerritoryLabel.text = TerritoryName + " clicked";
-		string maptoload = TerritoryName == "Ontario" ? "Level01" : "Level02";
+		TerritoryLabel.text = TerritoryName + " selected";
+		string maptoload;// = TerritoryName == "Ontario" ? "Level01" : "Level02";
+		switch (TerritoryName)
+		{
+			case "Ontario": maptoload = "Level01"; break;
+			case "Quebec": maptoload = "Level02"; break;
+			//case "Alberta": maptoload = "LevelAutogen"; break;
+			default: maptoload = "LevelAutogen"; break;
+		}
 		sceneFader.FadeTo(maptoload);
 	}
 
@@ -95,35 +102,35 @@ public class RiskMap : MonoBehaviour
 			new MapTerritory { name="Argentinia",          mapx = -185, mapy = -158, neighbours = new[] { 10, 11 }           }, // 12
 			// europe
 			new MapTerritory { name="Iceland",             mapx =  -57, mapy =  122, neighbours = new[] { -1 } }, // 13
-			new MapTerritory { name="GreatBritain",        mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 14
-			new MapTerritory { name="Scandinavia",         mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 15
-			new MapTerritory { name="W.Europe",            mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 16
-			new MapTerritory { name="N.Europe",            mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 17
-			new MapTerritory { name="S.Europe",            mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 18
-			new MapTerritory { name="Ukraine",             mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 19
+			new MapTerritory { name="GreatBritain",        mapx =  -48, mapy =   78, neighbours = new[] { -1 } }, // 14
+			new MapTerritory { name="Scandinavia",         mapx =   -9, mapy =  135, neighbours = new[] { -1 } }, // 15
+			new MapTerritory { name="W.Europe",            mapx =  -51, mapy =   30, neighbours = new[] { -1 } }, // 16
+			new MapTerritory { name="N.Europe",            mapx =   -9, mapy =   80, neighbours = new[] { -1 } }, // 17
+			new MapTerritory { name="S.Europe",            mapx =    5, mapy =   34, neighbours = new[] { -1 } }, // 18
+			new MapTerritory { name="Ukraine",             mapx =   45, mapy =   70, neighbours = new[] { -1 } }, // 19
 			// africa
-			new MapTerritory { name="NorthAfrica",         mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 20
-			new MapTerritory { name="Egypt",               mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 21
-			new MapTerritory { name="EastAfrica",          mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 22
-			new MapTerritory { name="Congo",               mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 23
-			new MapTerritory { name="SouthAfrica",         mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 24
-			new MapTerritory { name="Madagascar",          mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 25
+			new MapTerritory { name="NorthAfrica",         mapx =  -44, mapy =  -36, neighbours = new[] { -1 } }, // 20
+			new MapTerritory { name="Egypt",               mapx =    7, mapy =  -16, neighbours = new[] { -1 } }, // 21
+			new MapTerritory { name="EastAfrica",          mapx =   32, mapy =  -68, neighbours = new[] { -1 } }, // 22
+			new MapTerritory { name="Congo",               mapx =    0, mapy = -100, neighbours = new[] { -1 } }, // 23
+			new MapTerritory { name="SouthAfrica",         mapx =    0, mapy = -159, neighbours = new[] { -1 } }, // 24
+			new MapTerritory { name="Madagascar",          mapx =   55, mapy = -159, neighbours = new[] { -1 } }, // 25
 			// asia
-			new MapTerritory { name="MiddleEast",          mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 26
-			new MapTerritory { name="Afghanistan",         mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 27
-			new MapTerritory { name="Ural",                mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 28
-			new MapTerritory { name="Siberia",             mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 29
-			new MapTerritory { name="Yakursk",             mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 30
-			new MapTerritory { name="Irkutsk",             mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 31
-			new MapTerritory { name="Mongolia",            mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 32
-			new MapTerritory { name="Kamchatka",           mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 33
-			new MapTerritory { name="Japan",               mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 34
-			new MapTerritory { name="China",               mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 35
-			new MapTerritory { name="India",               mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 36
-			new MapTerritory { name="Siam",                mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 37
+			new MapTerritory { name="MiddleEast",          mapx =   59, mapy =   -2, neighbours = new[] { -1 } }, // 26
+			new MapTerritory { name="Afghanistan",         mapx =  103, mapy =   48, neighbours = new[] { -1 } }, // 27
+			new MapTerritory { name="Ural",                mapx =  121, mapy =  109, neighbours = new[] { -1 } }, // 28
+			new MapTerritory { name="Siberia",             mapx =  170, mapy =  125, neighbours = new[] { -1 } }, // 29
+			new MapTerritory { name="Yakursk",             mapx =  229, mapy =  142, neighbours = new[] { -1 } }, // 30
+			new MapTerritory { name="Irkutsk",             mapx =  219, mapy =   98, neighbours = new[] { -1 } }, // 31
+			new MapTerritory { name="Mongolia",            mapx =  236, mapy =   66, neighbours = new[] { -1 } }, // 32
+			new MapTerritory { name="Kamchatka",           mapx =  310, mapy =  133, neighbours = new[] { -1 } }, // 33
+			new MapTerritory { name="Japan",               mapx =  274, mapy =   40, neighbours = new[] { -1 } }, // 34
+			new MapTerritory { name="China",               mapx =  184, mapy =   27, neighbours = new[] { -1 } }, // 35
+			new MapTerritory { name="India",               mapx =  140, mapy =  -19, neighbours = new[] { -1 } }, // 36
+			new MapTerritory { name="Siam",                mapx =  191, mapy =  -30, neighbours = new[] { -1 } }, // 37
 			// australia
-			new MapTerritory { name="Indonesia",           mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 38
-			new MapTerritory { name="NewGuinea",           mapx =    0, mapy =    0, neighbours = new[] { -1 } }, // 39
+			new MapTerritory { name="Indonesia",           mapx =  208, mapy =  -81, neighbours = new[] { -1 } }, // 38
+			new MapTerritory { name="NewGuinea",           mapx =  282, mapy =  -94, neighbours = new[] { -1 } }, // 39
 			new MapTerritory { name="WesternAustralia",    mapx =  211, mapy = -145, neighbours = new[] { -1 } }, // 40
 			new MapTerritory { name="EasternAustralia",    mapx =  275, mapy = -160, neighbours = new[] { -1 } }  // 41
 		};

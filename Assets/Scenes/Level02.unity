@@ -16791,12 +16791,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1591310621}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1594274488 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5520613902849635928, guid: a8cad04d814e1d04b86d762f673c6bc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 5520613903122910941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1604670407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19873,7 +19867,6 @@ MonoBehaviour:
     rate: 3
   enemyPrefab: {fileID: 2033937512213836474, guid: ba65e7de0a16bed42bb1980fddf8f06b,
     type: 3}
-  spawnPoint: {fileID: 1594274488}
   timeBetweenWaves: 5
   waveCountdownText: {fileID: 1988763483}
   gameManager: {fileID: 1868623356}
@@ -20455,7 +20448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuSceneName: MainMenu
-  sceneFader: {fileID: 0}
+  sceneFader: {fileID: 2951740484530192365}
 --- !u!95 &1941584233
 Animator:
   serializedVersion: 3
