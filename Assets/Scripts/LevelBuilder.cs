@@ -17,6 +17,10 @@ public class LevelBuilder : MonoBehaviour
 
 	void Start()
 	{
+		List<int[]> nodedata = new List<int[]>() {
+			new int[2] { 6, 7 },
+			new int[2] { 9, 8 }
+		};
 		List<int[]> wpdata = new List<int[]>() {
 			new int[2] { 1, 1 },
 			new int[2] { 6, 1 },
@@ -45,21 +49,32 @@ public class LevelBuilder : MonoBehaviour
 		{
 			return new Vector3(x * 5, 1f, -y * 5);
 		}
+		void setpathnode(Node[] nodes, float x, float y)
+		{
+			// this foreach is probably unnecessary if we're only placing a small number of initial nodes
+			foreach (Node n in nodes)
+			{
+				if (n.transform.position.x / 5 == x && -n.transform.position.z / 5 == y)
+				{
+					Destroy(n.gameObject);
+					//Renderer rend = n.GetComponent<Renderer>();
+					//rend.material.color = Color.grey;
+				}
+			}
+			GameObject ground = Instantiate(m_GroundPrefab, nodecords(x, y), Quaternion.identity, m_Environment.transform);
+			ground.transform.localScale = new Vector3(4.9f, 1, 4.9f);
+		}
+
 		m_Environment = new GameObject("Environment");
 		m_Nodes = new GameObject("Nodes");
 		m_Waypoints = new GameObject("Waypoints");
-
-		GameObject gpprefab = (GameObject)Resources.Load("Prefabs/GroundPlane", typeof(GameObject));
-		if (gpprefab != null)
+		/* SET UP A GROUND PLANE */
+		GameObject gp = Instantiate(m_GroundPlanePrefab, new Vector3(0, -1, 0), Quaternion.identity, m_Environment.transform);
+		gp.transform.localScale = new Vector3(1000, 1, 1000);
+		/* SET UP TURRET NODES */
+		// what's better? a map full of nodes, or a small number of nodes we can place at key points on the map?
+		if (false)
 		{
-			print("found groundplaneprefab");
-			GameObject gp = Instantiate(gpprefab, new Vector3(0, -1, 0), Quaternion.identity);
-		}
-		else
-		{
-			print("groundplaneprefab is null - using linked prefabs");
-			GameObject gp = Instantiate(m_GroundPlanePrefab, new Vector3(0, -1, 0), Quaternion.identity, m_Environment.transform);
-			gp.transform.localScale = new Vector3(1000, 1, 1000);
 			for (int y = 0; y < 16; y++)
 			{
 				for (int x = 0; x < 16; x++)
@@ -76,61 +91,41 @@ public class LevelBuilder : MonoBehaviour
 					}
 				}
 			}
-			GameObject startnode = Instantiate(m_StartPrefab, endcords(1, 1), Quaternion.identity);
-			startnode.transform.localScale = new Vector3(4, 4, 4);
-			WaveSpawner.spawnPoint = startnode.transform;
-			GameObject endnode = Instantiate(m_EndPrefab, endcords(14, 14), Quaternion.identity);
-			endnode.transform.localScale = new Vector3(4, 4, 4);
-
-			Waypoints.points = new Transform[wpdata.Count];
-			int i2 = 0;
-			foreach (int[] wp in wpdata)
+		}
+		else
+		{
+			foreach (int[] np in nodedata)
 			{
-				// 
-				GameObject waypoint = Instantiate(m_WaypointPrefab, wpcords(wp[0], wp[1]), Quaternion.identity, m_Waypoints.transform);
-				Waypoints.points[i2++] = waypoint.transform;
+				GameObject node = Instantiate(m_NodePrefab, nodecords(np[0], np[1]), Quaternion.identity, m_Nodes.transform);
+				node.transform.localScale = new Vector3(4, 1, 4);
 			}
+		}
+		/* SET UP START/END NODES */
+		GameObject startnode = Instantiate(m_StartPrefab, endcords(1, 1), Quaternion.identity);
+		startnode.transform.localScale = new Vector3(4, 4, 4);
+		WaveSpawner.spawnPoint = startnode.transform;
+		GameObject endnode = Instantiate(m_EndPrefab, endcords(14, 14), Quaternion.identity);
+		endnode.transform.localScale = new Vector3(4, 4, 4);
+		/* SET UP WAYPOINTS */
+		Waypoints.points = new Transform[wpdata.Count];
+		int i2 = 0;
+		foreach (int[] wp in wpdata)
+		{
+			GameObject waypoint = Instantiate(m_WaypointPrefab, wpcords(wp[0], wp[1]), Quaternion.identity, m_Waypoints.transform);
+			Waypoints.points[i2++] = waypoint.transform;
+		}
+		/* SET UP WAYPOINT PATH TILES */
+		Node[] nl = Resources.FindObjectsOfTypeAll<Node>();
+		for (int i = 0; i < wpdata.Count - 1; i++)
+		{
+			int minx = Mathf.Min(wpdata[i][0], wpdata[i + 1][0]);
+			int maxx = Mathf.Max(wpdata[i][0], wpdata[i + 1][0]);
+			int miny = Mathf.Min(wpdata[i][1], wpdata[i + 1][1]);
+			int maxy = Mathf.Max(wpdata[i][1], wpdata[i + 1][1]);
 
-			// slow and dumb way to mark all tiles along the waypoint path - replace later
-			for (int i = 0; i < wpdata.Count - 1; i++)
-			{
-				if (wpdata[i][0] != wpdata[i + 1][0])
-				{
-					int y = wpdata[i][1];
-					Node[] nl = Resources.FindObjectsOfTypeAll<Node>();
-					for (int x = Mathf.Min(wpdata[i][0], wpdata[i + 1][0]); x < Mathf.Max(wpdata[i][0], wpdata[i + 1][0]) + 1; x++)
-					{
-						foreach (Node n in nl)
-						{
-							//print(string.Format("{0},{1}", n.transform.position.x / 5, -n.transform.position.z / 5));
-							if (n.transform.position.x / 5 == x && -n.transform.position.z / 5 == y)
-							{
-								Destroy(n.gameObject);
-								//Renderer rend = n.GetComponent<Renderer>();
-								//rend.material.color = Color.grey;
-							}
-						}
-					}
-				}
-				else
-				{
-					int x = wpdata[i][0];
-					Node[] nl = Resources.FindObjectsOfTypeAll<Node>();
-					for (int y = Mathf.Min(wpdata[i][1], wpdata[i + 1][1]); y < Mathf.Max(wpdata[i][1], wpdata[i + 1][1]) + 1; y++)
-					{
-						foreach (Node n in nl)
-						{
-							//print(string.Format("{0},{1}", n.transform.position.x / 5, -n.transform.position.z / 5));
-							if (n.transform.position.x / 5 == x && -n.transform.position.z / 5 == y)
-							{
-								Destroy(n.gameObject);
-								//Renderer rend = n.GetComponent<Renderer>();
-								//rend.material.color = Color.grey;
-							}
-						}
-					}
-				}
-			}
+			for (int x = minx; x <= maxx; x++)
+				for (int y = miny; y <= maxy; y++)
+					setpathnode(nl, x, y);
 		}
 	}
 }

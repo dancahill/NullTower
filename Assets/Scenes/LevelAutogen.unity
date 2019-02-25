@@ -4369,13 +4369,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemy: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b, type: 3}
-    count: 2
+    count: 4
     rate: 2
   - enemy: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b, type: 3}
     count: 5
+    rate: 2
+  - enemy: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b, type: 3}
+    count: 8
     rate: 2
   - enemy: {fileID: 2033937512213836478, guid: 27046064c8ba8a24682d3dc973c883d8, type: 3}
     count: 3
