@@ -54,7 +54,7 @@ public class Node : MonoBehaviour
 		turretBlueprint = blueprint;
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
-		Debug.Log("Turret Built!");
+		//Debug.Log("Turret Built!");
 	}
 
 	public void UpgradeTurret()
@@ -71,7 +71,7 @@ public class Node : MonoBehaviour
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
 		isUpgraded = true;
-		Debug.Log("Turret upgraded!");
+		//Debug.Log("Turret upgraded!");
 	}
 
 	public void SellTurret()

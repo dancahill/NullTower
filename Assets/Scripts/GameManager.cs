@@ -3,6 +3,7 @@
 public class GameManager : MonoBehaviour
 {
 	public static bool GameIsOver;
+	public static string Territory;
 	public GameObject gameOverUI;
 	public GameObject completeLevelUI;
 

@@ -4,10 +4,14 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
+	public GameObject m_EnemyBasicPrefab;
+	public GameObject m_EnemyToughPrefab;
+	public GameObject m_EnemyFastPrefab;
+
 	public static int EnemiesAlive = 0;
 	public Wave[] waves;
 
-	public Transform enemyPrefab;
+	//public Transform enemyPrefab;
 	public static Transform spawnPoint;
 
 	public float timeBetweenWaves = 20f;
@@ -16,8 +20,11 @@ public class WaveSpawner : MonoBehaviour
 	public GameManager gameManager;
 	private int waveIndex = 0;
 
+	Territory territory;
+
 	private void Start()
 	{
+		territory = Territories.Get(GameManager.Territory);
 		spawnPoint = null;
 		EnemiesAlive = 0;
 	}
@@ -31,11 +38,23 @@ public class WaveSpawner : MonoBehaviour
 
 		if (GameManager.GameIsOver) return;
 
-		if (waveIndex == waves.Length)
+		if (territory != null && territory.waves != null)
 		{
-			gameManager.WinLevel();
-			this.enabled = false;
+			if (waveIndex == territory.waves.Length)
+			{
+				gameManager.WinLevel();
+				this.enabled = false;
+			}
 		}
+		else
+		{
+			if (waveIndex == waves.Length)
+			{
+				gameManager.WinLevel();
+				this.enabled = false;
+			}
+		}
+
 		if (countdown <= 0)
 		{
 			StartCoroutine(SpawnWave());
@@ -49,13 +68,41 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave()
 	{
 		PlayerStats.Rounds++;
-		Wave wave = waves[waveIndex];
 
-		EnemiesAlive = wave.count;
-		for (int i = 0; i < wave.count; i++)
+		if (territory != null && territory.waves != null)
 		{
-			SpawnEnemy(wave.enemy);
-			yield return new WaitForSeconds(1f / wave.rate);
+			EnemyWave[] wave = territory.waves[waveIndex];
+
+			EnemiesAlive = wave.Length;
+			for (int i = 0; i < wave.Length; i++)
+			{
+				switch (wave[i].type)
+				{
+					case Enemy.Type.Tough:
+						SpawnEnemy(m_EnemyToughPrefab);
+						break;
+					case Enemy.Type.Fast:
+						SpawnEnemy(m_EnemyFastPrefab);
+						break;
+					default:
+						SpawnEnemy(m_EnemyBasicPrefab);
+						break;
+				}
+				float delay = wave[i].delay > 0 ? wave[i].delay : 1f / wave[i].rate;
+				yield return new WaitForSeconds(delay);
+			}
+		}
+		else
+		{
+			// old way
+			Wave wave = waves[waveIndex];
+
+			EnemiesAlive = wave.count;
+			for (int i = 0; i < wave.count; i++)
+			{
+				SpawnEnemy(wave.enemy);
+				yield return new WaitForSeconds(1f / wave.rate);
+			}
 		}
 		waveIndex++;
 	}

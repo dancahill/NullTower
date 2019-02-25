@@ -17,26 +17,6 @@ public class LevelBuilder : MonoBehaviour
 
 	void Start()
 	{
-		List<int[]> nodedata = new List<int[]>() {
-			new int[2] { 6, 7 },
-			new int[2] { 9, 8 }
-		};
-		List<int[]> wpdata = new List<int[]>() {
-			new int[2] { 1, 1 },
-			new int[2] { 6, 1 },
-			new int[2] { 6, 3 },
-			new int[2] { 3, 3 },
-			new int[2] { 3, 6 },
-			new int[2] { 10, 6 },
-			new int[2] { 10, 3 },
-			new int[2] { 12, 3 },
-			new int[2] { 12, 9 },
-			new int[2] { 5, 9 },
-			new int[2] { 5, 11 },
-			new int[2] { 3, 11 },
-			new int[2] { 3, 14 },
-			new int[2] { 14, 14 }
-		};
 		Vector3 nodecords(float x, float y)
 		{
 			return new Vector3(x * 5, 0, -y * 5);
@@ -65,9 +45,19 @@ public class LevelBuilder : MonoBehaviour
 			ground.transform.localScale = new Vector3(4.9f, 1, 4.9f);
 		}
 
+		Territory territory = Territories.Get(GameManager.Territory);
+		if (territory == null)
+		{
+			print("territory is null name='" + GameManager.Territory + "'");
+		}
+
 		m_Environment = new GameObject("Environment");
 		m_Nodes = new GameObject("Nodes");
 		m_Waypoints = new GameObject("Waypoints");
+
+		PlayerStats.Money = territory.startmoney;
+		PlayerStats.Lives = territory.startlives;
+
 		/* SET UP A GROUND PLANE */
 		GameObject gp = Instantiate(m_GroundPlanePrefab, new Vector3(0, -1, 0), Quaternion.identity, m_Environment.transform);
 		gp.transform.localScale = new Vector3(1000, 1, 1000);
@@ -81,9 +71,9 @@ public class LevelBuilder : MonoBehaviour
 				{
 					GameObject node = Instantiate(m_NodePrefab, nodecords(x, y), Quaternion.identity, m_Nodes.transform);
 					node.transform.localScale = new Vector3(4, 1, 4);
-					foreach (int[] wp in wpdata)
+					foreach (MapPoint wp in territory.waypoints)
 					{
-						if (wp[0] == x && wp[1] == y)
+						if (wp.x == x && wp.y == y)
 						{
 							Renderer rend = node.GetComponent<Renderer>();
 							rend.material.color = Color.black;
@@ -94,9 +84,9 @@ public class LevelBuilder : MonoBehaviour
 		}
 		else
 		{
-			foreach (int[] np in nodedata)
+			foreach (MapPoint np in territory.turretnodes)
 			{
-				GameObject node = Instantiate(m_NodePrefab, nodecords(np[0], np[1]), Quaternion.identity, m_Nodes.transform);
+				GameObject node = Instantiate(m_NodePrefab, nodecords(np.x, np.y), Quaternion.identity, m_Nodes.transform);
 				node.transform.localScale = new Vector3(4, 1, 4);
 			}
 		}
@@ -107,21 +97,21 @@ public class LevelBuilder : MonoBehaviour
 		GameObject endnode = Instantiate(m_EndPrefab, endcords(14, 14), Quaternion.identity);
 		endnode.transform.localScale = new Vector3(4, 4, 4);
 		/* SET UP WAYPOINTS */
-		Waypoints.points = new Transform[wpdata.Count];
+		Waypoints.points = new Transform[territory.waypoints.Length];
 		int i2 = 0;
-		foreach (int[] wp in wpdata)
+		foreach (MapPoint wp in territory.waypoints)
 		{
-			GameObject waypoint = Instantiate(m_WaypointPrefab, wpcords(wp[0], wp[1]), Quaternion.identity, m_Waypoints.transform);
+			GameObject waypoint = Instantiate(m_WaypointPrefab, wpcords(wp.x, wp.y), Quaternion.identity, m_Waypoints.transform);
 			Waypoints.points[i2++] = waypoint.transform;
 		}
 		/* SET UP WAYPOINT PATH TILES */
 		Node[] nl = Resources.FindObjectsOfTypeAll<Node>();
-		for (int i = 0; i < wpdata.Count - 1; i++)
+		for (int i = 0; i < territory.waypoints.Length - 1; i++)
 		{
-			int minx = Mathf.Min(wpdata[i][0], wpdata[i + 1][0]);
-			int maxx = Mathf.Max(wpdata[i][0], wpdata[i + 1][0]);
-			int miny = Mathf.Min(wpdata[i][1], wpdata[i + 1][1]);
-			int maxy = Mathf.Max(wpdata[i][1], wpdata[i + 1][1]);
+			int minx = Mathf.Min((int)territory.waypoints[i].x, (int)territory.waypoints[i + 1].x);
+			int maxx = Mathf.Max((int)territory.waypoints[i].x, (int)territory.waypoints[i + 1].x);
+			int miny = Mathf.Min((int)territory.waypoints[i].y, (int)territory.waypoints[i + 1].y);
+			int maxy = Mathf.Max((int)territory.waypoints[i].y, (int)territory.waypoints[i + 1].y);
 
 			for (int x = minx; x <= maxx; x++)
 				for (int y = miny; y <= maxy; y++)

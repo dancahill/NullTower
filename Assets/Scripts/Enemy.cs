@@ -3,6 +3,12 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+	public enum Type
+	{
+		Basic,
+		Fast,
+		Tough
+	};
 	public float startSpeed = 10f;
 	public float startHealth = 100f;
 

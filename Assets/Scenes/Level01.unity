@@ -16791,12 +16791,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1591310621}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1594274488 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5520613902849635928, guid: a8cad04d814e1d04b86d762f673c6bc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 5520613903122910941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1604670407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19855,6 +19849,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63322e0b836ba7244b5d1e5ffb53d3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EnemyBasicPrefab: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b,
+    type: 3}
+  m_EnemyToughPrefab: {fileID: 2033937512213836478, guid: 27046064c8ba8a24682d3dc973c883d8,
+    type: 3}
+  m_EnemyFastPrefab: {fileID: 2033937512213836478, guid: 81a3e78b5e5a6c04b84b261a979793ea,
+    type: 3}
   waves:
   - enemy: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b, type: 3}
     count: 1
@@ -19871,9 +19871,6 @@ MonoBehaviour:
   - enemy: {fileID: 2033937512213836478, guid: 81a3e78b5e5a6c04b84b261a979793ea, type: 3}
     count: 10
     rate: 3
-  enemyPrefab: {fileID: 2033937512213836474, guid: ba65e7de0a16bed42bb1980fddf8f06b,
-    type: 3}
-  spawnPoint: {fileID: 1594274488}
   timeBetweenWaves: 5
   waveCountdownText: {fileID: 1988763483}
   gameManager: {fileID: 1868623356}
