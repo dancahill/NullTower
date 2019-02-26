@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Territories>
+	<Territory name="Default" startlives="2" startmoney="200" mapxy="0,0" neighbours="-1">
+		<TurretNodes>
+			<Location x="12" y="3" />
+		</TurretNodes>
+		<Waypoints>
+			<Location x="1" y="1" />
+			<Location x="14" y="1" />
+			<Location x="14" y="14" />
+		</Waypoints>
+		<Waves>
+			<Wave>
+				<Enemy type="Basic" rate="1" />
+			</Wave>
+			<Wave>
+				<Enemy type="Tough" rate="1" />
+			</Wave>
+		</Waves>
+	</Territory>
+	<!--north america-->
+	<Territory name="Alaska" startlives="2" startmoney="200" mapxy="-305,136" neighbours="1,3,33"></Territory>
+	<Territory name="NorthWestTerritory" startlives="2" startmoney="200" mapxy="-215,130" neighbours="0,2,3,4"></Territory>
+	<Territory name="Greenland" startlives="2" startmoney="200" mapxy="-82,141" neighbours="1,4,5,13"></Territory>
+	<Territory name="Alberta" startlives="2" startmoney="200" mapxy="-234,107" neighbours="0,1,4,6">
+		<TurretNodes>
+			<Location x="6" y="7" />
+			<Location x="9" y="8" />
+			<Location x="7" y="11" />
+		</TurretNodes>
+		<Waypoints>
+			<Location x="1" y="1" />
+			<Location x="6" y="1" />
+			<Location x="6" y="3" />
+			<Location x="3" y="3" />
+			<Location x="3" y="6" />
+			<Location x="10" y="6" />
+			<Location x="10" y="3" />
+			<Location x="12" y="3" />
+			<Location x="12" y="9" />
+			<Location x="5" y="9" />
+			<Location x="5" y="11" />
+			<Location x="3" y="11" />
+			<Location x="3" y="14" />
+			<Location x="14" y="14" />
+		</Waypoints>
+		<Waves>
+			<Wave>
+				<Enemy type="Basic" rate="2" />
+				<Enemy type="Basic" rate="2" />
+				<Enemy type="Basic" rate="2" />
+			</Wave>
+			<Wave>
+				<Enemy type="Basic" rate="2" />
+				<Enemy type="Basic" rate="2" />
+				<Enemy type="Basic" rate="2" />
+				<Enemy type="Basic" rate="2" />
+				<Enemy type="Tough" rate="2" />
+			</Wave>
+			<Wave>
+				<Enemy type="Tough" rate="1" />
+				<Enemy type="Tough" rate="1" />
+				<Enemy type="Tough" delay="6" />
+				<Enemy type="Fast" rate="5" />
+				<Enemy type="Fast" rate="5" />
+				<Enemy type="Fast" rate="5" />
+				<Enemy type="Fast" rate="5" />
+				<Enemy type="Fast" delay="6" />
+				<Enemy type="Fast" rate="5" />
+				<Enemy type="Fast" rate="5" />
+				<Enemy type="Fast" rate="5" />
+				<Enemy type="Fast" rate="5" />
+			</Wave>
+		</Waves>
+	</Territory>
+	<Territory name="Ontario" startlives="2" startmoney="200" mapxy="-185,96" neighbours="1,2,3,5,6,7"></Territory>
+	<Territory name="Quebec" startlives="2" startmoney="200" mapxy="-133,98" neighbours="2,4,6"></Territory>
+	<Territory name="WesternUnitedStates" startlives="2" startmoney="200" mapxy="-222,60" neighbours="3,4,7,8"></Territory>
+	<Territory name="EasternUnitedStates" startlives="2" startmoney="200" mapxy="-186,49" neighbours="4,5,6,8"></Territory>
+	<Territory name="CentralAmerica" startlives="2" startmoney="200" mapxy="-230,20" neighbours="6,7,9"></Territory>
+	<!--south america-->
+	<Territory name="Venezuela" startlives="2" startmoney="200" mapxy="-205,-42" neighbours="8,10,11"></Territory>
+	<Territory name="Peru" startlives="2" startmoney="200" mapxy="-183,-105" neighbours="9,11,12"></Territory>
+	<Territory name="Brazil" startlives="2" startmoney="200" mapxy="-143,-83" neighbours="9,10,12,20"></Territory>
+	<Territory name="Argentinia" startlives="2" startmoney="200" mapxy="-185,-158" neighbours="10,11"></Territory>
+	<!--europe-->
+	<Territory name="Iceland" startlives="2" startmoney="200" mapxy="-57,122" neighbours="-1"></Territory>
+	<Territory name="GreatBritain" startlives="2" startmoney="200" mapxy="-48,78" neighbours="-1"></Territory>
+	<Territory name="Scandinavia" startlives="2" startmoney="200" mapxy="-9,135" neighbours="-1"></Territory>
+	<Territory name="W.Europe" startlives="2" startmoney="200" mapxy="-51,30" neighbours="-1"></Territory>
+	<Territory name="N.Europe" startlives="2" startmoney="200" mapxy="-9,80" neighbours="-1"></Territory>
+	<Territory name="S.Europe" startlives="2" startmoney="200" mapxy="5,34" neighbours="-1"></Territory>
+	<Territory name="Ukraine" startlives="2" startmoney="200" mapxy="45,70" neighbours="-1"></Territory>
+	<!--africa-->
+	<Territory name="NorthAfrica" startlives="2" startmoney="200" mapxy="-44,-36" neighbours="-1"></Territory>
+	<Territory name="Egypt" startlives="2" startmoney="200" mapxy="7,-16" neighbours="-1"></Territory>
+	<Territory name="EastAfrica" startlives="2" startmoney="200" mapxy="32,-68" neighbours="-1"></Territory>
+	<Territory name="Congo" startlives="2" startmoney="200" mapxy="0,-100" neighbours="-1"></Territory>
+	<Territory name="SouthAfrica" startlives="2" startmoney="200" mapxy="0,-159" neighbours="-1"></Territory>
+	<Territory name="Madagascar" startlives="2" startmoney="200" mapxy="55,-159" neighbours="-1"></Territory>
+	<!--asia-->
+	<Territory name="MiddleEast" startlives="2" startmoney="200" mapxy="59,-2" neighbours="-1"></Territory>
+	<Territory name="Afghanistan" startlives="2" startmoney="200" mapxy="103,48" neighbours="-1"></Territory>
+	<Territory name="Ural" startlives="2" startmoney="200" mapxy="121,109" neighbours="-1"></Territory>
+	<Territory name="Siberia" startlives="2" startmoney="200" mapxy="170,125" neighbours="-1"></Territory>
+	<Territory name="Yakursk" startlives="2" startmoney="200" mapxy="229,142" neighbours="-1"></Territory>
+	<Territory name="Irkutsk" startlives="2" startmoney="200" mapxy="219,98" neighbours="-1"></Territory>
+	<Territory name="Mongolia" startlives="2" startmoney="200" mapxy="236,66" neighbours="-1"></Territory>
+	<Territory name="Kamchatka" startlives="2" startmoney="200" mapxy="310,133" neighbours="-1"></Territory>
+	<Territory name="Japan" startlives="2" startmoney="200" mapxy="274,40" neighbours="-1"></Territory>
+	<Territory name="China" startlives="2" startmoney="200" mapxy="184,27" neighbours="-1"></Territory>
+	<Territory name="India" startlives="2" startmoney="200" mapxy="140,-19" neighbours="-1"></Territory>
+	<Territory name="Siam" startlives="2" startmoney="200" mapxy="191,-30" neighbours="-1"></Territory>
+	<!--australia-->
+	<Territory name="Indonesia" startlives="2" startmoney="200" mapxy="208,-81" neighbours="-1"></Territory>
+	<Territory name="NewGuinea" startlives="2" startmoney="200" mapxy="282,-94" neighbours="-1"></Territory>
+	<Territory name="WesternAustralia" startlives="2" startmoney="200" mapxy="211,-145" neighbours="-1"></Territory>
+	<Territory name="EasternAustralia" startlives="2" startmoney="200" mapxy="275,-160" neighbours="-1"></Territory>
+</Territories>
