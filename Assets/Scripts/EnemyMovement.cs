@@ -3,6 +3,8 @@
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
+	public GameObject movementDirection;
+
 	private Transform target;
 	private int wavepointIndex = 0;
 
@@ -23,6 +25,16 @@ public class EnemyMovement : MonoBehaviour
 			GetNextWaypoint();
 		}
 		enemy.speed = enemy.startSpeed;
+
+		if (movementDirection != null)
+		{
+			//movementDirection.transform.LookAt(target);
+			float turnSpeed = 10f;
+			Vector3 dir2 = target.position - movementDirection.transform.position;
+			Quaternion lookRotation = Quaternion.LookRotation(dir2);
+			Vector3 rotation = Quaternion.Lerp(movementDirection.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+			movementDirection.transform.rotation = Quaternion.Euler(0, rotation.y, 0);
+		}
 	}
 
 	private void GetNextWaypoint()

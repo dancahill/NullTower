@@ -125,6 +125,7 @@ public class Territories
 				Enemy.Type type;
 				switch (enemy.Attributes["type"].Value)
 				{
+					case "Tank": type = Enemy.Type.Tank; break;
 					case "Tough": type = Enemy.Type.Tough; break;
 					case "Fast": type = Enemy.Type.Fast; break;
 					default: type = Enemy.Type.Basic; break;

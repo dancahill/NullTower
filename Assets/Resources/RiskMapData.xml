@@ -14,7 +14,7 @@
 				<Enemy type="Basic" rate="1" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tough" rate="1" />
+				<Enemy type="Tank" rate="1" />
 			</Wave>
 		</Waves>
 	</Territory>
@@ -49,13 +49,16 @@
 				<Enemy type="Basic" count="3" rate="2" />
 			</Wave>
 			<Wave>
-				<Enemy type="Basic" count="4" rate="2" />
-				<Enemy type="Tough" rate="2" />
+				<Enemy type="Tank" count="1" rate="2" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tough" rate="1" />
-				<Enemy type="Tough" rate="1" />
-				<Enemy type="Tough" delay="6" />
+				<Enemy type="Basic" count="4" rate="2" />
+				<Enemy type="Tank" rate="2" />
+			</Wave>
+			<Wave>
+				<Enemy type="Tank" rate="1" />
+				<Enemy type="Tank" rate="1" />
+				<Enemy type="Tank" delay="6" />
 				<Enemy type="Fast" rate="5" />
 				<Enemy type="Fast" rate="5" />
 				<Enemy type="Fast" rate="5" />
@@ -93,11 +96,11 @@
 			</Wave>
 			<Wave>
 				<Enemy type="Basic" count="4" rate="2" />
-				<Enemy type="Tough" rate="2" />
+				<Enemy type="Tank" rate="2" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tough" count="2" rate="1" />
-				<Enemy type="Tough" delay="6" />
+				<Enemy type="Tank" count="2" rate="1" />
+				<Enemy type="Tank" delay="6" />
 				<Enemy type="Fast" count="4" rate="5" />
 				<Enemy type="Fast" delay="6" />
 				<Enemy type="Fast" count="4" rate="5" />
@@ -130,20 +133,20 @@
 				<Enemy type="Basic" count="8" rate="2" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tough" delay="8" />
+				<Enemy type="Tank" delay="8" />
 				<Enemy type="Basic" count="7" rate="2" />
 				<Enemy type="Basic" delay="5" />
-				<Enemy type="Tough" count="4" rate="2" />
+				<Enemy type="Tank" count="4" rate="2" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tough" count="3" rate="1.5" />
-				<Enemy type="Tough" delay="7" />
+				<Enemy type="Tank" count="3" rate="1.5" />
+				<Enemy type="Tank" delay="7" />
 				<Enemy type="Fast" count="4" rate="5" />
 				<Enemy type="Fast" delay="5" />
 				<Enemy type="Fast" count="4" rate="5" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tough" count="7" rate="2.2" />
+				<Enemy type="Tank" count="7" rate="2.2" />
 			</Wave>
 		</Waves>
 	</Territory>

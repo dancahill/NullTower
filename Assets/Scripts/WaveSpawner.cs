@@ -7,6 +7,7 @@ public class WaveSpawner : MonoBehaviour
 	public GameObject m_EnemyBasicPrefab;
 	public GameObject m_EnemyToughPrefab;
 	public GameObject m_EnemyFastPrefab;
+	public GameObject m_EnemyTankPrefab;
 
 	public static int EnemiesAlive = 0;
 	public Wave[] waves;
@@ -86,6 +87,9 @@ public class WaveSpawner : MonoBehaviour
 				{
 					switch (wave[i].type)
 					{
+						case Enemy.Type.Tank:
+							SpawnEnemy(m_EnemyTankPrefab);
+							break;
 						case Enemy.Type.Tough:
 							SpawnEnemy(m_EnemyToughPrefab);
 							break;

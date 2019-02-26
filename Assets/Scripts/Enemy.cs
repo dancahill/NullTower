@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
 	{
 		Basic,
 		Fast,
-		Tough
+		Tough,
+		Tank
 	};
 	public float startSpeed = 10f;
 	public float startHealth = 100f;

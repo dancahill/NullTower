@@ -4373,6 +4373,8 @@ MonoBehaviour:
     type: 3}
   m_EnemyFastPrefab: {fileID: 2033937512213836478, guid: 81a3e78b5e5a6c04b84b261a979793ea,
     type: 3}
+  m_EnemyTankPrefab: {fileID: 3779930671721662985, guid: 9e0968b8096cf1749a7d9132e0f43d9f,
+    type: 3}
   waves:
   - enemy: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b, type: 3}
     count: 4
