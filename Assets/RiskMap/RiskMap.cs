@@ -69,8 +69,7 @@ public class RiskMap : MonoBehaviour
 		string maptoload;
 		switch (TerritoryName)
 		{
-			case "Ontario": maptoload = "Level01"; break;
-			case "Quebec": maptoload = "Level02"; break;
+			//case "Ontario": maptoload = "Level01"; break;
 			default: maptoload = "LevelAutogen"; break;
 		}
 		sceneFader.FadeTo(maptoload, TerritoryName);
@@ -81,14 +80,14 @@ public class RiskMap : MonoBehaviour
 		territories = new Territory[] {
 			// north america
 			Territories.Get("Alaska"), // 0
-			Territories.Get("NorthWestTerritory"),
+			Territories.Get("Northwest Territory"),
 			Territories.Get("Greenland"),
 			Territories.Get("Alberta"),
 			Territories.Get("Ontario"),
 			Territories.Get("Quebec"),
-			Territories.Get("WesternUnitedStates"),
-			Territories.Get("EasternUnitedStates"),
-			Territories.Get("CentralAmerica"),
+			Territories.Get("Western United States"),
+			Territories.Get("Eastern United States"),
+			Territories.Get("Central America"),
 			// south america
 			Territories.Get("Venezuela"), // 9
 			Territories.Get("Peru"),
@@ -96,21 +95,21 @@ public class RiskMap : MonoBehaviour
 			Territories.Get("Argentinia"),
 			// europe
 			Territories.Get("Iceland"), // 13
-			Territories.Get("GreatBritain"),
+			Territories.Get("Great Britain"),
 			Territories.Get("Scandinavia"),
-			Territories.Get("W.Europe"),
-			Territories.Get("N.Europe"),
-			Territories.Get("S.Europe"),
+			Territories.Get("Western Europe"),
+			Territories.Get("Northern Europe"),
+			Territories.Get("Southern Europe"),
 			Territories.Get("Ukraine"),
 			// africa
-			Territories.Get("NorthAfrica"), // 20
+			Territories.Get("North Africa"), // 20
 			Territories.Get("Egypt"),
-			Territories.Get("EastAfrica"),
+			Territories.Get("East Africa"),
 			Territories.Get("Congo"),
-			Territories.Get("SouthAfrica"),
+			Territories.Get("South Africa"),
 			Territories.Get("Madagascar"),
 			// asia
-			Territories.Get("MiddleEast"), // 26
+			Territories.Get("Middle East"), // 26
 			Territories.Get("Afghanistan"),
 			Territories.Get("Ural"),
 			Territories.Get("Siberia"),
@@ -124,9 +123,9 @@ public class RiskMap : MonoBehaviour
 			Territories.Get("Siam"),
 			// australia
 			Territories.Get("Indonesia"), // 38
-			Territories.Get("NewGuinea"),
-			Territories.Get("WesternAustralia"),
-			Territories.Get("EasternAustralia")
+			Territories.Get("New Guinea"),
+			Territories.Get("Western Australia"),
+			Territories.Get("Eastern Australia")
 		};
 	}
 }

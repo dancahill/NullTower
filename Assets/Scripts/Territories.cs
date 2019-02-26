@@ -13,16 +13,19 @@ public class EnemyWave
 {
 	public Enemy.Type type;
 	/// <summary>
+	/// number of enemies to spawn (1 if not provided)
+	/// </summary>
+	public int count = 1;
+	/// <summary>
 	/// Rate of enemies spawned per second
 	/// - used to calculate delay after enemy is spawned, not before
 	/// </summary>
-	public float rate;
+	public float rate = 1;
 	/// <summary>
-	/// delay (in seconds) can be used to override rate
+	/// delay (in seconds) between this spawn and the next
+	/// - can be used to override rate
 	/// </summary>
-	public float delay;
-	//public int count;
-	//public float rate;
+	public float delay = 0;
 }
 
 //[System.Serializable]
@@ -69,6 +72,7 @@ public class Territories
 		XmlNode xmlterritory = mapxml.DocumentElement.SelectSingleNode("/Territories/Territory[@name='" + territoryname + "']");
 		if (xmlterritory == null)
 		{
+			Debug.Log(string.Format("Territory {0} is missing in XML", territoryname));
 			xmlterritory = mapxml.DocumentElement.SelectSingleNode("/Territories/Territory[@name='Default']");
 		}
 		if (xmlterritory == null)
@@ -126,16 +130,12 @@ public class Territories
 					default: type = Enemy.Type.Basic; break;
 				}
 				t.waves[i][j].type = type;
+				XmlAttribute xacount = enemy.Attributes["count"];
 				XmlAttribute xarate = enemy.Attributes["rate"];
 				XmlAttribute xadelay = enemy.Attributes["delay"];
-				if (xadelay != null)
-				{
-					t.waves[i][j].delay = int.Parse(xadelay.Value);
-				}
-				else
-				{
-					t.waves[i][j].rate = int.Parse(xarate.Value);
-				}
+				if (xacount != null) t.waves[i][j].count = int.Parse(xacount.Value);
+				if (xadelay != null) t.waves[i][j].delay = float.Parse(xadelay.Value);
+				if (xarate != null) t.waves[i][j].rate = float.Parse(xarate.Value);
 				j++;
 			}
 			i++;

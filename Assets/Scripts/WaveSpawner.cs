@@ -73,23 +73,32 @@ public class WaveSpawner : MonoBehaviour
 		{
 			EnemyWave[] wave = territory.waves[waveIndex];
 
-			EnemiesAlive = wave.Length;
+			EnemiesAlive = 0;
+
 			for (int i = 0; i < wave.Length; i++)
 			{
-				switch (wave[i].type)
+				EnemiesAlive += wave[i].count;
+			}
+
+			for (int i = 0; i < wave.Length; i++)
+			{
+				for (int j = 0; j < wave[i].count; j++)
 				{
-					case Enemy.Type.Tough:
-						SpawnEnemy(m_EnemyToughPrefab);
-						break;
-					case Enemy.Type.Fast:
-						SpawnEnemy(m_EnemyFastPrefab);
-						break;
-					default:
-						SpawnEnemy(m_EnemyBasicPrefab);
-						break;
+					switch (wave[i].type)
+					{
+						case Enemy.Type.Tough:
+							SpawnEnemy(m_EnemyToughPrefab);
+							break;
+						case Enemy.Type.Fast:
+							SpawnEnemy(m_EnemyFastPrefab);
+							break;
+						default:
+							SpawnEnemy(m_EnemyBasicPrefab);
+							break;
+					}
+					float delay = wave[i].delay > 0 ? wave[i].delay : 1f / wave[i].rate;
+					yield return new WaitForSeconds(delay);
 				}
-				float delay = wave[i].delay > 0 ? wave[i].delay : 1f / wave[i].rate;
-				yield return new WaitForSeconds(delay);
 			}
 		}
 		else

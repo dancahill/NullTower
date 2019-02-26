@@ -61,9 +61,16 @@ public class LevelBuilder : MonoBehaviour
 		/* SET UP A GROUND PLANE */
 		GameObject gp = Instantiate(m_GroundPlanePrefab, new Vector3(0, -1, 0), Quaternion.identity, m_Environment.transform);
 		gp.transform.localScale = new Vector3(1000, 1, 1000);
+
+		/* SET UP A SMALL BACKGROUND */
+		GameObject gp2 = Instantiate(m_GroundPlanePrefab, new Vector3(37.5f, -0.9f, -37.5f), Quaternion.identity, m_Environment.transform);
+		gp2.transform.localScale = new Vector3(80, 1, 80);
+		Renderer rend2 = gp2.GetComponent<Renderer>();
+		rend2.material.color = new Color32(0, 32, 0, 255);
+
 		/* SET UP TURRET NODES */
 		// what's better? a map full of nodes, or a small number of nodes we can place at key points on the map?
-		if (false)
+		if (territory.turretnodes.Length == 0)
 		{
 			for (int y = 0; y < 16; y++)
 			{
@@ -91,10 +98,10 @@ public class LevelBuilder : MonoBehaviour
 			}
 		}
 		/* SET UP START/END NODES */
-		GameObject startnode = Instantiate(m_StartPrefab, endcords(1, 1), Quaternion.identity);
+		GameObject startnode = Instantiate(m_StartPrefab, endcords(territory.waypoints[0].x, territory.waypoints[0].y), Quaternion.identity);
 		startnode.transform.localScale = new Vector3(4, 4, 4);
 		WaveSpawner.spawnPoint = startnode.transform;
-		GameObject endnode = Instantiate(m_EndPrefab, endcords(14, 14), Quaternion.identity);
+		GameObject endnode = Instantiate(m_EndPrefab, endcords(territory.waypoints[territory.waypoints.Length-1].x, territory.waypoints[territory.waypoints.Length - 1].y), Quaternion.identity);
 		endnode.transform.localScale = new Vector3(4, 4, 4);
 		/* SET UP WAYPOINTS */
 		Waypoints.points = new Transform[territory.waypoints.Length];
