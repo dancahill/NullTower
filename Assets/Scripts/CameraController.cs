@@ -7,7 +7,10 @@ public class CameraController : MonoBehaviour
 	public float panBorderThickness = 10f;
 	public float scrollSpeed = 5f;
 	public float minY = 10f;
-	public float maxY = 80f;
+	public float maxY = 60f;
+	private Vector3 dragOrigin;
+
+	float m_DragSpeed = 2000f;
 
 	void Update()
 	{
@@ -19,7 +22,7 @@ public class CameraController : MonoBehaviour
 
 		if (Input.GetKey("f"))
 		{
-			Time.timeScale = 4;
+			Time.timeScale = Time.timeScale == 4 ? 1 : 4;
 		}
 
 		//if (Input.GetKeyDown(KeyCode.Escape))
@@ -27,61 +30,67 @@ public class CameraController : MonoBehaviour
 		//	doMovement = !doMovement;
 		//}
 		//if (!doMovement) return;
-		if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness)
+		//if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness)
+		if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
 		{
 			transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness)
+		//if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness)
+		if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow))
 		{
 			transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness)
+		//if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness)
+		if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness)
+		//if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness)
+		if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
 		{
 			transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+		}
+
+		FingerDrag();
+
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			PinchZoom();
 		}
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
 		Vector3 pos = transform.position;
 		pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
 		pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
 		pos.x = Mathf.Clamp(pos.x, 0, 75);
-		pos.z = Mathf.Clamp(pos.z, -80, -5);
+		pos.z = Mathf.Clamp(pos.z, -75, -5);
 		//print("x=" + pos.x.ToString() + ",z=" + pos.z.ToString());
-
 		transform.position = pos;
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			FingerDrag();
-			PinchZoom();
-		}
 	}
 
 	void FingerDrag()
 	{
-		if (Input.touchCount == 1)
+		if (Input.GetMouseButtonDown(0))
 		{
-			Touch touchZero = Input.GetTouch(0);
-			// Find the position in the previous frame of each touch.
-			Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-			// Find the magnitude of the vector (the distance) between the touches in each frame.
-			Vector3 pos = transform.position;
-			transform.Translate(Vector3.right * touchZeroPrevPos.x * Time.deltaTime, Space.World);
-			transform.Translate(Vector3.up * touchZeroPrevPos.y * Time.deltaTime, Space.World);
-			pos.x = Mathf.Clamp(pos.x, 0, 75);
-			pos.z = Mathf.Clamp(pos.z, -80, -5);
-			transform.position = pos;
+			dragOrigin = Input.mousePosition;
+			return;
 		}
+		if (!Input.GetMouseButton(0)) return;
+		Vector3 p1 = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
+		float x = p1.x * m_DragSpeed;
+		float y = p1.y * m_DragSpeed;
+		//print(string.Format("x={0},y={1} [{2},{3} {4}]", x, y, p1.x, p1.y, m_DragSpeed));
+		dragOrigin = Input.mousePosition;
+		Vector3 pos = transform.position;
+		pos.x -= x * Time.deltaTime;
+		pos.z -= y * Time.deltaTime;
+		pos.x = Mathf.Clamp(pos.x, 0, 75);
+		pos.z = Mathf.Clamp(pos.z, -80, -5);
+		transform.position = pos;
 	}
 
 	void PinchZoom()
 	{
 		float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
-							  //float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
 
 		// If there are two touches on the device...
 		if (Input.touchCount == 2)
@@ -98,7 +107,6 @@ public class CameraController : MonoBehaviour
 			// Find the difference in the distances between each frame.
 			float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-
 			//GUILayout.Label("deltaMagnitudeDiff=" + deltaMagnitudeDiff.ToString());
 			//private void OnGUI()
 			//{
@@ -106,36 +114,15 @@ public class CameraController : MonoBehaviour
 			//	GUILayout.Label(s);
 			//}
 
-
 			//float scroll = Input.GetAxis("Mouse ScrollWheel");
 			Vector3 pos = transform.position;
 			//pos.y -= deltaMagnitudeDiff * 1000 * scrollSpeed * Time.deltaTime;
 			pos.y += deltaMagnitudeDiff * perspectiveZoomSpeed * scrollSpeed * Time.deltaTime;
 			pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
 			pos.x = Mathf.Clamp(pos.x, 0, 75);
 			pos.z = Mathf.Clamp(pos.z, -80, -5);
 			//print("x=" + pos.x.ToString() + ",z=" + pos.z.ToString());
-
 			transform.position = pos;
-
-
-
-			// If the camera is orthographic...
-			//if (camera.isOrthoGraphic)
-			//{
-			//	// ... change the orthographic size based on the change in distance between the touches.
-			//	camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-			//	// Make sure the orthographic size never drops below zero.
-			//	camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
-			//}
-			//else
-			//{
-			//	// Otherwise change the field of view based on the change in distance between the touches.
-			//	camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
-			//	// Clamp the field of view to make sure it's between 0 and 180.
-			//	camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 0.1f, 179.9f);
-			//}
 		}
 	}
 }
