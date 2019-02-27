@@ -23,10 +23,9 @@ public class NodeUI : MonoBehaviour
 		transform.position = target.GetBuildPosition();
 		UpgradeUI.SetActive(false);
 		BuildUI.SetActive(true);
-		Vector3 dir = m_Camera.transform.position - UpgradeUI.transform.position;
-		//dir.x = 0;
-		//BuildUI.transform.LookAt(dir);
-		BuildUI.transform.LookAt(m_Camera.transform);
+		Vector3 dir = m_Camera.transform.position - BuildUI.transform.position;
+		dir.x = 0;
+		BuildUI.transform.rotation = Quaternion.LookRotation(dir);
 	}
 
 	public void SetUpgradeTarget(Node _target)

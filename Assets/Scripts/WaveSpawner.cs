@@ -35,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
 			return;
 		}
 		if (GameManager.GameIsOver) return;
-		if (waveIndex == territory.waves.Length)
+		if (waveIndex == territory.waves.Length && PlayerStats.Lives > 0)
 		{
 			gameManager.WinLevel();
 			this.enabled = false;
@@ -60,7 +60,7 @@ public class WaveSpawner : MonoBehaviour
 
 		for (int i = 0; i < wave.Length; i++)
 		{
-			EnemiesAlive += wave[i].count;
+			if (wave[i].type != Enemy.Type.None) EnemiesAlive += wave[i].count;
 		}
 		for (int i = 0; i < wave.Length; i++)
 		{
@@ -68,6 +68,9 @@ public class WaveSpawner : MonoBehaviour
 			{
 				switch (wave[i].type)
 				{
+					case Enemy.Type.Basic:
+						SpawnEnemy(m_EnemyBasicPrefab);
+						break;
 					case Enemy.Type.Tank:
 						SpawnEnemy(m_EnemyTankPrefab);
 						break;
@@ -78,7 +81,6 @@ public class WaveSpawner : MonoBehaviour
 						SpawnEnemy(m_EnemyFastPrefab);
 						break;
 					default:
-						SpawnEnemy(m_EnemyBasicPrefab);
 						break;
 				}
 				float delay = wave[i].delay > 0 ? wave[i].delay : 1f / wave[i].rate;

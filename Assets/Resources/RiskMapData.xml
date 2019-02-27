@@ -30,7 +30,9 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" rate="1" />
+				<Enemy type="Basic" count="3" rate="2" />
+				<Enemy delay="10" />
+				<Enemy type="Tank" count="2" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" rate="1" />
@@ -100,25 +102,18 @@
 				<Enemy type="Basic" count="5" rate="1.5" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tank" count="3" rate="1.3" />
+				<Enemy type="Tank" count="3" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Basic" count="4" rate="2" />
-				<Enemy type="Tank" rate="2" />
+				<Enemy type="Tank" rate="1" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tank" rate="1" />
-				<Enemy type="Tank" rate="1" />
-				<Enemy type="Tank" delay="6" />
-				<Enemy type="Fast" rate="5" />
-				<Enemy type="Fast" rate="5" />
-				<Enemy type="Fast" rate="5" />
-				<Enemy type="Fast" rate="5" />
-				<Enemy type="Fast" delay="6" />
-				<Enemy type="Fast" rate="5" />
-				<Enemy type="Fast" rate="5" />
-				<Enemy type="Fast" rate="5" />
-				<Enemy type="Fast" rate="5" />
+				<Enemy type="Tank" count="3" rate="1" />
+				<Enemy type="" delay="6" />
+				<Enemy type="Fast" count="5" rate="5" />
+				<Enemy type="" delay="6" />
+				<Enemy type="Fast" count="4" rate="5" />
 			</Wave>
 		</Waves>
 	</Territory>
@@ -147,13 +142,13 @@
 			</Wave>
 			<Wave>
 				<Enemy type="Basic" count="4" rate="2" />
-				<Enemy type="Tank" rate="2" />
+				<Enemy type="Tank" rate="1" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tank" count="2" rate="1" />
-				<Enemy type="Tank" delay="6" />
-				<Enemy type="Fast" count="4" rate="5" />
-				<Enemy type="Fast" delay="6" />
+				<Enemy type="Tank" count="3" rate="1" />
+				<Enemy delay="6" />
+				<Enemy type="Fast" count="5" rate="5" />
+				<Enemy delay="6" />
 				<Enemy type="Fast" count="4" rate="5" />
 			</Wave>
 		</Waves>
@@ -185,25 +180,76 @@
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" delay="8" />
-				<Enemy type="Basic" count="7" rate="2" />
-				<Enemy type="Basic" delay="5" />
-				<Enemy type="Tank" count="4" rate="2" />
+				<Enemy type="Basic" count="8" rate="2" />
+				<Enemy delay="5" />
+				<Enemy type="Tank" count="4" rate="1" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tank" count="3" rate="1.5" />
-				<Enemy type="Tank" delay="7" />
-				<Enemy type="Fast" count="4" rate="5" />
-				<Enemy type="Fast" delay="5" />
+				<Enemy type="Tank" count="4" rate="1" />
+				<Enemy delay="7" />
+				<Enemy type="Fast" count="5" rate="5" />
+				<Enemy delay="5" />
 				<Enemy type="Fast" count="4" rate="5" />
 			</Wave>
 			<Wave>
-				<Enemy type="Tank" count="7" rate="1.5" />
+				<Enemy type="Tank" count="7" rate="1" />
 			</Wave>
 		</Waves>
 	</Territory>
-	<Territory name="Western United States" startlives="2" startmoney="200" mapxy="-222,60" neighbours="3,4,7,8"></Territory>
-	<Territory name="Eastern United States" startlives="2" startmoney="200" mapxy="-186,49" neighbours="4,5,6,8"></Territory>
-	<Territory name="Central America" startlives="2" startmoney="200" mapxy="-230,20" neighbours="6,7,9"></Territory>
+	<Territory name="Western United States" startlives="2" startmoney="200" mapxy="-222,60" neighbours="3,4,7,8">
+		<TurretNodes>
+			<Location x="12" y="3" />
+		</TurretNodes>
+		<Waypoints>
+			<Location x="1" y="1" />
+			<Location x="14" y="1" />
+			<Location x="14" y="14" />
+		</Waypoints>
+		<Waves>
+			<Wave>
+				<Enemy type="Basic" rate="1" />
+			</Wave>
+			<Wave>
+				<Enemy type="Tank" rate="1" />
+			</Wave>
+		</Waves>
+	</Territory>
+	<Territory name="Eastern United States" startlives="2" startmoney="200" mapxy="-186,49" neighbours="4,5,6,8">
+		<TurretNodes>
+			<Location x="12" y="3" />
+		</TurretNodes>
+		<Waypoints>
+			<Location x="1" y="1" />
+			<Location x="14" y="1" />
+			<Location x="14" y="14" />
+		</Waypoints>
+		<Waves>
+			<Wave>
+				<Enemy type="Basic" rate="1" />
+			</Wave>
+			<Wave>
+				<Enemy type="Tank" rate="1" />
+			</Wave>
+		</Waves>
+	</Territory>
+	<Territory name="Central America" startlives="2" startmoney="200" mapxy="-230,20" neighbours="6,7,9">
+		<TurretNodes>
+			<Location x="12" y="3" />
+		</TurretNodes>
+		<Waypoints>
+			<Location x="1" y="1" />
+			<Location x="14" y="1" />
+			<Location x="14" y="14" />
+		</Waypoints>
+		<Waves>
+			<Wave>
+				<Enemy type="Basic" rate="1" />
+			</Wave>
+			<Wave>
+				<Enemy type="Tank" rate="1" />
+			</Wave>
+		</Waves>
+	</Territory>
 	<!--south america-->
 	<Territory name="Venezuela" startlives="2" startmoney="200" mapxy="-205,-42" neighbours="8,10,11"></Territory>
 	<Territory name="Peru" startlives="2" startmoney="200" mapxy="-183,-105" neighbours="9,11,12"></Territory>

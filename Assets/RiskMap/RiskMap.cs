@@ -54,6 +54,7 @@ public class RiskMap : MonoBehaviour
 	{
 		//Debug.Log("RiskMap OnMouseEnter: " + TerritoryName);
 		TerritoryLabel.text = TerritoryName;
+		RiskToast.Toast(TerritoryName);
 	}
 
 	private void OnMouseExit()
@@ -88,6 +89,7 @@ public class RiskMap : MonoBehaviour
 			Territories.Get("Western United States"),
 			Territories.Get("Eastern United States"),
 			Territories.Get("Central America"),
+/*
 			// south america
 			Territories.Get("Venezuela"), // 9
 			Territories.Get("Peru"),
@@ -126,6 +128,7 @@ public class RiskMap : MonoBehaviour
 			Territories.Get("New Guinea"),
 			Territories.Get("Western Australia"),
 			Territories.Get("Eastern Australia")
+*/
 		};
 	}
 }

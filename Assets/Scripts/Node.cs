@@ -67,9 +67,11 @@ public class Node : MonoBehaviour
 			return;
 		}
 		PlayerStats.Money -= turretBlueprint.upgradeCost;
+		Vector3 oldrotation = new Vector3(turret.transform.eulerAngles.x, turret.transform.eulerAngles.x, turret.transform.eulerAngles.z);
 		Destroy(turret);
 		GameObject _turret = Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
 		turret = _turret;
+		turret.transform.eulerAngles = oldrotation;
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
 		isUpgraded = true;
@@ -91,6 +93,7 @@ public class Node : MonoBehaviour
 		//if (!buildManager.CanBuild) return;
 		//if (buildManager.HasMoney)
 		//{
+		if (rend!=null)
 			rend.material.color = hoverColor;
 		//}
 		//else

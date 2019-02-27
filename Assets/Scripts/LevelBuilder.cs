@@ -100,10 +100,11 @@ public class LevelBuilder : MonoBehaviour
 		/* SET UP START/END NODES */
 		// crashes if no nodes are defined
 		// the xml parser should be fixed to guarantee we have a valid map, or fail long before we reach this point
+		if (territory.waypoints.Length < 1) Debug.LogError("territory.waypoints for " + territory.name + " is empty - add some to the XML file");
 		GameObject startnode = Instantiate(m_StartPrefab, endcords(territory.waypoints[0].x, territory.waypoints[0].y), Quaternion.identity);
 		startnode.transform.localScale = new Vector3(4, 4, 4);
 		WaveSpawner.spawnPoint = startnode.transform;
-		GameObject endnode = Instantiate(m_EndPrefab, endcords(territory.waypoints[territory.waypoints.Length-1].x, territory.waypoints[territory.waypoints.Length - 1].y), Quaternion.identity);
+		GameObject endnode = Instantiate(m_EndPrefab, endcords(territory.waypoints[territory.waypoints.Length - 1].x, territory.waypoints[territory.waypoints.Length - 1].y), Quaternion.identity);
 		endnode.transform.localScale = new Vector3(4, 4, 4);
 		/* SET UP WAYPOINTS */
 		Waypoints.points = new Transform[territory.waypoints.Length];

@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
 	public enum Type
 	{
+		None,
 		Basic,
 		Fast,
 		Tough,

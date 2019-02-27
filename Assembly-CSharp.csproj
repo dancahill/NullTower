@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\RiskMap\RiskMap.cs" />
+    <Compile Include="Assets\RiskMap\RiskToast.cs" />
     <Compile Include="Assets\Scripts\BuildManager.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -80,8 +81,8 @@
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\RoundsSurvived.cs" />
     <Compile Include="Assets\Scripts\SceneFader.cs" />
-    <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\Territories.cs" />
+    <Compile Include="Assets\Scripts\TerritoryLabel.cs" />
     <Compile Include="Assets\Scripts\Turret.cs" />
     <Compile Include="Assets\Scripts\TurretBlueprint.cs" />
     <Compile Include="Assets\Scripts\Wave.cs" />

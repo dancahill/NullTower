@@ -123,12 +123,14 @@ public class Territories
 			{
 				t.waves[i][j] = new EnemyWave { };
 				Enemy.Type type;
-				switch (enemy.Attributes["type"].Value)
+				string enemytype = enemy.Attributes["type"] != null ? enemy.Attributes["type"].Value : "";
+				switch (enemytype)
 				{
+					case "Basic": type = Enemy.Type.Basic; break;
 					case "Tank": type = Enemy.Type.Tank; break;
 					case "Tough": type = Enemy.Type.Tough; break;
 					case "Fast": type = Enemy.Type.Fast; break;
-					default: type = Enemy.Type.Basic; break;
+					default: type = Enemy.Type.None; break;
 				}
 				t.waves[i][j].type = type;
 				XmlAttribute xacount = enemy.Attributes["count"];
@@ -140,6 +142,24 @@ public class Territories
 				j++;
 			}
 			i++;
+		}
+		// we wouldn't need this if the xml file was properly filled out
+		if (t.waypoints.Length == 0)
+		{
+			t.waypoints = new MapPoint[2] {
+				new MapPoint { x = 1, y = 1 },
+				new MapPoint { x = 14, y = 14 }
+			};
+		}
+		if (t.waves.Length == 0)
+		{
+			t.waves = new EnemyWave[1][] {
+				new EnemyWave[1] {
+					new EnemyWave{ type=Enemy.Type.Tank, count=1 }
+				}
+			};
+			t.startlives = 1;
+			t.startmoney = 100;
 		}
 		return t;
 	}
