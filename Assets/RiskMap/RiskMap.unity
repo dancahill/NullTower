@@ -581,10 +581,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 96
+    m_FontSize: 72
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 7
     m_MaxSize: 96
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -800,8 +800,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 166.4, y: -57.1}
-  m_SizeDelta: {x: 332.9, y: 114.3}
+  m_AnchoredPosition: {x: 118.3, y: -42.1}
+  m_SizeDelta: {x: 236.6, y: 84.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2078900135
 MonoBehaviour:
@@ -824,9 +824,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.5019608}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1005,6 +1005,11 @@ PrefabInstance:
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 1827816876}
+    - target: {fileID: 2802408307021354129, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: TerritoryName
+      value: Western Australia
+      objectReference: {fileID: 0}
     - target: {fileID: 2802408305850938588, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
         type: 3}
       propertyPath: TerritoryLabel
@@ -1015,6 +1020,136 @@ PrefabInstance:
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 1827816876}
+    - target: {fileID: 2802408305374383277, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802408305815497980, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802408305850938589, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802408307021354130, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551409176185002220, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 800944952936748277, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: TerritoryLabel
+      value: 
+      objectReference: {fileID: 398978719}
+    - target: {fileID: 800944952936748277, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 1827816876}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: -2.2159588
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: 1.6497228
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -2.4913588
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: 1.616365
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -2.6583817
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: 1.7458129
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: -3.189565
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: 1.7181482
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
+      value: -3.2006085
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
+      value: 1.3498852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
+      value: -2.2207928
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094384914550603922, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
+      value: 1.3197949
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184922722961228520, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: TerritoryLabel
+      value: 
+      objectReference: {fileID: 398978719}
+    - target: {fileID: 3184922722961228520, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 1827816876}
+    - target: {fileID: 1753026516195536033, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990697349548529749, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 1827816876}
+    - target: {fileID: 7990697349548529749, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: TerritoryLabel
+      value: 
+      objectReference: {fileID: 398978719}
     m_RemovedComponents:
     - {fileID: 2802408306655059396, guid: ab0c6bb7cb7cbe545844eef73d2f82c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ab0c6bb7cb7cbe545844eef73d2f82c7, type: 3}

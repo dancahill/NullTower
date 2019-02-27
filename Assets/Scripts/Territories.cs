@@ -72,7 +72,7 @@ public class Territories
 		XmlNode xmlterritory = mapxml.DocumentElement.SelectSingleNode("/Territories/Territory[@name='" + territoryname + "']");
 		if (xmlterritory == null)
 		{
-			Debug.Log(string.Format("Territory {0} is missing in XML", territoryname));
+			Debug.Log(string.Format("Territory {0} is missing in XML - trying 'Default'", territoryname));
 			xmlterritory = mapxml.DocumentElement.SelectSingleNode("/Territories/Territory[@name='Default']");
 		}
 		if (xmlterritory == null)

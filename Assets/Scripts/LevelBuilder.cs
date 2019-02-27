@@ -98,6 +98,8 @@ public class LevelBuilder : MonoBehaviour
 			}
 		}
 		/* SET UP START/END NODES */
+		// crashes if no nodes are defined
+		// the xml parser should be fixed to guarantee we have a valid map, or fail long before we reach this point
 		GameObject startnode = Instantiate(m_StartPrefab, endcords(territory.waypoints[0].x, territory.waypoints[0].y), Quaternion.identity);
 		startnode.transform.localScale = new Vector3(4, 4, 4);
 		WaveSpawner.spawnPoint = startnode.transform;

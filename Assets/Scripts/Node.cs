@@ -34,14 +34,16 @@ public class Node : MonoBehaviour
 		if (EventSystem.current.IsPointerOverGameObject()) return;
 		if (turret != null)
 		{
-			buildManager.SelectNode(this);
+			buildManager.SelectNodeToUpgrade(this);
 			return;
+		} else {
+			buildManager.SelectNodeToBuild(this);
 		}
-		if (!buildManager.CanBuild) return;
-		BuildTurret(buildManager.GetTurretToBuild());
+		//if (!buildManager.CanBuild) return;
+		//BuildTurret(buildManager.GetTurretToBuild());
 	}
 
-	void BuildTurret(TurretBlueprint blueprint)
+	public void BuildTurret(TurretBlueprint blueprint)
 	{
 		if (PlayerStats.Money < blueprint.cost)
 		{
@@ -86,15 +88,15 @@ public class Node : MonoBehaviour
 	private void OnMouseEnter()
 	{
 		if (EventSystem.current.IsPointerOverGameObject()) return;
-		if (!buildManager.CanBuild) return;
-		if (buildManager.HasMoney)
-		{
+		//if (!buildManager.CanBuild) return;
+		//if (buildManager.HasMoney)
+		//{
 			rend.material.color = hoverColor;
-		}
-		else
-		{
-			rend.material.color = notEnoughMoneyColor;
-		}
+		//}
+		//else
+		//{
+		//	rend.material.color = notEnoughMoneyColor;
+		//}
 	}
 
 	private void OnMouseExit()

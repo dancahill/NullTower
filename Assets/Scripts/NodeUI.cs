@@ -3,14 +3,33 @@ using UnityEngine.UI;
 
 public class NodeUI : MonoBehaviour
 {
-	public GameObject ui;
+	public GameObject BuildUI;
+	public GameObject UpgradeUI;
+	public GameObject m_Camera;
+
+	public TurretBlueprint standardTurret;
+	public TurretBlueprint missileLauncher;
+	public TurretBlueprint laserBeamer;
+
 	public Text upgradeCost;
 	public Button upgradeButton;
 	public Text sellAmount;
 	public Button sellButton;
 	private Node target;
 
-	public void SetTarget(Node _target)
+	public void SetBuildTarget(Node _target)
+	{
+		this.target = _target;
+		transform.position = target.GetBuildPosition();
+		UpgradeUI.SetActive(false);
+		BuildUI.SetActive(true);
+		Vector3 dir = m_Camera.transform.position - UpgradeUI.transform.position;
+		//dir.x = 0;
+		//BuildUI.transform.LookAt(dir);
+		BuildUI.transform.LookAt(m_Camera.transform);
+	}
+
+	public void SetUpgradeTarget(Node _target)
 	{
 		this.target = _target;
 		transform.position = target.GetBuildPosition();
@@ -25,12 +44,30 @@ public class NodeUI : MonoBehaviour
 			upgradeButton.interactable = false;
 		}
 		sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
-		ui.SetActive(true);
+		BuildUI.SetActive(false);
+		UpgradeUI.SetActive(true);
+		Vector3 v = m_Camera.transform.position - UpgradeUI.transform.position;
+		v.x = 0;
+		//UpgradeUI.transform.LookAt(m_Camera.transform);
+		UpgradeUI.transform.LookAt(transform.position - v);
 	}
 
 	public void Hide()
 	{
-		ui.SetActive(false);
+		BuildUI.SetActive(false);
+		UpgradeUI.SetActive(false);
+	}
+
+	public void Build(string TurretType)
+	{
+		switch (TurretType)
+		{
+			case "StandardTurret": target.BuildTurret(standardTurret); break;
+			case "MissileLauncher": target.BuildTurret(missileLauncher); break;
+			case "LaserBeamer": target.BuildTurret(laserBeamer); break;
+			default: Debug.Log("turret type " + TurretType + " not known"); break;
+		}
+		BuildManager.instance.DeselectNode();
 	}
 
 	public void Upgrade()
