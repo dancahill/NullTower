@@ -7,16 +7,16 @@ public class GameManager : MonoBehaviour
 	public GameObject gameOverUI;
 	public GameObject completeLevelUI;
 
-	public AudioSource audio;
+	public AudioSource m_Audio;
 
 	private void Start()
 	{
 		GameIsOver = false;
 
-		audio = gameObject.AddComponent<AudioSource>();
+		m_Audio = gameObject.AddComponent<AudioSource>();
 		//https://downloads.khinsider.com/game-soundtracks/album/warcraft-2-tides-of-darkness-cda
 		AudioClip clip = (AudioClip)Resources.Load("Music/02 - human battle 1");
-		audio.PlayOneShot(clip);
+		m_Audio.PlayOneShot(clip);
 	}
 
 	void Update()
@@ -32,17 +32,17 @@ public class GameManager : MonoBehaviour
 	{
 		GameIsOver = true;
 		gameOverUI.SetActive(true);
-		audio.Stop();
+		m_Audio.Stop();
 		AudioClip clip = (AudioClip)Resources.Load("Music/09 - human defeat");
-		audio.PlayOneShot(clip);
+		m_Audio.PlayOneShot(clip);
 	}
 
 	public void WinLevel()
 	{
 		GameIsOver = true;
 		completeLevelUI.SetActive(true);
-		audio.Stop();
+		m_Audio.Stop();
 		AudioClip clip = (AudioClip)Resources.Load("Music/08 - human victory");
-		audio.PlayOneShot(clip);
+		m_Audio.PlayOneShot(clip);
 	}
 }

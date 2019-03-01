@@ -6,15 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Main.unity
     guid: 56d4eff869d6a584397e79cfe7be42f1
   - enabled: 1
-    path: Assets/RiskMap/RiskMap.unity
+    path: Assets/Scenes/RiskMap.unity
     guid: 650295d8f4553ca45ad9bd295d89b8a9
   - enabled: 1
-    path: Assets/Scenes/LevelAutogen.unity
+    path: Assets/Scenes/BattleGround.unity
     guid: 8189392820e47dd448b2c8ad270df233
-  - enabled: 1
-    path: Assets/Scenes/Level01.unity
-    guid: cde00ff4609806048aaa9bcb227fcae4
   m_configObjects: {}

@@ -10,6 +10,8 @@ public class WaveSpawner : MonoBehaviour
 	public GameObject m_EnemyTankPrefab;
 
 	public static int EnemiesAlive = 0;
+	public static int waveNumber = 0;
+	public static int totalWaves = 0;
 
 	public static Transform spawnPoint;
 
@@ -17,7 +19,6 @@ public class WaveSpawner : MonoBehaviour
 	private float countdown = 5f;
 	public Text waveCountdownText;
 	public GameManager gameManager;
-	private int waveIndex = 0;
 
 	Territory territory;
 
@@ -25,6 +26,8 @@ public class WaveSpawner : MonoBehaviour
 	{
 		territory = Territories.Get(GameManager.Territory);
 		spawnPoint = null;
+		totalWaves = territory.waves.Length;
+		waveNumber = 0;
 		EnemiesAlive = 0;
 	}
 
@@ -35,7 +38,7 @@ public class WaveSpawner : MonoBehaviour
 			return;
 		}
 		if (GameManager.GameIsOver) return;
-		if (waveIndex == territory.waves.Length && PlayerStats.Lives > 0)
+		if (waveNumber == territory.waves.Length && PlayerStats.Lives > 0)
 		{
 			gameManager.WinLevel();
 			this.enabled = false;
@@ -48,13 +51,13 @@ public class WaveSpawner : MonoBehaviour
 		}
 		countdown -= Time.deltaTime;
 		countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-		waveCountdownText.text = string.Format("{0:00.0}", countdown);
+		waveCountdownText.text = string.Format("{0:0.0}", countdown);
 	}
 	IEnumerator SpawnWave()
 	{
-		PlayerStats.Rounds++;
+		waveNumber++;
 
-		EnemyWave[] wave = territory.waves[waveIndex];
+		EnemyWave[] wave = territory.waves[waveNumber - 1];
 
 		EnemiesAlive = 0;
 
@@ -62,7 +65,9 @@ public class WaveSpawner : MonoBehaviour
 		{
 			if (wave[i].type != Enemy.Type.None) EnemiesAlive += wave[i].count;
 		}
-		Debug.Log(string.Format("Starting wave {0} ({1} enemies)", waveIndex + 1, EnemiesAlive));
+		string s = string.Format("Starting wave {0} ({1} enemies)", waveNumber, EnemiesAlive);
+		Debug.Log(s);
+		GameToast.Add(s);
 		for (int i = 0; i < wave.Length; i++)
 		{
 			for (int j = 0; j < wave[i].count; j++)
@@ -88,7 +93,7 @@ public class WaveSpawner : MonoBehaviour
 				yield return new WaitForSeconds(delay);
 			}
 		}
-		waveIndex++;
+		//waveIndex++;
 	}
 	private void SpawnEnemy(GameObject enemy)
 	{

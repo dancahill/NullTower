@@ -74,7 +74,7 @@ public partial class RiskMap : MonoBehaviour
 		switch (TerritoryName)
 		{
 			//case "Ontario": maptoload = "Level01"; break;
-			default: maptoload = "LevelAutogen"; break;
+			default: maptoload = "BattleGround"; break;
 		}
 		sceneFader.FadeTo(maptoload, TerritoryName);
 	}

@@ -36,7 +36,9 @@ public class Node : MonoBehaviour
 		{
 			buildManager.SelectNodeToUpgrade(this);
 			return;
-		} else {
+		}
+		else
+		{
 			buildManager.SelectNodeToBuild(this);
 		}
 		//if (!buildManager.CanBuild) return;
@@ -47,7 +49,7 @@ public class Node : MonoBehaviour
 	{
 		if (PlayerStats.Money < blueprint.cost)
 		{
-			Debug.Log("Not enough money to build that!");
+			GameToast.Add("Not enough money to build that!");
 			return;
 		}
 		PlayerStats.Money -= blueprint.cost;
@@ -56,14 +58,14 @@ public class Node : MonoBehaviour
 		turretBlueprint = blueprint;
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
-		//Debug.Log("Turret Built!");
+		GameToast.Add("Turret Built!");
 	}
 
 	public void UpgradeTurret()
 	{
 		if (PlayerStats.Money < turretBlueprint.upgradeCost)
 		{
-			Debug.Log("Not enough money to upgrade that!");
+			GameToast.Add("Not enough money to upgrade that!");
 			return;
 		}
 		PlayerStats.Money -= turretBlueprint.upgradeCost;
@@ -75,7 +77,7 @@ public class Node : MonoBehaviour
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
 		isUpgraded = true;
-		//Debug.Log("Turret upgraded!");
+		GameToast.Add("Turret upgraded!");
 	}
 
 	public void SellTurret()
@@ -85,6 +87,7 @@ public class Node : MonoBehaviour
 		Destroy(effect, 5f);
 		Destroy(turret);
 		turretBlueprint = null;
+		GameToast.Add("Turret sold!");
 	}
 
 	private void OnMouseEnter()
@@ -93,7 +96,7 @@ public class Node : MonoBehaviour
 		//if (!buildManager.CanBuild) return;
 		//if (buildManager.HasMoney)
 		//{
-		if (rend!=null)
+		if (rend != null)
 			rend.material.color = hoverColor;
 		//}
 		//else
