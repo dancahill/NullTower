@@ -131,10 +131,14 @@ public class Turret : MonoBehaviour
 	{
 		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
-		if (bullet != null) bullet.Seek(target);
+		if (bullet == null) return;
+
+
+		bullet.Seek(target, m_TurretType);
 
 		AudioSource audio = gameObject.AddComponent<AudioSource>();
 		AudioClip clip;
+		//Debug.Log("playing sound for " + m_TurretType);
 		switch (m_TurretType)
 		{
 			case Type.Missile: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/bazooka/shot_bazooka"); break;

@@ -20,9 +20,14 @@ public class CameraController : MonoBehaviour
 			return;
 		}
 
-		if (Input.GetKey("f"))
+		if (Input.GetKeyDown("f"))
 		{
 			Time.timeScale = Time.timeScale == 4 ? 1 : 4;
+		}
+
+		if (Input.GetKeyDown("m"))
+		{
+			PlayerStats.Money += 100;
 		}
 
 		//if (Input.GetKeyDown(KeyCode.Escape))
@@ -50,9 +55,7 @@ public class CameraController : MonoBehaviour
 		{
 			transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
 		}
-
 		FingerDrag();
-
 		if (Application.platform == RuntimePlatform.Android)
 		{
 			PinchZoom();
@@ -78,7 +81,6 @@ public class CameraController : MonoBehaviour
 		Vector3 p1 = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
 		float x = p1.x * m_DragSpeed;
 		float y = p1.y * m_DragSpeed;
-		//print(string.Format("x={0},y={1} [{2},{3} {4}]", x, y, p1.x, p1.y, m_DragSpeed));
 		dragOrigin = Input.mousePosition;
 		Vector3 pos = transform.position;
 		pos.x -= x * Time.deltaTime;
@@ -90,7 +92,7 @@ public class CameraController : MonoBehaviour
 
 	void PinchZoom()
 	{
-		float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
+		float zoomspeed = 0.5f;
 
 		// If there are two touches on the device...
 		if (Input.touchCount == 2)
@@ -106,22 +108,11 @@ public class CameraController : MonoBehaviour
 			float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 			// Find the difference in the distances between each frame.
 			float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-			//GUILayout.Label("deltaMagnitudeDiff=" + deltaMagnitudeDiff.ToString());
-			//private void OnGUI()
-			//{
-			//	string s = string.Format("\n\n\n\n [{0}]\n [{1}]\n [{2}]", Input.acceleration.x, Input.acceleration.y, Input.acceleration.z);
-			//	GUILayout.Label(s);
-			//}
-
-			//float scroll = Input.GetAxis("Mouse ScrollWheel");
 			Vector3 pos = transform.position;
-			//pos.y -= deltaMagnitudeDiff * 1000 * scrollSpeed * Time.deltaTime;
-			pos.y += deltaMagnitudeDiff * perspectiveZoomSpeed * scrollSpeed * Time.deltaTime;
+			pos.y += deltaMagnitudeDiff * zoomspeed * scrollSpeed * Time.deltaTime;
 			pos.y = Mathf.Clamp(pos.y, minY, maxY);
 			pos.x = Mathf.Clamp(pos.x, 0, 75);
 			pos.z = Mathf.Clamp(pos.z, -80, -5);
-			//print("x=" + pos.x.ToString() + ",z=" + pos.z.ToString());
 			transform.position = pos;
 		}
 	}

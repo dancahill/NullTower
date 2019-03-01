@@ -20,6 +20,9 @@ public partial class RiskMap : MonoBehaviour
 
 	void Start()
 	{
+		AudioSource audio = gameObject.AddComponent<AudioSource>();
+		AudioClip clip = (AudioClip)Resources.Load("Music/07 - human briefing");
+		audio.PlayOneShot(clip);
 		try
 		{
 			if (turretprefab == null)

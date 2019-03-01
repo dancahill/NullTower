@@ -2,15 +2,18 @@
 
 public class Bullet : MonoBehaviour
 {
+	public Turret.Type m_BulletType;
+
 	private Transform target;
 	public GameObject impactEffect;
 	public float speed = 70.0f;
 	public int damage = 50;
 	public float explosionRadius = 0;
 
-	public void Seek(Transform _target)
+	public void Seek(Transform _target, Turret.Type type)
 	{
 		target = _target;
+		m_BulletType = type;
 	}
 
 	void Update()
@@ -59,6 +62,15 @@ public class Bullet : MonoBehaviour
 				Damage(collider.transform);
 			}
 		}
+
+		AudioSource audio = gameObject.AddComponent<AudioSource>();
+		AudioClip clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/bazooka/explosion_bazooka");
+		//Debug.Log("playing explosion sound for " + m_BulletType);
+		if (clip != null)
+			audio.PlayOneShot(clip);
+		else
+			Debug.Log("missing shot sound for " + m_BulletType);
+
 	}
 
 	void Damage(Transform enemy)
