@@ -2,6 +2,14 @@
 
 public class Turret : MonoBehaviour
 {
+	public enum Type
+	{
+		Basic,
+		Missile,
+		Laser
+	};
+	public Type m_TurretType;
+
 	private Transform target;
 	private Enemy targetEnemy;
 
@@ -124,6 +132,19 @@ public class Turret : MonoBehaviour
 		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
 		if (bullet != null) bullet.Seek(target);
+
+		AudioSource audio = gameObject.AddComponent<AudioSource>();
+		AudioClip clip;
+		switch (m_TurretType)
+		{
+			case Type.Missile: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/bazooka/shot_bazooka"); break;
+			case Type.Laser: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/machine)gun/shot_machinegun 1"); break;
+			default: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/hand_gun/shot_hand_gun"); break;
+		}
+		if (clip != null)
+			audio.PlayOneShot(clip);
+		else
+			Debug.Log("missing shot sound for " + m_TurretType);
 	}
 
 	private void OnDrawGizmosSelected()

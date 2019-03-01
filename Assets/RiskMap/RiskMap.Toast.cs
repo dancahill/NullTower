@@ -2,8 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RiskToast : MonoBehaviour
+public partial class RiskMap : MonoBehaviour
 {
+	private IEnumerator coroutine;
 	public Text m_ToastText;
 	public static string Text = "";
 
@@ -11,7 +12,8 @@ public class RiskToast : MonoBehaviour
 	{
 		if (Text != "")
 		{
-			StartCoroutine(ShowText());
+			coroutine = ShowText();
+			StartCoroutine(coroutine);
 		}
 	}
 
@@ -24,9 +26,11 @@ public class RiskToast : MonoBehaviour
 		yield return 0;
 	}
 
-	public static void Toast(string text)
+	void Toast(string text)
 	{
 		// should do something to queue messages for display
+		//if (coroutine != null) StopCoroutine(coroutine);
+		StopAllCoroutines();
 		Text = text;
 	}
 }

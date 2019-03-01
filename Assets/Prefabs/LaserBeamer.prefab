@@ -9733,10 +9733,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecdec8ccfba5c9e41a55fc4025ef574d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TurretType: 2
   range: 20
   bulletPrefab: {fileID: 0}
   fireRate: 1
   useLaser: 1
+  damageOverTime: 30
+  slowAmount: 0.5
   lineRenderer: {fileID: 3033217381110328204}
   impactEffect: {fileID: 400209116468845291}
   impactLight: {fileID: 8200314442940329193}

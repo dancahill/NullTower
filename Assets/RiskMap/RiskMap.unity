@@ -776,7 +776,6 @@ GameObject:
   - component: {fileID: 1830622515}
   - component: {fileID: 1830622517}
   - component: {fileID: 1830622516}
-  - component: {fileID: 1830622518}
   m_Layer: 5
   m_Name: Toast
   m_TagString: Untagged
@@ -845,19 +844,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830622514}
   m_CullTransparentMesh: 0
---- !u!114 &1830622518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830622514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 666fc84b93ba1d246ae139a8c301c052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ToastText: {fileID: 1830622516}
 --- !u!1 &2078900133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,6 +1055,11 @@ PrefabInstance:
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 1827816876}
+    - target: {fileID: 2802408306655059394, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_ToastText
+      value: 
+      objectReference: {fileID: 1830622516}
     - target: {fileID: 2802408305815497979, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
         type: 3}
       propertyPath: TerritoryLabel

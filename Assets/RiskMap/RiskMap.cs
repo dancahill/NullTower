@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System;
 
-public class RiskMap : MonoBehaviour
+public partial class RiskMap : MonoBehaviour
 {
 	public GameObject canvas;
 	public GameObject turrets;
@@ -33,7 +33,7 @@ public class RiskMap : MonoBehaviour
 			}
 			else
 			{
-				print("found turretprefab");
+				//print("found turretprefab");
 			}
 			MapSetupRisk();
 			turrets = new GameObject("Turrets On Map");
@@ -54,7 +54,7 @@ public class RiskMap : MonoBehaviour
 	{
 		//Debug.Log("RiskMap OnMouseEnter: " + TerritoryName);
 		TerritoryLabel.text = TerritoryName;
-		RiskToast.Toast(TerritoryName);
+		Toast(TerritoryName);
 	}
 
 	private void OnMouseExit()

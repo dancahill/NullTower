@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 2027353806}
   - component: {fileID: 5863301273043084248}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: StandardTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,13 +202,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecdec8ccfba5c9e41a55fc4025ef574d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TurretType: 0
   range: 15
+  bulletPrefab: {fileID: 6103908016883181109, guid: 8474d0d4363c37c499955358280d536b,
+    type: 3}
   fireRate: 1
+  useLaser: 0
+  damageOverTime: 30
+  slowAmount: 0.5
+  lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
   enemyTag: Enemy
   partToRotate: {fileID: 667219367317192035}
   turnSpeed: 10
-  bulletPrefab: {fileID: 6103908016883181109, guid: 8474d0d4363c37c499955358280d536b,
-    type: 3}
   firePoint: {fileID: 7659173340760034901}
 --- !u!1 &1673128389526879577
 GameObject:

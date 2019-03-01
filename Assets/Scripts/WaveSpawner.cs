@@ -62,6 +62,7 @@ public class WaveSpawner : MonoBehaviour
 		{
 			if (wave[i].type != Enemy.Type.None) EnemiesAlive += wave[i].count;
 		}
+		Debug.Log(string.Format("Starting wave {0} ({1} enemies)", waveIndex + 1, EnemiesAlive));
 		for (int i = 0; i < wave.Length; i++)
 		{
 			for (int j = 0; j < wave[i].count; j++)
