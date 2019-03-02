@@ -6,6 +6,8 @@ public class GameToast : MonoBehaviour
 {
 	public static GameToast instance;
 
+	public GameObject panel;
+
 	private IEnumerator coroutine;
 	public Text m_ToastText;
 	public static string Text = "";
@@ -27,13 +29,25 @@ public class GameToast : MonoBehaviour
 			coroutine = ShowText();
 			StartCoroutine(coroutine);
 		}
+		//if (panel.activeSelf && m_ToastText.text == "") panel.SetActive(false);
 	}
 	IEnumerator ShowText()
 	{
+		//RectTransform panelRectTransform = panel.GetComponent<RectTransform>();
+		//panelRectTransform.sizeDelta.Set(0, 32);
+		//panel.SetActive(true);
+		// adjusting sizefitter seems to work best. toggling active and changing size both seem broken
+		ContentSizeFitter csf = panel.GetComponent<ContentSizeFitter>();
+		csf.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
 		m_ToastText.text = Text;
 		Text = "";
 		yield return new WaitForSeconds(2f);
 		m_ToastText.text = "";
+		//ContentSizeFitter csf = panel.GetComponent<ContentSizeFitter>();
+		csf.horizontalFit = ContentSizeFitter.FitMode.MinSize;
+		//RectTransform panelRectTransform = panel.GetComponent<RectTransform>();
+		//panelRectTransform.localScale.Set(0, 0, 0);
+		//panel.SetActive(false);
 		yield return 0;
 	}
 
