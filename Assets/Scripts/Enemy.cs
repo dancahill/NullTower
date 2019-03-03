@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 		Basic,
 		Fast,
 		Tough,
+		Jeep,
 		Tank
 	};
 	public float startSpeed = 10f;

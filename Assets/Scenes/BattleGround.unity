@@ -1320,7 +1320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -165.65, y: -16}
+  m_AnchoredPosition: {x: -165.65039, y: -16}
   m_SizeDelta: {x: 331.3, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463132588
@@ -4831,8 +4831,11 @@ MonoBehaviour:
     type: 3}
   m_EnemyFastPrefab: {fileID: 2033937512213836478, guid: 81a3e78b5e5a6c04b84b261a979793ea,
     type: 3}
+  m_EnemyJeepPrefab: {fileID: 8550967594882420472, guid: 6a9502d119ddbc540a3b85d30ec5f48e,
+    type: 3}
   m_EnemyTankPrefab: {fileID: 3779930671721662985, guid: 9e0968b8096cf1749a7d9132e0f43d9f,
     type: 3}
+  m_EnemyBuggyPrefab: {fileID: 0}
   m_TimeBetweenWaves: 10
   waveCountdownText: {fileID: 1988763483}
   gameManager: {fileID: 1868623356}
@@ -5448,7 +5451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -75.2, y: 32}
+  m_AnchoredPosition: {x: -75.200195, y: 32}
   m_SizeDelta: {x: 150.3, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1988763482

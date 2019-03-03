@@ -11,7 +11,7 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" rate="1" />
+				<Enemy type="Jeep" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" rate="1" />
@@ -30,7 +30,7 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" count="3" rate="2" />
+				<Enemy type="Jeep" count="3" rate="2" />
 				<Enemy delay="10" />
 				<Enemy type="Tank" count="2" rate="1" />
 			</Wave>
@@ -50,7 +50,7 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" rate="1" />
+				<Enemy type="Jeep" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" rate="1" />
@@ -68,7 +68,7 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" rate="1" />
+				<Enemy type="Jeep" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" rate="1" />
@@ -99,13 +99,13 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" count="5" rate="1.5" />
+				<Enemy type="Jeep" count="5" rate="1.5" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" count="3" rate="1" />
 			</Wave>
 			<Wave>
-				<Enemy type="Basic" count="4" rate="2" />
+				<Enemy type="Jeep" count="4" rate="2" />
 				<Enemy type="Tank" rate="1" />
 			</Wave>
 			<Wave>
@@ -138,10 +138,10 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" count="3" rate="2" />
+				<Enemy type="Jeep" count="3" rate="2" />
 			</Wave>
 			<Wave>
-				<Enemy type="Basic" count="4" rate="2" />
+				<Enemy type="Jeep" count="4" rate="2" />
 				<Enemy type="Tank" rate="1" />
 			</Wave>
 			<Wave>
@@ -176,11 +176,11 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" count="8" rate="2" />
+				<Enemy type="Jeep" count="8" rate="2" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" delay="8" />
-				<Enemy type="Basic" count="8" rate="2" />
+				<Enemy type="Jeep" count="8" rate="2" />
 				<Enemy delay="5" />
 				<Enemy type="Tank" count="4" rate="1" />
 			</Wave>
@@ -207,7 +207,7 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" rate="1" />
+				<Enemy type="Jeep" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" rate="1" />
@@ -225,7 +225,7 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" rate="1" />
+				<Enemy type="Jeep" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" rate="1" />
@@ -243,7 +243,7 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Basic" rate="1" />
+				<Enemy type="Jeep" rate="1" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" rate="1" />

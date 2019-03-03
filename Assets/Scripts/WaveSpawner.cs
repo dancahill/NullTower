@@ -7,7 +7,10 @@ public class WaveSpawner : MonoBehaviour
 	public GameObject m_EnemyBasicPrefab;
 	public GameObject m_EnemyToughPrefab;
 	public GameObject m_EnemyFastPrefab;
+
+	public GameObject m_EnemyJeepPrefab;
 	public GameObject m_EnemyTankPrefab;
+	public GameObject m_EnemyBuggyPrefab;
 
 	public static int EnemiesAlive = 0;
 	public static int waveNumber = 0;
@@ -65,7 +68,7 @@ public class WaveSpawner : MonoBehaviour
 		{
 			if (wave[i].type != Enemy.Type.None) EnemiesAlive += wave[i].count;
 		}
-		string s = string.Format("Starting wave {0} ({1} enemies)", waveNumber, EnemiesAlive);
+		string s = string.Format("Wave {0} ({1} enemies)", waveNumber, EnemiesAlive);
 		Debug.Log(s);
 		GameToast.Add(s);
 		for (int i = 0; i < wave.Length; i++)
@@ -77,14 +80,17 @@ public class WaveSpawner : MonoBehaviour
 					case Enemy.Type.Basic:
 						SpawnEnemy(m_EnemyBasicPrefab);
 						break;
-					case Enemy.Type.Tank:
-						SpawnEnemy(m_EnemyTankPrefab);
-						break;
 					case Enemy.Type.Tough:
 						SpawnEnemy(m_EnemyToughPrefab);
 						break;
 					case Enemy.Type.Fast:
 						SpawnEnemy(m_EnemyFastPrefab);
+						break;
+					case Enemy.Type.Jeep:
+						SpawnEnemy(m_EnemyJeepPrefab);
+						break;
+					case Enemy.Type.Tank:
+						SpawnEnemy(m_EnemyTankPrefab);
 						break;
 					default:
 						break;

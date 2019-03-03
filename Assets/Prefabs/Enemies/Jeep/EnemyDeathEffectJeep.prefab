@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8564467273261459834}
   - component: {fileID: 8564467273261459833}
   m_Layer: 0
-  m_Name: EnemyDeathEffectTank
+  m_Name: EnemyDeathEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4712,8 +4712,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7461e64f41406c5439944d6668a36fcb, type: 2}
-  - {fileID: 2100000, guid: 7461e64f41406c5439944d6668a36fcb, type: 2}
+  - {fileID: 2100000, guid: 9f521ee3f38d20040876115b0e1d5ad0, type: 2}
+  - {fileID: 2100000, guid: 9f521ee3f38d20040876115b0e1d5ad0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
