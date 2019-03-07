@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Turret : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Turret : MonoBehaviour
 
 	[Header("General")]
 	public float range = 15f;
+
+	public float startHealth = 100;
+	public float health;
 
 	[Header("Use Bullets (default)")]
 	public GameObject bulletPrefab;
@@ -37,13 +41,25 @@ public class Turret : MonoBehaviour
 
 	public Transform firePoint;
 
+	public GameObject deathEffect;
+
+	public Image healthBar;
+
 	void Start()
 	{
+		health = startHealth;
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
 
 	void UpdateTarget()
 	{
+		// if we already have a valid target, keep firing at it
+		if (target != null && Vector3.Distance(transform.position, target.transform.position) <= range)
+		{
+			return;
+		}
+		// else look for a new target
+		// different turrets might prefer different targets in a future version
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 		float shortestDistance = Mathf.Infinity;
 		GameObject nearestEnemy = null;
@@ -132,13 +148,10 @@ public class Turret : MonoBehaviour
 		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
 		if (bullet == null) return;
-
-
 		bullet.Seek(target, m_TurretType);
 
 		AudioSource audio = gameObject.AddComponent<AudioSource>();
 		AudioClip clip;
-		//Debug.Log("playing sound for " + m_TurretType);
 		switch (m_TurretType)
 		{
 			case Type.Missile: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/bazooka/shot_bazooka"); break;
@@ -149,11 +162,30 @@ public class Turret : MonoBehaviour
 			audio.PlayOneShot(clip);
 		else
 			Debug.Log("missing shot sound for " + m_TurretType);
+
+		// just to test the damage while there's no enemy that actually does damage
+		TakeDamage(2.5f);
 	}
 
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, range);
+	}
+
+	public void TakeDamage(float amount)
+	{
+		health -= amount;
+		healthBar.fillAmount = health / startHealth;
+		//if (health <= 0 && !isDead) Die();
+		if (health <= 0) Die();
+	}
+
+	void Die()
+	{
+		//isDead = true;
+		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+		Destroy(effect, 5f);
+		Destroy(gameObject);
 	}
 }

@@ -7,6 +7,7 @@ public class TurretBlueprint
 	public GameObject upgradedPrefab;
 	public int cost;
 	public int upgradeCost;
+	public float startHealth;
 
 	public int GetSellAmount()
 	{
