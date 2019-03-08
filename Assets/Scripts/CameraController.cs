@@ -19,17 +19,21 @@ public class CameraController : MonoBehaviour
 			this.enabled = false;
 			return;
 		}
-
 		if (Input.GetKeyDown("f"))
 		{
 			Time.timeScale = Time.timeScale == 4 ? 1 : 4;
 		}
-
-		if (Input.GetKeyDown("m"))
+		if (Input.GetKeyDown("c"))
 		{
 			PlayerStats.Money += 100;
 		}
-
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			if (Input.GetKeyDown("m"))
+				Manager.manager.playMusic = !Manager.manager.playMusic;
+			if (Input.GetKeyDown("s"))
+				Manager.manager.playSound = !Manager.manager.playSound;
+		}
 		//if (Input.GetKeyDown(KeyCode.Escape))
 		//{
 		//	doMovement = !doMovement;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 850771196}
   m_Layer: 0
   m_Name: MissileLauncherUpgraded
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 1871996740145784926}
   - component: {fileID: 5555957847539927220}
   - component: {fileID: 992957815299325665}
+  - component: {fileID: 3182591030506178839}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -317,6 +318,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3182591030506178839
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875247972992713850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: 0252308aec7f69845948c0a2a7342301, type: 3}
 --- !u!1 &1198391571280266938
 GameObject:
   m_ObjectHideFlags: 0
