@@ -12,9 +12,12 @@ public partial class Manager : MonoBehaviour
 		{
 			try
 			{
-				if (WhatClicked())
+				Transform clicked = WhatClicked(); // <- don't call WhatClicked() twice
+				if (clicked)
 				{ //if not null do some stuff with it
-					WhatClicked().GetComponent<IClickable>().ClickAction(); //call the implementation of this interface
+					IClickable clickable = clicked.GetComponent<IClickable>();
+					if (clickable != null) clickable.ClickAction(); //call the implementation of this interface
+					else throw new System.Exception("'" + clicked.name + "' is not IClickable!"); // <- tell me what's causing the error
 				}
 			}
 			catch (System.Exception ex)
