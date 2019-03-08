@@ -93,27 +93,42 @@ public class Territories
 		{
 			t.neighbours[i] = int.Parse(neighbours[i]);
 		}
-		XmlNodeList turrets = xmlterritory.SelectNodes("TurretNodes/Location");
-		t.turretnodes = new MapPoint[turrets.Count];
-		i = 0;
-		foreach (XmlNode xn in turrets)
+		ReadTurretNodes(xmlterritory.SelectNodes("TurretNodes/Location"), t);
+		ReadWaypoints(xmlterritory.SelectNodes("Waypoints/Location"), t);
+		ReadEnemyWaves(xmlterritory.SelectNodes("Waves/Wave"), t);
+		// we wouldn't need this if the xml file was properly filled out
+		Validate(t);
+		return t;
+	}
+
+	static void ReadTurretNodes(XmlNodeList turretnodes, Territory t)
+	{
+		t.turretnodes = new MapPoint[turretnodes.Count];
+		int i = 0;
+		foreach (XmlNode xn in turretnodes)
 		{
 			t.turretnodes[i].x = int.Parse(xn.Attributes["x"].Value);
 			t.turretnodes[i].y = int.Parse(xn.Attributes["y"].Value);
 			i++;
 		}
-		XmlNodeList waypoints = xmlterritory.SelectNodes("Waypoints/Location");
+	}
+
+	static void ReadWaypoints(XmlNodeList waypoints, Territory t)
+	{
 		t.waypoints = new MapPoint[waypoints.Count];
-		i = 0;
+		int i = 0;
 		foreach (XmlNode xn in waypoints)
 		{
 			t.waypoints[i].x = int.Parse(xn.Attributes["x"].Value);
 			t.waypoints[i].y = int.Parse(xn.Attributes["y"].Value);
 			i++;
 		}
-		XmlNodeList waves = xmlterritory.SelectNodes("Waves/Wave");
+	}
+
+	static void ReadEnemyWaves(XmlNodeList waves, Territory t)
+	{
 		t.waves = new EnemyWave[waves.Count][];
-		i = 0;
+		int i = 0;
 		foreach (XmlNode wave in waves)
 		{
 			XmlNodeList enemies = wave.SelectNodes("Enemy");
@@ -144,7 +159,10 @@ public class Territories
 			}
 			i++;
 		}
-		// we wouldn't need this if the xml file was properly filled out
+	}
+
+	static void Validate(Territory t)
+	{
 		if (t.waypoints.Length == 0)
 		{
 			t.waypoints = new MapPoint[2] {
@@ -162,6 +180,5 @@ public class Territories
 			t.startlives = 1;
 			t.startmoney = 100;
 		}
-		return t;
 	}
 }
