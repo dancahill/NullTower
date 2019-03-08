@@ -39,7 +39,7 @@ public class GameToast : MonoBehaviour
 		// adjusting sizefitter seems to work best. toggling active and changing size both seem broken
 		ContentSizeFitter csf = panel.GetComponent<ContentSizeFitter>();
 		csf.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
-		m_ToastText.text = Text;
+		m_ToastText.text = " " + Text + " ";
 		Text = "";
 		yield return new WaitForSeconds(2f);
 		m_ToastText.text = "";

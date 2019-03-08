@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour
 	[Header("General")]
 	public float range = 15f;
 
-	public float startHealth = 100;
+	public float startHealth = 200;
 	public float health;
 
 	[Header("Use Bullets (default)")]

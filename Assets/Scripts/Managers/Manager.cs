@@ -24,9 +24,9 @@ public partial class Manager : MonoBehaviour
 	public bool[] upgrades;
 	public int[] upgradesLevel;
 
-	public List<string> playerTerittories; 
-	public List<string> neutralTerittories; 
-	public List<string> computerTerittories; 
+	public List<string> playerTerittories;
+	public List<string> neutralTerittories;
+	public List<string> computerTerittories;
 
 
 	// save data stuff
@@ -57,12 +57,12 @@ public partial class Manager : MonoBehaviour
 		}
 	}
 
-    void Update() 
-    {
-        MouseInput();
-    }
+	void Update()
+	{
+		MouseInput();
+	}
 
-    public void LoadData()
+	public void LoadData()
 	{
 		if (File.Exists(Application.persistentDataPath + "/SaveFile.dat"))
 		{
@@ -159,7 +159,7 @@ public class SaveData
 	public bool[] upgrades;
 	public int[] upgradesLevel;
 
-	public List<string> playerTerittories; 
-	public List<string> neutralTerittories; 
-	public List<string> computerTerittories; 
+	public List<string> playerTerittories;
+	public List<string> neutralTerittories;
+	public List<string> computerTerittories;
 }
