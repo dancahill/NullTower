@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
 
-public class GameManager : MonoBehaviour
+//original class
+
+public partial class GameManager : MonoBehaviour
 {
 	public static bool GameIsOver;
 	public static string Territory;
 	public GameObject gameOverUI;
 	public GameObject completeLevelUI;
-
 	public AudioSource m_Audio;
 
-	private void Start()
+    private void Start()
 	{
 		GameIsOver = false;
-
-		m_Audio = gameObject.AddComponent<AudioSource>();
-		//https://downloads.khinsider.com/game-soundtracks/album/warcraft-2-tides-of-darkness-cda
-		AudioClip clip = (AudioClip)Resources.Load("Music/02 - human battle 1");
-		m_Audio.PlayOneShot(clip);
+        // removed audio for now, messes up with my background music.  uncomment later.
+		//m_Audio = gameObject.AddComponent<AudioSource>();
+		////https://downloads.khinsider.com/game-soundtracks/album/warcraft-2-tides-of-darkness-cda
+		//AudioClip clip = (AudioClip)Resources.Load("Music/02 - human battle 1");
+		//m_Audio.PlayOneShot(clip);
 	}
 
 	void Update()
