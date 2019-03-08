@@ -149,20 +149,21 @@ public class Turret : MonoBehaviour
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
 		if (bullet == null) return;
 		bullet.Seek(target, m_TurretType);
-
-		AudioSource audio = gameObject.AddComponent<AudioSource>();
-		AudioClip clip;
-		switch (m_TurretType)
+		if (Manager.manager.playSound)
 		{
-			case Type.Missile: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/bazooka/shot_bazooka"); break;
-			case Type.Laser: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/machine)gun/shot_machinegun 1"); break;
-			default: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/hand_gun/shot_hand_gun"); break;
+			AudioSource audio = gameObject.AddComponent<AudioSource>();
+			AudioClip clip;
+			switch (m_TurretType)
+			{
+				case Type.Missile: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/bazooka/shot_bazooka"); break;
+				case Type.Laser: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/machine)gun/shot_machinegun 1"); break;
+				default: clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/hand_gun/shot_hand_gun"); break;
+			}
+			if (clip != null)
+				audio.PlayOneShot(clip);
+			else
+				Debug.Log("missing shot sound for " + m_TurretType);
 		}
-		if (clip != null)
-			audio.PlayOneShot(clip);
-		else
-			Debug.Log("missing shot sound for " + m_TurretType);
-
 		// just to test the damage while there's no enemy that actually does damage
 		TakeDamage(2.5f);
 	}
