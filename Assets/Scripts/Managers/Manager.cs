@@ -61,7 +61,7 @@ public partial class Manager : MonoBehaviour
 	{
 		MouseInput();
 
-        if (Input.GetKeyDown(KeyCode.S){
+        if (Input.GetKeyDown(KeyCode.S)){
             SaveData();
         }
 	}
