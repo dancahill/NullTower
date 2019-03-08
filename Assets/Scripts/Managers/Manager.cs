@@ -45,6 +45,10 @@ public partial class Manager : MonoBehaviour {
         }
     }
 
+    private void Update() {
+        MouseInput();
+    }
+
     public void LoadData() {
         if (File.Exists(Application.persistentDataPath + "/SaveFile.dat")) {
             file = File.Open(Application.persistentDataPath + "/SaveFile.dat", FileMode.Open); // load found file from the path into the generic file stream
