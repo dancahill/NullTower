@@ -24,9 +24,9 @@ public partial class Manager : MonoBehaviour
 	public bool[] upgrades;
 	public int[] upgradesLevel;
 
-	public List<string> playerTerittories; //store all the equations
-	public List<string> neutralTerittories; //store all the equations
-	public List<string> computerTerittories; //store all the equations
+	public List<string> playerTerittories; 
+	public List<string> neutralTerittories; 
+	public List<string> computerTerittories; 
 
 
 	// save data stuff
@@ -57,7 +57,12 @@ public partial class Manager : MonoBehaviour
 		}
 	}
 
-	public void LoadData()
+    void Update() 
+    {
+        MouseInput();
+    }
+
+    public void LoadData()
 	{
 		if (File.Exists(Application.persistentDataPath + "/SaveFile.dat"))
 		{
@@ -77,7 +82,7 @@ public partial class Manager : MonoBehaviour
 										      //print("saving to: "+Application.persistentDataPath + "/SaveFile.dat");
 										      // C:/ Users / viordan / AppData / LocalLow / NullLogic / NullTower / SaveFile.dat
 		bf.Serialize(file, saveData);//serialize the object to the file we just created
-		file.Close();//close <- REALLY?
+		file.Close();//close <- REALLY? lol old code man. 
 	}
 
 	public void NewVars()
@@ -154,7 +159,7 @@ public class SaveData
 	public bool[] upgrades;
 	public int[] upgradesLevel;
 
-	public List<string> playerTerittories; //store all the equations
-	public List<string> neutralTerittories; //store all the equations
-	public List<string> computerTerittories; //store all the equations
+	public List<string> playerTerittories; 
+	public List<string> neutralTerittories; 
+	public List<string> computerTerittories; 
 }

@@ -709,6 +709,8 @@ MonoBehaviour:
   playerName: 
   score: 0
   moneyAmount: 0
+  playSound: 1
+  playMusic: 1
   upgrades: 
   upgradesLevel: 
   playerTerittories: []
@@ -1100,6 +1102,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1291532717}
+  - component: {fileID: 1291532720}
+  - component: {fileID: 1291532719}
   m_Layer: 0
   m_Name: StandardTurret
   m_TagString: Untagged
@@ -1107,6 +1111,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1291532719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291532718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55d74020ecc7e54bb2de2bafa09090f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneFader: {fileID: 1602433102}
+--- !u!65 &1291532720
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291532718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5277598, y: 2.3167858, z: 1.5470241}
+  m_Center: {x: -0.6445447, y: 0.6583929, z: 0.028611869}
 --- !u!1001 &1602433101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1342,7 +1372,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1847187850793796959, guid: b1f1854384118d34f99bcb8688512b81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b1f1854384118d34f99bcb8688512b81, type: 3}
 --- !u!4 &3009260247448707843
 Transform:
@@ -1525,6 +1556,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7216424176713420789}
+  - component: {fileID: 5986111172177770782}
+  - component: {fileID: 5986111172177770781}
   m_Layer: 0
   m_Name: EnemyTank
   m_TagString: Enemy
@@ -1532,6 +1565,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &5986111172177770781
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986111172177770780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4087353, y: 2.412137, z: 5.1277003}
+  m_Center: {x: -0.0819214, y: 0.7060685, z: -0.3557849}
+--- !u!114 &5986111172177770782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986111172177770780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab35990b900f72419a9d42a8f6886cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneFader: {fileID: 1602433102}
 --- !u!4 &7216424176713420789
 Transform:
   m_ObjectHideFlags: 0
