@@ -60,6 +60,10 @@ public partial class Manager : MonoBehaviour
 	void Update()
 	{
 		MouseInput();
+
+        if (Input.GetKeyDown(KeyCode.S){
+            SaveData();
+        }
 	}
 
 	public void LoadData()
