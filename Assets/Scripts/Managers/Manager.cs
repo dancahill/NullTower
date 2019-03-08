@@ -19,7 +19,7 @@ public partial class Manager : MonoBehaviour
 	public int moneyAmount;
 
 	public bool playSound = true;
-	public bool playMusic = false;
+	public bool playMusic = true;
 
 	public bool[] upgrades;
 	public int[] upgradesLevel;
@@ -49,7 +49,7 @@ public partial class Manager : MonoBehaviour
 
 		if (erraseData)
 		{
-			ErraseData();
+			EraseData();
 		}
 		else
 		{
@@ -77,7 +77,7 @@ public partial class Manager : MonoBehaviour
 										      //print("saving to: "+Application.persistentDataPath + "/SaveFile.dat");
 										      // C:/ Users / viordan / AppData / LocalLow / NullLogic / NullTower / SaveFile.dat
 		bf.Serialize(file, saveData);//serialize the object to the file we just created
-		file.Close();//close 
+		file.Close();//close <- REALLY?
 	}
 
 	public void NewVars()
@@ -100,6 +100,10 @@ public partial class Manager : MonoBehaviour
 		playerName = saveData.playerName;
 		score = saveData.score;
 		moneyAmount = saveData.moneyAmount;
+
+		playSound = saveData.playSound;
+		playMusic = saveData.playMusic;
+
 		upgrades = saveData.upgrades;
 		upgradesLevel = saveData.upgradesLevel;
 
@@ -115,6 +119,10 @@ public partial class Manager : MonoBehaviour
 		saveData.playerName = playerName;
 		saveData.score = score;
 		saveData.moneyAmount = moneyAmount;
+
+		saveData.playSound = playSound;
+		saveData.playMusic = playMusic;
+
 		saveData.upgrades = upgrades;
 		saveData.upgradesLevel = upgradesLevel;
 
@@ -123,7 +131,7 @@ public partial class Manager : MonoBehaviour
 		saveData.computerTerittories = computerTerittories;
 	}
 
-	public void ErraseData()
+	public void EraseData()
 	{
 		if (File.Exists(Application.persistentDataPath + "/SaveFile.dat"))
 		{// if the file exists
@@ -139,6 +147,10 @@ public class SaveData
 	public string playerName;
 	public int score;
 	public int moneyAmount;
+
+	public bool playSound;
+	public bool playMusic;
+
 	public bool[] upgrades;
 	public int[] upgradesLevel;
 
