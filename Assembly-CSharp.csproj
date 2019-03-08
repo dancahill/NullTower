@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\RiskMap.Toast.cs" />
     <Compile Include="Assets\Scripts\RoundsSurvived.cs" />
     <Compile Include="Assets\Scripts\SceneFader.cs" />
+    <Compile Include="Assets\Scripts\TankBullet.cs" />
     <Compile Include="Assets\Scripts\Territories.cs" />
     <Compile Include="Assets\Scripts\TerritoryLabel.cs" />
     <Compile Include="Assets\Scripts\Turret.cs" />

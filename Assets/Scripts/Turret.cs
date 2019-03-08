@@ -165,7 +165,7 @@ public class Turret : MonoBehaviour
 				Debug.Log("missing shot sound for " + m_TurretType);
 		}
 		// just to test the damage while there's no enemy that actually does damage
-		TakeDamage(2.5f);
+		//TakeDamage(2.5f);
 	}
 
 	private void OnDrawGizmosSelected()

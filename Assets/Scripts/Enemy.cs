@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
 	public float range = 15f;
 	public float turnSpeed = 60f;
 
+	public float fireRate = 1f;
+	private float fireCountdown = 0f;
+
 	public GameObject deathEffect;
 	[Header("Unity Stuff")]
 
@@ -30,6 +33,10 @@ public class Enemy : MonoBehaviour
 	private Transform target;
 	private Turret targetTurret;
 	public string turretTag = "Turret";
+
+
+	public GameObject bulletPrefab;
+	public Transform firePoint;
 
 	public Image healthBar;
 
@@ -50,6 +57,12 @@ public class Enemy : MonoBehaviour
 			return;
 		}
 		LockOnTarget();
+		if (fireCountdown <= 0)
+		{
+			Shoot();
+			fireCountdown = 1 / fireRate;
+		}
+		fireCountdown -= Time.deltaTime;
 	}
 
 	void UpdateTarget()
@@ -96,6 +109,23 @@ public class Enemy : MonoBehaviour
 		//Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
 		Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, 1).eulerAngles;
 		partToRotate.rotation = Quaternion.Euler(0, rotation.y, 0);
+	}
+
+	void Shoot()
+	{
+		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+		TankBullet bullet = bulletGO.GetComponent<TankBullet>();
+		if (bullet == null) return;
+		bullet.Seek(target);
+		if (Manager.manager.playSound)
+		{
+			AudioSource audio = gameObject.AddComponent<AudioSource>();
+			AudioClip clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/hand_gun/shot_hand_gun");
+			if (clip != null)
+				audio.PlayOneShot(clip);
+			else
+				Debug.Log("missing shot sound for tank");
+		}
 	}
 
 
