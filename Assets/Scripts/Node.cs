@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Node : MonoBehaviour
+public class Node : ClickableAbstract
 {
 	BuildManager buildManager;
 	public Color hoverColor = Color.blue;
