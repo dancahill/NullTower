@@ -75,10 +75,10 @@ public partial class Manager : MonoBehaviour
 	void Update()
 	{
 		MouseInput();
-
-        if (Input.GetKeyDown(KeyCode.S)){
-            SaveData();
-        }
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			SaveData();
+		}
 	}
 
 	public void LoadData()
@@ -162,7 +162,6 @@ public partial class Manager : MonoBehaviour
 			File.Delete(Application.persistentDataPath + "/SaveFile.dat");//delete file
 		}
 	}
-
 }
 
 [Serializable]
