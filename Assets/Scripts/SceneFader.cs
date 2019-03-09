@@ -10,17 +10,20 @@ public class SceneFader : MonoBehaviour
 
 	void Start()
 	{
+		return;
 		StartCoroutine(FadeIn());
 	}
 
 	public void FadeTo(string scene)
 	{
+		return;
 		Time.timeScale = 1;
 		StartCoroutine(FadeOut(scene));
 	}
 
 	public void FadeTo(string scene, string territory)
 	{
+		return;
 		GameManager.Territory = territory;
 		Time.timeScale = 1;
 		StartCoroutine(FadeOut(scene));

@@ -8,14 +8,19 @@ public partial class RiskMap : MonoBehaviour
 	public GameObject turrets;
 	public GameObject turretprefab;
 	public Territory[] territories;
-	public SpriteRenderer sprite;
 	public string TerritoryName = "Unknown";
 	public Text TerritoryLabel;
 	public SceneFader sceneFader;
 
+	// just testing for now
+	public GameObject faderObject;
+	public FaderTest fadertest;
+
 	void Awake()
 	{
-		sprite = GetComponent<SpriteRenderer>();
+		AppGlobals.Start();
+		faderObject = new GameObject("FaderThing");
+		fadertest = faderObject.AddComponent<FaderTest>();
 	}
 
 	void Start()
@@ -56,6 +61,11 @@ public partial class RiskMap : MonoBehaviour
 		}
 	}
 
+	public void backtomain()
+	{
+		fadertest.FadeTo("Main");
+	}
+
 	private void OnMouseEnter()
 	{
 		//Debug.Log("RiskMap OnMouseEnter: " + TerritoryName);
@@ -80,8 +90,8 @@ public partial class RiskMap : MonoBehaviour
 			default: maptoload = "BattleGround"; break;
 		}
 		//sceneFader.FadeTo(maptoload, TerritoryName);
-		FaderTest fader = gameObject.AddComponent<FaderTest>();
-		fader.FadeTo(maptoload, TerritoryName);
+		//FaderTest fader = gameObject.AddComponent<FaderTest>();
+		fadertest.FadeTo(maptoload, TerritoryName);
 	}
 
 	private void MapSetupRisk()

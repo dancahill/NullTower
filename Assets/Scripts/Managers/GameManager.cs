@@ -10,9 +10,15 @@ public partial class GameManager : MonoBehaviour
 	public GameObject completeLevelUI;
 	public AudioSource m_Audio;
 
+	// just testing for now
+	public GameObject faderObject;
+	public FaderTest fadertest;
+
 	private void Awake()
 	{
 		AppGlobals.Start();
+		faderObject = new GameObject("FaderThing");
+		fadertest = faderObject.AddComponent<FaderTest>();
 	}
 
 	private void Start()
