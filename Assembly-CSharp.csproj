@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\CompleteLevel.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\FaderTest.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\GameToast.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IClickable.cs" />
@@ -94,11 +95,11 @@
     <Compile Include="Assets\Scripts\TerritoryLabel.cs" />
     <Compile Include="Assets\Scripts\Turret.cs" />
     <Compile Include="Assets\Scripts\TurretBlueprint.cs" />
+    <Compile Include="Assets\Scripts\TurretHead.cs" />
     <Compile Include="Assets\Scripts\Wave.cs" />
     <Compile Include="Assets\Scripts\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\WavesUI.cs" />
     <Compile Include="Assets\Scripts\Waypoints.cs" />
-    <Compile Include="Assets\TurretHead.cs" />
     <None Include="Assets\Imports\Military Vehicle\Humvee Info.txt" />
     <None Include="Assets\Resources\RiskMapData.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
