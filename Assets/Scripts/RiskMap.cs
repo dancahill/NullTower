@@ -81,7 +81,7 @@ public partial class RiskMap : MonoBehaviour
 		}
 		//sceneFader.FadeTo(maptoload, TerritoryName);
 		FaderTest fader = gameObject.AddComponent<FaderTest>();
-		fader.FadeTo(maptoload);
+		fader.FadeTo(maptoload, TerritoryName);
 	}
 
 	private void MapSetupRisk()
