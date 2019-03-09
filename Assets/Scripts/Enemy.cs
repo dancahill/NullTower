@@ -51,11 +51,11 @@ public class Enemy : MonoBehaviour
 
 	private void Update()
 	{
+		LockOnTarget();
 		if (target == null)
 		{
 			return;
 		}
-		LockOnTarget();
 		if (fireCountdown <= 0)
 		{
 			Shoot();
@@ -102,7 +102,19 @@ public class Enemy : MonoBehaviour
 
 	void LockOnTarget()
 	{
-		if (target == null) return;
+		if (target == null)
+		{
+			if (partToRotate != null)
+			{
+				if (partToRotate.localRotation.y != 0)
+				{
+					Debug.Log("turret y rotation is " + partToRotate.localRotation.y);
+					// should face forward gradually, but this works for now
+					partToRotate.localRotation = Quaternion.Euler(0, 0, 0);
+				}
+			}
+			return;
+		}
 		Vector3 dir = target.position - transform.position;
 		Quaternion lookRotation = Quaternion.LookRotation(dir);
 		//Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
