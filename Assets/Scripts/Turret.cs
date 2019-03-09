@@ -11,6 +11,8 @@ public class Turret : MonoBehaviour
 	};
 	public Type m_TurretType;
 
+	public GameObject node;
+
 	private Transform target;
 	private Enemy targetEnemy;
 

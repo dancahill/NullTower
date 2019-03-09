@@ -29,7 +29,7 @@ public class Node : ClickableAbstract
 		return transform.position + positionOffset;
 	}
 
-	private void OnMouseDown()
+	private void _OnMouseDown()
 	{
 		if (EventSystem.current.IsPointerOverGameObject()) return;
 		if (turret != null)
@@ -45,6 +45,13 @@ public class Node : ClickableAbstract
 		//BuildTurret(buildManager.GetTurretToBuild());
 	}
 
+	// ...
+	public override void ClickAction()
+	{
+		//print("" + gameObject.name + " ClickAction() did stuff");
+		_OnMouseDown();
+	}
+
 	public void BuildTurret(TurretBlueprint blueprint)
 	{
 		if (PlayerStats.Money < blueprint.cost)
@@ -54,6 +61,10 @@ public class Node : ClickableAbstract
 		}
 		PlayerStats.Money -= blueprint.cost;
 		GameObject _turret = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+
+		Turret t = _turret.GetComponent<Turret>();
+		t.node = gameObject;
+
 		turret = _turret;
 		turretBlueprint = blueprint;
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
@@ -74,6 +85,10 @@ public class Node : ClickableAbstract
 		Destroy(turret);
 		GameObject _turret = Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
 		turret = _turret;
+
+		Turret t = _turret.GetComponent<Turret>();
+		t.node = gameObject;
+
 		turret.transform.eulerAngles = oldrotation;
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);

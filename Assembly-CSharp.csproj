@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\WavesUI.cs" />
     <Compile Include="Assets\Scripts\Waypoints.cs" />
+    <Compile Include="Assets\TurretHead.cs" />
     <None Include="Assets\Imports\Military Vehicle\Humvee Info.txt" />
     <None Include="Assets\Resources\RiskMapData.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">

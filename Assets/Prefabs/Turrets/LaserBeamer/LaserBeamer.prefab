@@ -9498,6 +9498,7 @@ GameObject:
   - component: {fileID: 2912096507812056529}
   - component: {fileID: 5647099102185502785}
   - component: {fileID: 2209804305227599011}
+  - component: {fileID: 7454589214453558315}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -9580,6 +9581,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: cd7ce61041899d149975cce8fe50d81e, type: 3}
+--- !u!114 &7454589214453558315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706168786228979973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b91df3b6623c144f86856ffeae23547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 4626167808923349181}
 --- !u!1 &2272247263451381654
 GameObject:
   m_ObjectHideFlags: 0
@@ -9924,6 +9938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TurretType: 2
+  node: {fileID: 0}
   range: 20
   startHealth: 100
   health: 0

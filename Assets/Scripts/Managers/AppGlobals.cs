@@ -19,7 +19,13 @@ public static class AppGlobals
 			Debug.Log("started from scene " + m_InitialScene + " - redirecting to Main");
 			m_InitialScene = "Main";
 			UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
-			//return;
+		}
+		if (manager == null)
+		{
+			Debug.Log("manager == null - trying to make one");
+			GameObject GO = new GameObject("AppGlobals");
+			manager = GO.AddComponent<Manager>();
+			Debug.Log("did it work?");
 		}
 	}
 

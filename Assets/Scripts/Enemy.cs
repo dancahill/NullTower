@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 	public float range = 15f;
 	public float turnSpeed = 60f;
 
-	public float fireRate = 1f;
+	public float fireRate = 0.5f;
 	private float fireCountdown = 0f;
 
 	public GameObject deathEffect;
