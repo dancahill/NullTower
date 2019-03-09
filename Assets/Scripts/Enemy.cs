@@ -49,7 +49,6 @@ public class Enemy : MonoBehaviour
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
 
-
 	private void Update()
 	{
 		if (target == null)
@@ -117,7 +116,7 @@ public class Enemy : MonoBehaviour
 		TankBullet bullet = bulletGO.GetComponent<TankBullet>();
 		if (bullet == null) return;
 		bullet.Seek(target);
-		if (Manager.manager.playSound)
+		if (Manager.PlaySound)
 		{
 			AudioSource audio = gameObject.AddComponent<AudioSource>();
 			AudioClip clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/hand_gun/shot_hand_gun");
@@ -127,16 +126,6 @@ public class Enemy : MonoBehaviour
 				Debug.Log("missing shot sound for tank");
 		}
 	}
-
-
-
-
-
-
-
-
-
-
 
 	public void TakeDamage(float amount)
 	{

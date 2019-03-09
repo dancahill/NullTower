@@ -18,8 +18,19 @@ public partial class Manager : MonoBehaviour
 	public int score;
 	public int moneyAmount;
 
-	public bool playSound = true;
-	public bool playMusic = true;
+	private bool playSound = true;
+	private bool playMusic = true;
+	// annoying but necessary
+	public static bool PlaySound
+	{
+		get { return manager ? manager.playSound : true; }
+		set { if (manager) manager.playSound = PlaySound; }
+	}
+	public static bool PlayMusic
+	{
+		get { return manager ? manager.playMusic : true; }
+		set { if (manager) manager.playMusic = PlayMusic; }
+	}
 
 	public bool[] upgrades;
 	public int[] upgradesLevel;
@@ -36,6 +47,10 @@ public partial class Manager : MonoBehaviour
 
 	void Awake()
 	{
+		//AppGlobals.InitialScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+		AppGlobals.Start();
+		//Debug.Log("initial scene='" + AppGlobals.InitialScene + "'");
+
 		if (manager == null)
 		{ //if there is not a dataManager already in this scene
 			manager = this; // the control is this object

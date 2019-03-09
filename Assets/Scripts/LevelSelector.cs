@@ -6,6 +6,11 @@ public class LevelSelector : MonoBehaviour
 	public SceneFader fader;
 	public Button[] levelButtons;
 
+	private void Awake()
+	{
+		AppGlobals.Start();
+	}
+
 	void Start()
 	{
 		int levelReached = PlayerPrefs.GetInt("levelReached", 1);

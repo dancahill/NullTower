@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
 			this.enabled = false;
 			return;
 		}
+		//if (Application.platform == RuntimePlatform.WindowsEditor)
+#if UNITY_EDITOR
 		if (Input.GetKeyDown("f"))
 		{
 			Time.timeScale = Time.timeScale == 4 ? 1 : 4;
@@ -27,12 +29,13 @@ public class CameraController : MonoBehaviour
 		{
 			PlayerStats.Money += 100;
 		}
+#endif
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
 			if (Input.GetKeyDown("m"))
-				Manager.manager.playMusic = !Manager.manager.playMusic;
+				Manager.PlayMusic = !Manager.PlayMusic;
 			if (Input.GetKeyDown("s"))
-				Manager.manager.playSound = !Manager.manager.playSound;
+				Manager.PlaySound = !Manager.PlaySound;
 		}
 		//if (Input.GetKeyDown(KeyCode.Escape))
 		//{

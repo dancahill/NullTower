@@ -20,7 +20,7 @@ public partial class RiskMap : MonoBehaviour
 
 	void Start()
 	{
-		if (Manager.manager.playMusic)
+		if (Manager.PlayMusic)
 		{
 			AudioSource audio = gameObject.AddComponent<AudioSource>();
 			AudioClip clip = (AudioClip)Resources.Load("Music/07 - human briefing");

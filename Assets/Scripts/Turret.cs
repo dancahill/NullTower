@@ -149,7 +149,7 @@ public class Turret : MonoBehaviour
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
 		if (bullet == null) return;
 		bullet.Seek(target, m_TurretType);
-		if (Manager.manager.playSound)
+		if (Manager.PlaySound)
 		{
 			AudioSource audio = gameObject.AddComponent<AudioSource>();
 			AudioClip clip;

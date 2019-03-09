@@ -10,6 +10,11 @@ public partial class GameManager : MonoBehaviour
 	public GameObject completeLevelUI;
 	public AudioSource m_Audio;
 
+	private void Awake()
+	{
+		AppGlobals.Start();
+	}
+
 	private void Start()
 	{
 		GameIsOver = false;
@@ -24,13 +29,13 @@ public partial class GameManager : MonoBehaviour
 		{
 			EndGame();
 		}
-		if (m_Audio.isPlaying)
+		if (m_Audio && m_Audio.isPlaying)
 		{
-			if (!Manager.manager.playMusic) StopMusic();
+			if (!Manager.PlayMusic) StopMusic();
 		}
 		else
 		{
-			if (Manager.manager.playMusic) StartGameMusic();
+			if (Manager.PlayMusic) StartGameMusic();
 		}
 	}
 
@@ -39,7 +44,7 @@ public partial class GameManager : MonoBehaviour
 		GameIsOver = true;
 		gameOverUI.SetActive(true);
 		StopMusic();
-		if (Manager.manager.playMusic)
+		if (Manager.PlayMusic)
 		{
 			AudioClip clip = (AudioClip)Resources.Load("Music/09 - human defeat");
 			m_Audio.PlayOneShot(clip);
@@ -51,7 +56,7 @@ public partial class GameManager : MonoBehaviour
 		GameIsOver = true;
 		completeLevelUI.SetActive(true);
 		StopMusic();
-		if (Manager.manager.playMusic)
+		if (Manager.PlayMusic)
 		{
 			AudioClip clip = (AudioClip)Resources.Load("Music/08 - human victory");
 			m_Audio.PlayOneShot(clip);
@@ -60,13 +65,13 @@ public partial class GameManager : MonoBehaviour
 
 	void StartGameMusic()
 	{
-		if (Manager.manager.playMusic)
+		if (Manager.PlayMusic)
 		{
 			// removed audio for now, messes up with my background music.  uncomment later.
 			// I LIKE MUSIC
 			//https://downloads.khinsider.com/game-soundtracks/album/warcraft-2-tides-of-darkness-cda
 			AudioClip clip = (AudioClip)Resources.Load("Music/02 - human battle 1");
-			m_Audio.PlayOneShot(clip);
+			if (m_Audio) m_Audio.PlayOneShot(clip);
 		}
 	}
 
