@@ -7,7 +7,8 @@ public class PauseMenu : MonoBehaviour
 	public SceneFader sceneFader;
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.P))
+		// use GetKeyDown, not GetKey - holding the key shouldn't toggle the menu continuously
+		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
 		{
 			Toggle();
 		}

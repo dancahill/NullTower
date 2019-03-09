@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
 		TankBullet bullet = bulletGO.GetComponent<TankBullet>();
 		if (bullet == null) return;
 		bullet.Seek(target);
-		if (Manager.PlaySound)
+		if (Manager.manager.PlaySound)
 		{
 			AudioSource audio = gameObject.AddComponent<AudioSource>();
 			AudioClip clip = (AudioClip)Resources.Load("Sounds/FuturisticWeaponsSet/hand_gun/shot_hand_gun");

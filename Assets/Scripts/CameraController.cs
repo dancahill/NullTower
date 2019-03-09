@@ -21,46 +21,41 @@ public class CameraController : MonoBehaviour
 		}
 		//if (Application.platform == RuntimePlatform.WindowsEditor)
 #if UNITY_EDITOR
-		if (Input.GetKeyDown("f"))
+		if (Input.GetKeyDown(KeyCode.F))
 		{
 			Time.timeScale = Time.timeScale == 4 ? 1 : 4;
 		}
-		if (Input.GetKeyDown("c"))
+		if (Input.GetKeyDown(KeyCode.C))
 		{
 			PlayerStats.Money += 100;
 		}
 #endif
-		if (Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
 		{
-			if (Input.GetKeyDown("m"))
-				Manager.PlayMusic = !Manager.PlayMusic;
-			if (Input.GetKeyDown("s"))
-				Manager.PlaySound = !Manager.PlaySound;
+			if (Input.GetKeyDown(KeyCode.M))
+				AppGlobals.manager.PlayMusic = !AppGlobals.manager.PlayMusic;
+			if (Input.GetKeyDown(KeyCode.S))
+				AppGlobals.manager.PlaySound = !AppGlobals.manager.PlaySound;
 		}
-		//if (Input.GetKeyDown(KeyCode.Escape))
-		//{
-		//	doMovement = !doMovement;
-		//}
-		//if (!doMovement) return;
-		//if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness)
-		if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
+		else
 		{
-			transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
-		}
-		//if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness)
-		if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow))
-		{
-			transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
-		}
-		//if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness)
-		if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
-		{
-			transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
-		}
-		//if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness)
-		if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
-		{
-			transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+			{
+				transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+			}
+			if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+			{
+				transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+				if (Input.GetKey(KeyCode.S)) Debug.Log("like i said, the S key is already in use - try F11");
+			}
+			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+			{
+				transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+			}
+			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+			{
+				transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+			}
 		}
 		FingerDrag();
 		if (Application.platform == RuntimePlatform.Android)

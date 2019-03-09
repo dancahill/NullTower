@@ -18,19 +18,9 @@ public partial class Manager : MonoBehaviour
 	public int score;
 	public int moneyAmount;
 
-	private bool playSound = true;
-	private bool playMusic = true;
-	// annoying but necessary
-	public static bool PlaySound
-	{
-		get { return manager ? manager.playSound : true; }
-		set { if (manager) manager.playSound = PlaySound; }
-	}
-	public static bool PlayMusic
-	{
-		get { return manager ? manager.playMusic : true; }
-		set { if (manager) manager.playMusic = PlayMusic; }
-	}
+	// should be safe now that manager should always be valid
+	public bool PlaySound = true;
+	public bool PlayMusic = true;
 
 	public bool[] upgrades;
 	public int[] upgradesLevel;
@@ -47,10 +37,7 @@ public partial class Manager : MonoBehaviour
 
 	void Awake()
 	{
-		//AppGlobals.InitialScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 		AppGlobals.Start();
-		//Debug.Log("initial scene='" + AppGlobals.InitialScene + "'");
-
 		if (manager == null)
 		{ //if there is not a dataManager already in this scene
 			manager = this; // the control is this object
@@ -75,7 +62,7 @@ public partial class Manager : MonoBehaviour
 	void Update()
 	{
 		MouseInput();
-		if (Input.GetKeyDown(KeyCode.S))
+		if (Input.GetKeyDown(KeyCode.F11))
 		{
 			SaveData();
 		}
@@ -125,8 +112,8 @@ public partial class Manager : MonoBehaviour
 		score = saveData.score;
 		moneyAmount = saveData.moneyAmount;
 
-		playSound = saveData.playSound;
-		playMusic = saveData.playMusic;
+		PlaySound = saveData.playSound;
+		PlayMusic = saveData.playMusic;
 
 		upgrades = saveData.upgrades;
 		upgradesLevel = saveData.upgradesLevel;
@@ -144,8 +131,8 @@ public partial class Manager : MonoBehaviour
 		saveData.score = score;
 		saveData.moneyAmount = moneyAmount;
 
-		saveData.playSound = playSound;
-		saveData.playMusic = playMusic;
+		saveData.playSound = PlaySound;
+		saveData.playMusic = PlayMusic;
 
 		saveData.upgrades = upgrades;
 		saveData.upgradesLevel = upgradesLevel;

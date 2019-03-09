@@ -31,11 +31,11 @@ public partial class GameManager : MonoBehaviour
 		}
 		if (m_Audio && m_Audio.isPlaying)
 		{
-			if (!Manager.PlayMusic) StopMusic();
+			if (!Manager.manager.PlayMusic) StopMusic();
 		}
 		else
 		{
-			if (Manager.PlayMusic) StartGameMusic();
+			if (Manager.manager.PlayMusic) StartGameMusic();
 		}
 	}
 
@@ -44,7 +44,7 @@ public partial class GameManager : MonoBehaviour
 		GameIsOver = true;
 		gameOverUI.SetActive(true);
 		StopMusic();
-		if (Manager.PlayMusic)
+		if (Manager.manager.PlayMusic)
 		{
 			AudioClip clip = (AudioClip)Resources.Load("Music/09 - human defeat");
 			m_Audio.PlayOneShot(clip);
@@ -56,7 +56,7 @@ public partial class GameManager : MonoBehaviour
 		GameIsOver = true;
 		completeLevelUI.SetActive(true);
 		StopMusic();
-		if (Manager.PlayMusic)
+		if (Manager.manager.PlayMusic)
 		{
 			AudioClip clip = (AudioClip)Resources.Load("Music/08 - human victory");
 			m_Audio.PlayOneShot(clip);
@@ -65,7 +65,7 @@ public partial class GameManager : MonoBehaviour
 
 	void StartGameMusic()
 	{
-		if (Manager.PlayMusic)
+		if (Manager.manager.PlayMusic)
 		{
 			// removed audio for now, messes up with my background music.  uncomment later.
 			// I LIKE MUSIC

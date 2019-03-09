@@ -22,9 +22,13 @@ public static class AppGlobals
 		}
 		if (manager == null)
 		{
-			Debug.Log("manager == null - trying to make one");
-			GameObject GO = new GameObject("AppGlobals");
-			manager = GO.AddComponent<Manager>();
+			if (Manager.manager == null)
+			{
+				Debug.Log("manager == null - trying to make one");
+				GameObject GO = new GameObject("AppGlobals");
+				Manager.manager = GO.AddComponent<Manager>();
+			}
+			manager = Manager.manager;
 			Debug.Log("did it work?");
 		}
 	}
