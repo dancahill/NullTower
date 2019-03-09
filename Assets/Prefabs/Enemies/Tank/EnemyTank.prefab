@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 2107847794778167109}
   - component: {fileID: 7898100999284466256}
   - component: {fileID: 3142692925007973867}
+  - component: {fileID: 8800526502549496778}
   m_Layer: 0
   m_Name: EnemyTank
   m_TagString: Enemy
@@ -374,6 +375,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {fileID: 7363360779368028238}
+--- !u!64 &8800526502549496778
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779930671721662985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: 2f36ff213ce19454f80e5be2bd75e2fd, type: 3}
 --- !u!1 &6561196297920177016
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +400,6 @@ GameObject:
   - component: {fileID: 3952367574171432255}
   - component: {fileID: 7714099188874996333}
   - component: {fileID: 2318618247526863221}
-  - component: {fileID: 9099556596854190201}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -452,20 +466,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9099556596854190201
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6561196297920177016}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300002, guid: 2f36ff213ce19454f80e5be2bd75e2fd, type: 3}
 --- !u!1 &7363360779368028238
 GameObject:
   m_ObjectHideFlags: 0
