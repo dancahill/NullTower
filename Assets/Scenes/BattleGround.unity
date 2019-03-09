@@ -4785,8 +4785,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1702917180}
-        m_MethodName: Continue
+      - m_Target: {fileID: 1868623356}
+        m_MethodName: ReturnToMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5017,6 +5017,8 @@ MonoBehaviour:
   gameOverUI: {fileID: 1941584230}
   completeLevelUI: {fileID: 1702917176}
   m_Audio: {fileID: 0}
+  faderObject: {fileID: 0}
+  fadertest: {fileID: 0}
 --- !u!114 &1868623357
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class WaveSpawner : MonoBehaviour
 	public GameObject m_EnemyTankPrefab;
 	public GameObject m_EnemyBuggyPrefab;
 
+	GameObject m_Enemies;
+
 	public static int EnemiesAlive = 0;
 	public static int waveNumber = 0;
 	public static int totalWaves = 0;
@@ -28,6 +30,7 @@ public class WaveSpawner : MonoBehaviour
 	private void Start()
 	{
 		territory = Territories.Get(GameManager.Territory);
+		m_Enemies = new GameObject("Enemies");
 		spawnPoint = null;
 		totalWaves = territory.waves.Length;
 		waveNumber = 0;
@@ -107,6 +110,6 @@ public class WaveSpawner : MonoBehaviour
 		{
 			spawnPoint = GameObject.Find("Start").transform;
 		}
-		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation, m_Enemies.transform);
 	}
 }

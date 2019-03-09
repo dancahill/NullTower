@@ -67,7 +67,9 @@ public class Node : ClickableAbstract
 
 		turret = _turret;
 		turretBlueprint = blueprint;
-		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+		GameObject effects = GameObject.Find("Effects");
+		if (!effects) effects = new GameObject("Effects");
+		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		GameToast.Add("Turret Built!");
 		isUpgraded = false;
@@ -90,7 +92,9 @@ public class Node : ClickableAbstract
 		t.node = gameObject;
 
 		turret.transform.eulerAngles = oldrotation;
-		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+		GameObject effects = GameObject.Find("Effects");
+		if (!effects) effects = new GameObject("Effects");
+		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		isUpgraded = true;
 		GameToast.Add("Turret upgraded!");
@@ -99,7 +103,9 @@ public class Node : ClickableAbstract
 	public void SellTurret()
 	{
 		PlayerStats.Money += turretBlueprint.GetSellAmount();
-		GameObject effect = Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+		GameObject effects = GameObject.Find("Effects");
+		if (!effects) effects = new GameObject("Effects");
+		GameObject effect = Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		Destroy(turret);
 		turretBlueprint = null;

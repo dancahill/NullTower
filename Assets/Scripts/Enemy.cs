@@ -155,7 +155,9 @@ public class Enemy : MonoBehaviour
 	{
 		isDead = true;
 		PlayerStats.Money += worth;
-		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+		GameObject effects = GameObject.Find("Effects");
+		if (!effects) effects = new GameObject("Effects");
+		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		WaveSpawner.EnemiesAlive--;
 		if (WaveSpawner.EnemiesAlive < 1)

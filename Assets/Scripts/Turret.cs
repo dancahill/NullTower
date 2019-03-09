@@ -186,8 +186,9 @@ public class Turret : MonoBehaviour
 
 	void Die()
 	{
-		//isDead = true;
-		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+		GameObject effects = GameObject.Find("Effects");
+		if (!effects) effects = new GameObject("Effects");
+		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		Destroy(gameObject);
 	}

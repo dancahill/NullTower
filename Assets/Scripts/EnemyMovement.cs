@@ -52,6 +52,10 @@ public class EnemyMovement : MonoBehaviour
 	{
 		if (PlayerStats.Lives > 0) PlayerStats.Lives--;
 		WaveSpawner.EnemiesAlive--;
+		if (WaveSpawner.EnemiesAlive < 1)
+		{
+			PlayerStats.Rounds++;
+		}
 		Destroy(gameObject);
 	}
 }

@@ -923,7 +923,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2802408307202704577}
-        m_MethodName: backtomain
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1274,6 +1274,31 @@ PrefabInstance:
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 1827816876}
+    - target: {fileID: 4179617541396714463, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Western United States
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802408307021354127, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Western Australia
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371802908126233761, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Central America
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899160493047974464, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Northwest Territory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751622906983882256, guid: ab0c6bb7cb7cbe545844eef73d2f82c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Eastern United States
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2802408306655059396, guid: ab0c6bb7cb7cbe545844eef73d2f82c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ab0c6bb7cb7cbe545844eef73d2f82c7, type: 3}

@@ -69,6 +69,11 @@ public partial class GameManager : MonoBehaviour
 		}
 	}
 
+	public void ReturnToMap()
+	{
+		fadertest.FadeTo("RiskMap");
+	}
+
 	void StartGameMusic()
 	{
 		if (Manager.manager.PlayMusic)

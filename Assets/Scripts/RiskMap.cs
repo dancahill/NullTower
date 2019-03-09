@@ -8,7 +8,7 @@ public partial class RiskMap : MonoBehaviour
 	public GameObject turrets;
 	public GameObject turretprefab;
 	public Territory[] territories;
-	public string TerritoryName = "Unknown";
+	//public string TerritoryName = "Unknown";
 	public Text TerritoryLabel;
 	public SceneFader sceneFader;
 
@@ -19,6 +19,7 @@ public partial class RiskMap : MonoBehaviour
 	void Awake()
 	{
 		AppGlobals.Start();
+		// all the provinces linking to this script created dupes - fix later
 		faderObject = new GameObject("FaderThing");
 		fadertest = faderObject.AddComponent<FaderTest>();
 	}
@@ -61,7 +62,7 @@ public partial class RiskMap : MonoBehaviour
 		}
 	}
 
-	public void backtomain()
+	public void BackToMainMenu()
 	{
 		fadertest.FadeTo("Main");
 	}
@@ -69,8 +70,8 @@ public partial class RiskMap : MonoBehaviour
 	private void OnMouseEnter()
 	{
 		//Debug.Log("RiskMap OnMouseEnter: " + TerritoryName);
-		TerritoryLabel.text = TerritoryName;
-		Toast(TerritoryName);
+		TerritoryLabel.text = this.name;
+		Toast(this.name);
 	}
 
 	private void OnMouseExit()
@@ -81,17 +82,9 @@ public partial class RiskMap : MonoBehaviour
 
 	private void OnMouseUp()
 	{
-		//Debug.Log("RiskMap OnMouseUp: " + TerritoryName);
-		TerritoryLabel.text = TerritoryName + " selected";
-		string maptoload;
-		switch (TerritoryName)
-		{
-			//case "Ontario": maptoload = "Level01"; break;
-			default: maptoload = "BattleGround"; break;
-		}
+		TerritoryLabel.text = this.name + " selected";
 		//sceneFader.FadeTo(maptoload, TerritoryName);
-		//FaderTest fader = gameObject.AddComponent<FaderTest>();
-		fadertest.FadeTo(maptoload, TerritoryName);
+		fadertest.FadeTo("BattleGround", this.name);
 	}
 
 	private void MapSetupRisk()

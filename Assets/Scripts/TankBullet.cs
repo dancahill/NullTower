@@ -32,7 +32,9 @@ public class TankBullet : MonoBehaviour
 
 	void HitTarget()
 	{
-		GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+		GameObject effects = GameObject.Find("Effects");
+		if (!effects) effects = new GameObject("Effects");
+		GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation, effects.transform);
 		Destroy(effectIns, 5f);
 		Damage(target);
 		Destroy(gameObject);
