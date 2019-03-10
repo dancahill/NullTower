@@ -110,6 +110,10 @@ public class WaveSpawner : MonoBehaviour
 		{
 			spawnPoint = GameObject.Find("Start").transform;
 		}
-		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation, m_Enemies.transform);
+		//spawnPoint.transform.position = new Vector3(spawnPoint.transform.position.x, 5, spawnPoint.transform.position.z);
+		//Instantiate(enemy, spawnPoint.position, spawnPoint.rotation, m_Enemies.transform);
+		//
+		Vector3 sp = new Vector3(spawnPoint.transform.position.x, 0.5f, spawnPoint.transform.position.z);
+		Instantiate(enemy, sp, spawnPoint.rotation, m_Enemies.transform);
 	}
 }

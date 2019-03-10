@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2033937512213836477}
   - component: {fileID: 2033937512213836473}
   - component: {fileID: 1998608244389473760}
+  - component: {fileID: 6886414558860880699}
   m_Layer: 0
   m_Name: EnemyTough
   m_TagString: Enemy
@@ -110,8 +111,15 @@ MonoBehaviour:
   startHealth: 350
   speed: 10
   worth: 20
+  range: 15
+  turnSpeed: 60
+  fireRate: 0.5
   deathEffect: {fileID: 8564467273261459832, guid: 96c6e5f5095fe284d8600943e9eb0130,
     type: 3}
+  partToRotate: {fileID: 0}
+  turretTag: Turret
+  bulletPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
   healthBar: {fileID: 401481771485772920}
 --- !u!114 &1998608244389473760
 MonoBehaviour:
@@ -125,6 +133,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18508589a6705cf4f810bff01c3ee80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementDirection: {fileID: 0}
+--- !u!195 &6886414558860880699
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033937512213836478}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 7
+  m_Acceleration: 7
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2132058976176245421
 GameObject:
   m_ObjectHideFlags: 0

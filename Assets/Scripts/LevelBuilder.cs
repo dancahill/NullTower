@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelBuilder : MonoBehaviour
 {
@@ -127,5 +127,11 @@ public class LevelBuilder : MonoBehaviour
 				for (int y = miny; y <= maxy; y++)
 					setpathnode(nl, x, y);
 		}
+
+		// rebuild the nav mesh
+		//GameObject env = GameObject.Find("Environment");
+		NavMeshSurface nms = m_Environment.AddComponent<NavMeshSurface>();
+		nms.layerMask = 1 << LayerMask.NameToLayer("Environment");
+		nms.BuildNavMesh();
 	}
 }

@@ -17,6 +17,7 @@ public partial class GameManager : MonoBehaviour
 	private void Awake()
 	{
 		AppGlobals.Start();
+		// add a fader
 		faderObject = new GameObject("FaderThing");
 		fadertest = faderObject.AddComponent<FaderTest>();
 	}

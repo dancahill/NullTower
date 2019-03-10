@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -12,6 +13,8 @@ public class Enemy : MonoBehaviour
 		Jeep,
 		Tank
 	};
+	NavMeshAgent agent;
+
 	public float startSpeed = 10f;
 	public float startHealth = 100f;
 
@@ -44,6 +47,13 @@ public class Enemy : MonoBehaviour
 
 	void Start()
 	{
+		//agent = GetComponent<NavMeshAgent>();
+		////agent = gameObject.AddComponent<NavMeshAgent>();
+		//if (agent) agent.SetDestination(GameObject.Find("End(Clone)").transform.position);
+
+		agent = GetComponent<NavMeshAgent>();
+		agent.SetDestination(GameObject.Find("End(Clone)").transform.position);
+
 		speed = startSpeed;
 		health = startHealth;
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -51,6 +61,7 @@ public class Enemy : MonoBehaviour
 
 	private void Update()
 	{
+		CheckEndPath();
 		LockOnTarget();
 		if (target == null)
 		{
@@ -159,6 +170,23 @@ public class Enemy : MonoBehaviour
 		if (!effects) effects = new GameObject("Effects");
 		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
+		WaveSpawner.EnemiesAlive--;
+		if (WaveSpawner.EnemiesAlive < 1)
+		{
+			PlayerStats.Rounds++;
+		}
+		Destroy(gameObject);
+	}
+
+	void CheckEndPath()
+	{
+		//if (Vector3.Distance(transform.position, target.position) <= 0.4f)
+		if (agent.hasPath && agent.remainingDistance > 1) return;
+		Debug.Log(string.Format("agent {0} [hasPath={1}][remainingDistance={2}]", name, agent.hasPath, agent.remainingDistance));
+		if (agent.remainingDistance > 0.5) return;
+		//Debug.Log("we're here?");
+		//gameObject.SetActive(false);
+		if (PlayerStats.Lives > 0) PlayerStats.Lives--;
 		WaveSpawner.EnemiesAlive--;
 		if (WaveSpawner.EnemiesAlive < 1)
 		{

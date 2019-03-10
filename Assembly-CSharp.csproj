@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scenes\NavMeshTest\NavMeshTest.cs" />
     <Compile Include="Assets\Scenes\NavMeshTest\Player.cs" />
     <Compile Include="Assets\Scripts\AbstractClasses\ClickableAbstract.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />

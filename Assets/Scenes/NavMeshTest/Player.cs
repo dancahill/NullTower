@@ -3,22 +3,13 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
-	public Transform target;
+	//public Transform target;
 	NavMeshAgent agent;
-
-	private void Awake()
-	{
-		GameObject env = GameObject.Find("Environment");
-		NavMeshSurface nms = env.AddComponent<NavMeshSurface>();
-		//nms.collectObjects = CollectObjects.Children;
-		nms.layerMask = 1 << LayerMask.NameToLayer("Environment");
-		nms.BuildNavMesh();
-	}
 
 	void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
-		agent.SetDestination(target.position);
+		agent.SetDestination(GameObject.Find("End(Clone)").transform.position);
 	}
 
 	void Update()
