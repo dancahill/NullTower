@@ -155,11 +155,13 @@
 	</Territory>
 	<Territory name="Quebec" startlives="10" startmoney="300" mapxy="-133,98" neighbours="2,4,6">
 		<TurretNodes>
-			<Location x="5" y="7" />
-			<Location x="5" y="10" />
-			<Location x="8" y="12" />
-			<Location x="10" y="12" />
-			<Location x="12" y="12" />
+			<Location x="2" y="6" />
+			<Location x="4" y="8" />
+			<Location x="2" y="10" />
+			<Location x="5" y="11" />
+			<Location x="8" y="13" />
+			<Location x="10" y="13" />
+			<Location x="12" y="13" />
 		</TurretNodes>
 		<Waypoints>
 			<Location x="8" y="0" />
@@ -176,7 +178,9 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Jeep" count="8" rate="2" />
+				<Enemy type="Jeep" count="5" rate="2" />
+				<Enemy delay="2" />
+				<Enemy type="Jeep" count="5" rate="2" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" delay="8" />

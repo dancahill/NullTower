@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{86C019BE-2B3A-E02A-1AF6-3120EE49004B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -60,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scenes\NavMeshTest\Player.cs" />
     <Compile Include="Assets\Scripts\AbstractClasses\ClickableAbstract.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -98,7 +100,9 @@
     <Compile Include="Assets\Scripts\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\WavesUI.cs" />
     <Compile Include="Assets\Scripts\Waypoints.cs" />
-    <None Include="Assets\Resources\RiskMapData.xml" />
+    <None Include="Assets\Resources\RiskMapData.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/temp/Unity/NullTower/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
