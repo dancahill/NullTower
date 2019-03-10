@@ -5032,7 +5032,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 210194273}
-  sceneFader: {fileID: 2951740484530192365}
 --- !u!114 &1868623358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6348,6 +6347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneFader
+      objectReference: {fileID: 0}
+    - target: {fileID: 2951740483066958924, guid: 32464da9fd3d8154da172e5e254a2ba0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2951740483066958926, guid: 32464da9fd3d8154da172e5e254a2ba0,
         type: 3}

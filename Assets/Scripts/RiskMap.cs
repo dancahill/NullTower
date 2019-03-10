@@ -4,24 +4,22 @@ using System;
 
 public partial class RiskMap : MonoBehaviour
 {
-	public GameObject canvas;
-	public GameObject turrets;
-	public GameObject turretprefab;
-	public Territory[] territories;
-	//public string TerritoryName = "Unknown";
-	public Text TerritoryLabel;
-	public SceneFader sceneFader;
+	[HideInInspector]
+	GameObject faderObject;
+	[HideInInspector]
+	FaderTest sceneFader;
 
-	// just testing for now
-	public GameObject faderObject;
-	public FaderTest fadertest;
+	GameObject turrets;
+	public GameObject canvas;
+	public GameObject turretPrefab;
+	public Territory[] territories;
+	public Text TerritoryLabel;
 
 	void Awake()
 	{
 		AppGlobals.Start();
-		// all the provinces linking to this script created dupes - fix later
 		faderObject = new GameObject("FaderThing");
-		fadertest = faderObject.AddComponent<FaderTest>();
+		sceneFader = faderObject.AddComponent<FaderTest>();
 	}
 
 	void Start()
@@ -34,11 +32,11 @@ public partial class RiskMap : MonoBehaviour
 		}
 		try
 		{
-			if (turretprefab == null)
+			if (turretPrefab == null)
 			{
-				turretprefab = (GameObject)Resources.Load("StandardTurret", typeof(GameObject));
+				turretPrefab = (GameObject)Resources.Load("StandardTurret", typeof(GameObject));
 			}
-			if (turretprefab == null)
+			if (turretPrefab == null)
 			{
 				print("turretprefab is still null");
 				return;
@@ -51,9 +49,12 @@ public partial class RiskMap : MonoBehaviour
 			turrets = new GameObject("Turrets On Map");
 			foreach (Territory territory in territories)
 			{
-				territory.gameobject = Instantiate(turretprefab, new Vector3(territory.map.x, territory.map.y), canvas.transform.rotation, turrets.transform);
+				territory.gameobject = Instantiate(turretPrefab, new Vector3(territory.map.x, territory.map.y), canvas.transform.rotation, turrets.transform);
 				territory.gameobject.transform.localScale = new Vector3(5, 5, 5);
 				territory.gameobject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+				// seek and destroy all mesh colliders so virgil's mouse code doesn't shit itself
+				MeshCollider mc = territory.gameobject.GetComponentInChildren<MeshCollider>();
+				if (mc != null) mc.enabled = false;
 			}
 		}
 		catch (Exception ex)
@@ -64,27 +65,12 @@ public partial class RiskMap : MonoBehaviour
 
 	public void BackToMainMenu()
 	{
-		fadertest.FadeTo("Main");
+		sceneFader.FadeTo("Main");
 	}
 
-	private void OnMouseEnter()
+	public void GoToBattleground(string territory)
 	{
-		//Debug.Log("RiskMap OnMouseEnter: " + TerritoryName);
-		TerritoryLabel.text = this.name;
-		Toast(this.name);
-	}
-
-	private void OnMouseExit()
-	{
-		//Debug.Log("RiskMap OnMouseExit: " + TerritoryName);
-		TerritoryLabel.text = "";
-	}
-
-	private void OnMouseUp()
-	{
-		TerritoryLabel.text = this.name + " selected";
-		//sceneFader.FadeTo(maptoload, TerritoryName);
-		fadertest.FadeTo("BattleGround", this.name);
+		sceneFader.FadeTo("BattleGround", territory);
 	}
 
 	private void MapSetupRisk()

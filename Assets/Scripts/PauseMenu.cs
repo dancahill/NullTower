@@ -4,7 +4,16 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 	public GameObject ui;
-	public SceneFader sceneFader;
+	//public SceneFader sceneFader;
+	FaderTest sceneFader;
+
+	private void Awake()
+	{
+		FaderTest[] faders = Resources.FindObjectsOfTypeAll<FaderTest>();
+		if (faders.Length == 1) sceneFader = faders[0];
+		// else what the fuck?
+	}
+
 	private void Update()
 	{
 		// use GetKeyDown, not GetKey - holding the key shouldn't toggle the menu continuously

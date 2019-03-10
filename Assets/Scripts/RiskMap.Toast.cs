@@ -26,7 +26,7 @@ public partial class RiskMap : MonoBehaviour
 		yield return 0;
 	}
 
-	void Toast(string text)
+	public void Toast(string text)
 	{
 		// should do something to queue messages for display
 		//if (coroutine != null) StopCoroutine(coroutine);

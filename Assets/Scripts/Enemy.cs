@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
 			{
 				if (partToRotate.localRotation.y != 0)
 				{
-					Debug.Log("turret y rotation is " + partToRotate.localRotation.y);
+					//Debug.Log("turret y rotation is " + partToRotate.localRotation.y);
 					// should face forward gradually, but this works for now
 					partToRotate.localRotation = Quaternion.Euler(0, 0, 0);
 				}

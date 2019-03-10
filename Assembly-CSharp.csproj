@@ -63,8 +63,6 @@
     <Compile Include="Assets\Scripts\AbstractClasses\ClickableAbstract.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\ClickableStuff\MainMenuTank.cs" />
-    <Compile Include="Assets\Scripts\ClickableStuff\MainMenuTurret.cs" />
     <Compile Include="Assets\Scripts\CompleteLevel.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
@@ -73,9 +71,9 @@
     <Compile Include="Assets\Scripts\GameToast.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IClickable.cs" />
     <Compile Include="Assets\Scripts\LevelBuilder.cs" />
-    <Compile Include="Assets\Scripts\LevelSelector.cs" />
     <Compile Include="Assets\Scripts\LivesUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MainMenuMouse.cs" />
     <Compile Include="Assets\Scripts\Managers\AppGlobals.cs" />
     <Compile Include="Assets\Scripts\Managers\BuildManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
@@ -88,6 +86,7 @@
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\RiskMap.cs" />
     <Compile Include="Assets\Scripts\RiskMap.Toast.cs" />
+    <Compile Include="Assets\Scripts\RiskMapMouse.cs" />
     <Compile Include="Assets\Scripts\RoundsSurvived.cs" />
     <Compile Include="Assets\Scripts\SceneFader.cs" />
     <Compile Include="Assets\Scripts\TankBullet.cs" />
@@ -100,7 +99,6 @@
     <Compile Include="Assets\Scripts\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\WavesUI.cs" />
     <Compile Include="Assets\Scripts\Waypoints.cs" />
-    <None Include="Assets\Imports\Military Vehicle\Humvee Info.txt" />
     <None Include="Assets\Resources\RiskMapData.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/temp/Unity/NullTower/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

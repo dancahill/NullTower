@@ -2,24 +2,21 @@
 
 public class MainMenu : MonoBehaviour
 {
-	public string levelToLoad;
-	public SceneFader sceneFader;
-
-	// just testing for now
-	public GameObject faderObject;
-	public FaderTest faderTest;
+	[HideInInspector]
+	GameObject faderObject;
+	[HideInInspector]
+	FaderTest sceneFader;
 
 	private void Awake()
 	{
 		AppGlobals.Start();
 		faderObject = new GameObject("FaderThing");
-		faderTest = faderObject.AddComponent<FaderTest>();
+		sceneFader = faderObject.AddComponent<FaderTest>();
 	}
 
 	public void Play()
 	{
-		//sceneFader.FadeTo(levelToLoad);
-		faderTest.FadeTo(levelToLoad);
+		sceneFader.FadeTo("RiskMap");
 	}
 
 	public void Quit()

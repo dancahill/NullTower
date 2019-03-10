@@ -1,3 +1,4 @@
-﻿public interface IClickable {
-    void ClickAction();
+﻿public interface IClickable
+{
+	void ClickAction();
 }

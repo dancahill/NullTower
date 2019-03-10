@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 83217070961647601}
   - component: {fileID: 2551409176185002220}
-  - component: {fileID: 800944952936748277}
+  - component: {fileID: 7159104003588692729}
   m_Layer: 0
   m_Name: Alaska
   m_TagString: Untagged
@@ -42,7 +42,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -65,25 +65,19 @@ PolygonCollider2D:
       - {x: -3.053517, y: 1.119081}
       - {x: -3.2097838, y: 1.3471522}
       - {x: -3.1873424, y: 1.7098933}
---- !u!114 &800944952936748277
+--- !u!114 &7159104003588692729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374612719322757201}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Alaska
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &1331234454439218411
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 914004539592510148}
   - component: {fileID: 1753026516195536033}
-  - component: {fileID: 7990697349548529749}
+  - component: {fileID: 6662195444083509510}
   m_Layer: 0
   m_Name: Greenland
   m_TagString: Untagged
@@ -126,7 +120,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -153,25 +147,19 @@ PolygonCollider2D:
       - {x: -1.0837833, y: 1.1849291}
       - {x: -0.9373532, y: 1.4464531}
       - {x: -0.5076305, y: 1.570562}
---- !u!114 &7990697349548529749
+--- !u!114 &6662195444083509510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331234454439218411}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Greenland
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &2751622906983882256
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,9 +170,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6575661929896971623}
   - component: {fileID: 5599797168648652003}
-  - component: {fileID: 5410584794813039748}
+  - component: {fileID: 5328083185283645750}
   m_Layer: 0
-  m_Name: EasternUnitedStates
+  m_Name: Eastern United States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +202,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -240,25 +228,19 @@ PolygonCollider2D:
       - {x: -1.5166264, y: 0.84439415}
       - {x: -1.9311475, y: 0.6960504}
       - {x: -2.202473, y: 0.89171326}
---- !u!114 &5410584794813039748
+--- !u!114 &5328083185283645750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2751622906983882256}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Eastern United States
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &2802408305374383274
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2802408305374383275}
   - component: {fileID: 2802408305374383277}
-  - component: {fileID: 2802408305374383276}
+  - component: {fileID: 7362952534302727308}
   m_Layer: 0
   m_Name: Quebec
   m_TagString: Untagged
@@ -301,7 +283,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -327,25 +309,19 @@ PolygonCollider2D:
       - {x: -1.8274262, y: 0.80048555}
       - {x: -1.4901282, y: 0.85542303}
       - {x: -1.4789608, y: 0.7282893}
---- !u!114 &2802408305374383276
+--- !u!114 &7362952534302727308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408305374383274}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Quebec
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &2802408305815497977
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2802408305815497978}
   - component: {fileID: 2802408305815497980}
-  - component: {fileID: 2802408305815497979}
+  - component: {fileID: 1271283263540660797}
   m_Layer: 0
   m_Name: Ontario
   m_TagString: Untagged
@@ -388,7 +364,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -413,25 +389,19 @@ PolygonCollider2D:
       - {x: -2.109599, y: 0.8871454}
       - {x: -1.9351063, y: 0.6690994}
       - {x: -1.697501, y: 0.77312756}
---- !u!114 &2802408305815497979
+--- !u!114 &1271283263540660797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408305815497977}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Ontario
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &2802408305850938586
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2802408305850938587}
   - component: {fileID: 2802408305850938589}
-  - component: {fileID: 2802408305850938588}
+  - component: {fileID: 3001496850848920335}
   m_Layer: 0
   m_Name: Alberta
   m_TagString: Untagged
@@ -474,7 +444,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -493,25 +463,19 @@ PolygonCollider2D:
       - {x: -3.119993, y: 1.3355038}
       - {x: -2.9720159, y: 0.9274856}
       - {x: -2.3748446, y: 0.91975754}
---- !u!114 &2802408305850938588
+--- !u!114 &3001496850848920335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408305850938586}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Alberta
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &2802408306655059392
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,12 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 2027353805, guid: c824412222c5dc841bcb6f0489c9da8b, type: 3}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Unknown
+  turretPrefab: {fileID: 2027353805, guid: c824412222c5dc841bcb6f0489c9da8b, type: 3}
   TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_ToastText: {fileID: 0}
 --- !u!1 &2802408307021354127
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,9 +592,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2802408307021354128}
   - component: {fileID: 2802408307021354130}
-  - component: {fileID: 2802408307021354129}
+  - component: {fileID: 2796919016674076100}
   m_Layer: 0
-  m_Name: WesternAustralia
+  m_Name: Western Australia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,25 +647,19 @@ PolygonCollider2D:
       - {x: 2.4937308, y: -1.3187773}
       - {x: 2.020637, y: -1.5571845}
       - {x: 2.074938, y: -2.0127778}
---- !u!114 &2802408307021354129
+--- !u!114 &2796919016674076100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802408307021354127}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: WesternAustralia
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &4179617541396714463
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,9 +670,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2403352139315894034}
   - component: {fileID: 4306649879008155699}
-  - component: {fileID: 2308812061803015810}
+  - component: {fileID: 6191885649742684711}
   m_Layer: 0
-  m_Name: WesternUnitedStates
+  m_Name: Western United States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +702,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -768,25 +723,19 @@ PolygonCollider2D:
       - {x: -2.2145355, y: 0.8945844}
       - {x: -2.9660833, y: 0.91536486}
       - {x: -2.8979657, y: 0.40396184}
---- !u!114 &2308812061803015810
+--- !u!114 &6191885649742684711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4179617541396714463}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Western United States
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &4371802908126233761
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,9 +746,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4407615487798835049}
   - component: {fileID: 7068306772842523680}
-  - component: {fileID: 2086144718489070681}
+  - component: {fileID: 3548512258941018110}
   m_Layer: 0
-  m_Name: CentralAmerica
+  m_Name: Central America
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,7 +778,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -851,25 +800,19 @@ PolygonCollider2D:
       - {x: -2.3659737, y: -0.25413212}
       - {x: -2.2443748, y: -0.21876894}
       - {x: -2.2269964, y: 0.08654681}
---- !u!114 &2086144718489070681
+--- !u!114 &3548512258941018110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4371802908126233761}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Central America
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
 --- !u!1 &6899160493047974464
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,9 +823,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5203353682236160256}
   - component: {fileID: 6094384914550603922}
-  - component: {fileID: 3184922722961228520}
+  - component: {fileID: 6190591375797126768}
   m_Layer: 0
-  m_Name: NorthwestTerritory
+  m_Name: Northwest Territory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +855,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -933,22 +876,16 @@ PolygonCollider2D:
       - {x: -3.189565, y: 1.7181482}
       - {x: -3.2006085, y: 1.3498852}
       - {x: -2.2207928, y: 1.3197949}
---- !u!114 &3184922722961228520
+--- !u!114 &6190591375797126768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6899160493047974464}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e35609c7c5fc84a8ed651a3c0b16c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d230091273b2389418dfe326ff460f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  turrets: {fileID: 0}
-  turretprefab: {fileID: 0}
-  sprite: {fileID: 2802408306655059393}
-  TerritoryName: Northwest Territory
-  TerritoryLabel: {fileID: 0}
-  sceneFader: {fileID: 0}
+  m_RiskMap: {fileID: 2802408306655059394}
