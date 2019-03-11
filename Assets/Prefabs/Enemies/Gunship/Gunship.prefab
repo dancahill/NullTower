@@ -259,10 +259,9 @@ GameObject:
   - component: {fileID: 234768837336022240}
   - component: {fileID: 7898100999284466256}
   - component: {fileID: 6725136193412596713}
-  - component: {fileID: 7362593993068104514}
   m_Layer: 0
   m_Name: Gunship
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3779930671721662985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 756606985412819366}
@@ -296,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 15
-  startHealth: 300
+  startHealth: 100
   speed: 0
   worth: 25
   range: 15
@@ -332,19 +331,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &7362593993068104514
+--- !u!65 &6370354742591886619
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3779930671721662985}
+  m_GameObject: {fileID: 4010983665092437987}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 4}
-  m_Center: {x: 0, y: 11, z: 0}
+  m_Size: {x: 6, y: 4, z: 16}
+  m_Center: {x: 0, y: 2, z: -3}
 --- !u!1001 &4010983665092469057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,6 +354,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 8394012a40e20d14e9158d2b74e12ee7, type: 3}
       propertyPath: m_Name
       value: Gunship
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 8394012a40e20d14e9158d2b74e12ee7, type: 3}
+      propertyPath: m_TagString
+      value: EnemyAir
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 8394012a40e20d14e9158d2b74e12ee7, type: 3}
       propertyPath: m_IsActive
@@ -418,6 +421,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8394012a40e20d14e9158d2b74e12ee7, type: 3}
+--- !u!1 &4010983665092437987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 8394012a40e20d14e9158d2b74e12ee7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4010983665092469057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4010983665092606915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 8394012a40e20d14e9158d2b74e12ee7,

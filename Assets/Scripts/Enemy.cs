@@ -170,7 +170,7 @@ public class Enemy : MonoBehaviour
 	void CheckEndPath()
 	{
 		if (agent.hasPath && agent.remainingDistance > 1) return;
-		if (agent.remainingDistance > 0.5f) return;
+		if (agent.remainingDistance > 1f) return;
 		WaveSpawner.EnemiesAlive--;
 		if (PlayerStats.Lives > 0) PlayerStats.Lives--;
 		if (PlayerStats.Lives > 0 && WaveSpawner.EnemiesAlive < 1) PlayerStats.Rounds++;

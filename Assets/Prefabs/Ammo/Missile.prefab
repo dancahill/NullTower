@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af25f682be7b25644a98e3d35f9c7fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_BulletType: 0
   impactEffect: {fileID: 8564467273261459832, guid: da60d7161ad2390439a0dc6f38b8fef0,
     type: 3}
   speed: 30
+  damage: 75
   explosionRadius: 8
 --- !u!1001 &351987706071638757
 PrefabInstance:

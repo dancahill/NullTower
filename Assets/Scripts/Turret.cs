@@ -62,7 +62,18 @@ public class Turret : MonoBehaviour
 		}
 		// else look for a new target
 		// different turrets might prefer different targets in a future version
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		GameObject[] enemies;
+
+		if (m_TurretType == Type.Missile)
+		{
+			enemies = GameObject.FindGameObjectsWithTag("EnemyAir");
+			if (enemies.Length < 1) enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		}
+		else
+		{
+			enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		}
+		//enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 		float shortestDistance = Mathf.Infinity;
 		GameObject nearestEnemy = null;
 
