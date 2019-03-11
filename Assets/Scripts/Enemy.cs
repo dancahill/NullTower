@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
 		Fast,
 		Tough,
 		Jeep,
-		Tank
+		Tank,
+		HeavyTank
 	};
 	NavMeshAgent agent;
 

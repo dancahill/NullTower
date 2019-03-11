@@ -30,12 +30,13 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Jeep" count="3" rate="2" />
-				<Enemy delay="10" />
-				<Enemy type="Tank" count="2" rate="1" />
+				<Enemy type="Jeep" count="1" rate="2" />
 			</Wave>
-			<Wave>
+			<!--<Wave>
 				<Enemy type="Tank" rate="1" />
+			</Wave>-->
+			<Wave>
+				<Enemy type="HeavyTank" rate="1" />
 			</Wave>
 		</Waves>
 	</Territory>
@@ -197,6 +198,9 @@
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" count="7" rate="1" />
+			</Wave>
+			<Wave>
+				<Enemy type="HeavyTank" rate="1" />
 			</Wave>
 		</Waves>
 	</Territory>

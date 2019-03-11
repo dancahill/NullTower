@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
+//[RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
-	public GameObject movementDirection;
+	//public GameObject movementDirection;
 /*
 	private Transform target;
 	private int wavepointIndex = 0;

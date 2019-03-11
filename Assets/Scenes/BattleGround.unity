@@ -5122,6 +5122,8 @@ MonoBehaviour:
     type: 3}
   m_EnemyTankPrefab: {fileID: 3779930671721662985, guid: 9e0968b8096cf1749a7d9132e0f43d9f,
     type: 3}
+  m_EnemyHeavyTankPrefab: {fileID: 3779930671721662985, guid: 57c736df9dc91ff4a9fa8844c8cf854d,
+    type: 3}
   m_EnemyBuggyPrefab: {fileID: 0}
   m_TimeBetweenWaves: 10
   waveCountdownText: {fileID: 1988763483}
