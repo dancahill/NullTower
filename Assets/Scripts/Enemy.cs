@@ -7,9 +7,6 @@ public class Enemy : MonoBehaviour
 	public enum Type
 	{
 		None,
-		//Basic,
-		//Fast,
-		//Tough,
 		Jeep,
 		Tank,
 		HeavyTank,
@@ -26,7 +23,7 @@ public class Enemy : MonoBehaviour
 	public int worth = 50;
 
 	public float range = 15f;
-	public float turnSpeed = 60f;
+	public float m_TurnSpeed = 10f;
 
 	public float fireRate = 0.5f;
 	private float fireCountdown = 0f;
@@ -116,23 +113,14 @@ public class Enemy : MonoBehaviour
 
 	void LockOnTarget()
 	{
-		if (target == null)
-		{
-			if (partToRotate != null)
-			{
-				if (partToRotate.localRotation.y != 0)
-				{
-					//Debug.Log("turret y rotation is " + partToRotate.localRotation.y);
-					// should face forward gradually, but this works for now
-					partToRotate.localRotation = Quaternion.Euler(0, 0, 0);
-				}
-			}
-			return;
-		}
-		Vector3 dir = target.position - transform.position;
+		if (partToRotate == null) return;
+		// look at the target, or look forward if no target selected
+		Vector3 dir = target ? target.position - transform.position : transform.forward;
+		// slow down when aiming - maybe it should stop?
+		agent.speed = target ? startSpeed / 4 : startSpeed;
 		Quaternion lookRotation = Quaternion.LookRotation(dir);
-		//Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-		Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, 1).eulerAngles;
+		Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * m_TurnSpeed).eulerAngles;
+		//Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, 1).eulerAngles;
 		partToRotate.rotation = Quaternion.Euler(0, rotation.y, 0);
 	}
 
@@ -181,10 +169,7 @@ public class Enemy : MonoBehaviour
 	void CheckEndPath()
 	{
 		if (agent.hasPath && agent.remainingDistance > 1) return;
-		//Debug.Log(string.Format("agent {0} [hasPath={1}][remainingDistance={2}]", name, agent.hasPath, agent.remainingDistance));
 		if (agent.remainingDistance > 0.5f) return;
-		//Debug.Log("we're here?");
-		//gameObject.SetActive(false);
 		WaveSpawner.EnemiesAlive--;
 		if (PlayerStats.Lives > 0) PlayerStats.Lives--;
 		if (PlayerStats.Lives > 0 && WaveSpawner.EnemiesAlive < 1) PlayerStats.Rounds++;

@@ -4,10 +4,6 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-	public GameObject m_EnemyBasicPrefab;
-	public GameObject m_EnemyToughPrefab;
-	public GameObject m_EnemyFastPrefab;
-
 	public GameObject m_EnemyJeepPrefab;
 	public GameObject m_EnemyTankPrefab;
 	public GameObject m_EnemyHeavyTankPrefab;
