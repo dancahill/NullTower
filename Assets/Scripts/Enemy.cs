@@ -7,12 +7,13 @@ public class Enemy : MonoBehaviour
 	public enum Type
 	{
 		None,
-		Basic,
-		Fast,
-		Tough,
+		//Basic,
+		//Fast,
+		//Tough,
 		Jeep,
 		Tank,
-		HeavyTank
+		HeavyTank,
+		Buggy
 	};
 	NavMeshAgent agent;
 

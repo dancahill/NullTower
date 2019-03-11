@@ -81,15 +81,15 @@ public class WaveSpawner : MonoBehaviour
 			{
 				switch (wave[i].type)
 				{
-					case Enemy.Type.Basic:
-						SpawnEnemy(m_EnemyBasicPrefab);
-						break;
-					case Enemy.Type.Tough:
-						SpawnEnemy(m_EnemyToughPrefab);
-						break;
-					case Enemy.Type.Fast:
-						SpawnEnemy(m_EnemyFastPrefab);
-						break;
+					//case Enemy.Type.Basic:
+					//	SpawnEnemy(m_EnemyBasicPrefab);
+					//	break;
+					//case Enemy.Type.Tough:
+					//	SpawnEnemy(m_EnemyToughPrefab);
+					//	break;
+					//case Enemy.Type.Fast:
+					//	SpawnEnemy(m_EnemyFastPrefab);
+					//	break;
 					case Enemy.Type.Jeep:
 						SpawnEnemy(m_EnemyJeepPrefab);
 						break;
@@ -98,6 +98,9 @@ public class WaveSpawner : MonoBehaviour
 						break;
 					case Enemy.Type.HeavyTank:
 						SpawnEnemy(m_EnemyHeavyTankPrefab);
+						break;
+					case Enemy.Type.Buggy:
+						SpawnEnemy(m_EnemyBuggyPrefab);
 						break;
 					default:
 						break;

@@ -30,13 +30,14 @@
 		</Waypoints>
 		<Waves>
 			<Wave>
-				<Enemy type="Jeep" count="1" rate="2" />
+				<Enemy type="Jeep" />
+				<Enemy type="" delay="2" />
+				<Enemy type="Buggy" />
+				<Enemy type="" delay="2" />
+				<Enemy type="Tank"/>
 			</Wave>
-			<!--<Wave>
-				<Enemy type="Tank" rate="1" />
-			</Wave>-->
 			<Wave>
-				<Enemy type="HeavyTank" rate="1" />
+				<Enemy type="HeavyTank" />
 			</Wave>
 		</Waves>
 	</Territory>
@@ -112,9 +113,9 @@
 			<Wave>
 				<Enemy type="Tank" count="3" rate="1" />
 				<Enemy type="" delay="6" />
-				<Enemy type="Fast" count="5" rate="5" />
+				<Enemy type="Buggy" count="5" rate="5" />
 				<Enemy type="" delay="6" />
-				<Enemy type="Fast" count="4" rate="5" />
+				<Enemy type="Buggy" count="4" rate="5" />
 			</Wave>
 		</Waves>
 	</Territory>
@@ -148,9 +149,9 @@
 			<Wave>
 				<Enemy type="Tank" count="3" rate="1" />
 				<Enemy delay="6" />
-				<Enemy type="Fast" count="5" rate="5" />
+				<Enemy type="Buggy" count="5" rate="5" />
 				<Enemy delay="6" />
-				<Enemy type="Fast" count="4" rate="5" />
+				<Enemy type="Buggy" count="4" rate="5" />
 			</Wave>
 		</Waves>
 	</Territory>
@@ -192,9 +193,9 @@
 			<Wave>
 				<Enemy type="Tank" count="4" rate="1" />
 				<Enemy delay="7" />
-				<Enemy type="Fast" count="5" rate="5" />
+				<Enemy type="Buggy" count="5" rate="5" />
 				<Enemy delay="5" />
-				<Enemy type="Fast" count="4" rate="5" />
+				<Enemy type="Buggy" count="4" rate="5" />
 			</Wave>
 			<Wave>
 				<Enemy type="Tank" count="7" rate="1" />

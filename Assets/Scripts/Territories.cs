@@ -141,12 +141,13 @@ public class Territories
 				string enemytype = enemy.Attributes["type"] != null ? enemy.Attributes["type"].Value : "";
 				switch (enemytype)
 				{
-					case "Basic": type = Enemy.Type.Basic; break;
-					case "Tough": type = Enemy.Type.Tough; break;
-					case "Fast": type = Enemy.Type.Fast; break;
+					//case "Basic": type = Enemy.Type.Basic; break;
+					//case "Tough": type = Enemy.Type.Tough; break;
+					//case "Fast": type = Enemy.Type.Fast; break;
 					case "Jeep": type = Enemy.Type.Jeep; break;
 					case "Tank": type = Enemy.Type.Tank; break;
 					case "HeavyTank": type = Enemy.Type.HeavyTank; break;
+					case "Buggy": type = Enemy.Type.Buggy; break;
 					default: type = Enemy.Type.None; break;
 				}
 				t.waves[i][j].type = type;

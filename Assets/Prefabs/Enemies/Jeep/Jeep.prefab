@@ -664,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7650585638355971551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 1805520992024319534}
@@ -824,8 +824,8 @@ GameObject:
   - component: {fileID: 3529878283101229958}
   - component: {fileID: 951802698808376411}
   - component: {fileID: 5500423891788522380}
-  - component: {fileID: 4884231097287124846}
   - component: {fileID: 2175430006696154269}
+  - component: {fileID: 5531496419444266590}
   m_Layer: 0
   m_Name: EnemyJeep
   m_TagString: Enemy
@@ -887,21 +887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18508589a6705cf4f810bff01c3ee80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDirection: {fileID: 7650585638355971551}
---- !u!64 &4884231097287124846
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8550967594882420472}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 2dabd7a53b5a97445b5a23887b4fc4ce, type: 3}
 --- !u!195 &2175430006696154269
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -911,7 +896,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8550967594882420472}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.7
+  m_Radius: 1.5
   m_Speed: 10
   m_Acceleration: 10
   avoidancePriority: 50
@@ -920,7 +905,20 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &5531496419444266590
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550967594882420472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 1.2, z: 3.4}
+  m_Center: {x: 0, y: -0.4, z: 0}

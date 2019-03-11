@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056662019245102610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.093, y: 0.79099995, z: -0.541}
+  m_LocalPosition: {x: 0.078, y: 0.79099995, z: -0.541}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5666927795420762134}
@@ -292,10 +292,10 @@ GameObject:
   - component: {fileID: 2107847794778167109}
   - component: {fileID: 7898100999284466256}
   - component: {fileID: 3142692925007973867}
-  - component: {fileID: 8800526502549496778}
   - component: {fileID: 6725136193412596713}
+  - component: {fileID: 7362593993068104514}
   m_Layer: 0
-  m_Name: EnemyTank
+  m_Name: Tank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,21 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18508589a6705cf4f810bff01c3ee80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDirection: {fileID: 7363360779368028238}
---- !u!64 &8800526502549496778
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3779930671721662985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300002, guid: 2f36ff213ce19454f80e5be2bd75e2fd, type: 3}
 --- !u!195 &6725136193412596713
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -399,7 +384,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3779930671721662985}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Speed: 7
   m_Acceleration: 7
   avoidancePriority: 50
@@ -408,10 +393,23 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &7362593993068104514
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779930671721662985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 4}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6561196297920177016
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7586546468864341356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.058, y: 0.215, z: 2.565}
+  m_LocalPosition: {x: -0.117, y: 0.215, z: 2.565}
   m_LocalScale: {x: 0.7692315, y: 0.76923126, z: 0.76923126}
   m_Children: []
   m_Father: {fileID: 5208435742275422070}
@@ -577,7 +575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8176395987424292372}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0.113, y: 0.227, z: -0.071}
+  m_LocalPosition: {x: -0.041, y: 0.227, z: -0.071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5208435742275422070}
