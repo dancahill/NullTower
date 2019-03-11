@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
 
 	private void Update()
 	{
+		FixMeter();
 		CheckEndPath();
 		LockOnTarget();
 		if (target == null)
@@ -171,27 +172,29 @@ public class Enemy : MonoBehaviour
 		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		WaveSpawner.EnemiesAlive--;
-		if (WaveSpawner.EnemiesAlive < 1)
-		{
-			PlayerStats.Rounds++;
-		}
+		if (WaveSpawner.EnemiesAlive < 1) PlayerStats.Rounds++;
 		Destroy(gameObject);
 	}
 
 	void CheckEndPath()
 	{
-		//if (Vector3.Distance(transform.position, target.position) <= 0.4f)
 		if (agent.hasPath && agent.remainingDistance > 1) return;
-		Debug.Log(string.Format("agent {0} [hasPath={1}][remainingDistance={2}]", name, agent.hasPath, agent.remainingDistance));
-		if (agent.remainingDistance > 0.5) return;
+		//Debug.Log(string.Format("agent {0} [hasPath={1}][remainingDistance={2}]", name, agent.hasPath, agent.remainingDistance));
+		if (agent.remainingDistance > 0.5f) return;
 		//Debug.Log("we're here?");
 		//gameObject.SetActive(false);
-		if (PlayerStats.Lives > 0) PlayerStats.Lives--;
 		WaveSpawner.EnemiesAlive--;
-		if (WaveSpawner.EnemiesAlive < 1)
-		{
-			PlayerStats.Rounds++;
-		}
+		if (PlayerStats.Lives > 0) PlayerStats.Lives--;
+		if (PlayerStats.Lives > 0 && WaveSpawner.EnemiesAlive < 1) PlayerStats.Rounds++;
 		Destroy(gameObject);
+	}
+
+	void FixMeter()
+	{
+		Transform t = gameObject.transform.Find("Canvas");
+		if (t == null) return;
+		// not quite right, but good enough for now
+		Vector3 v = new Vector3(transform.position.x, transform.position.y, transform.position.z + 50);
+		t.LookAt(v);
 	}
 }
