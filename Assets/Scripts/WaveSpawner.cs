@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
 	public GameObject m_EnemyTankPrefab;
 	public GameObject m_EnemyHeavyTankPrefab;
 	public GameObject m_EnemyBuggyPrefab;
+	public GameObject m_EnemyGunshipPrefab;
 
 	GameObject m_Enemies;
 
@@ -97,6 +98,9 @@ public class WaveSpawner : MonoBehaviour
 						break;
 					case Enemy.Type.Buggy:
 						SpawnEnemy(m_EnemyBuggyPrefab);
+						break;
+					case Enemy.Type.Gunship:
+						SpawnEnemy(m_EnemyGunshipPrefab);
 						break;
 					default:
 						break;

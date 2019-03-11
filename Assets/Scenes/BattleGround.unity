@@ -1320,7 +1320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 165.65002, y: 16}
+  m_AnchoredPosition: {x: 165.65039, y: 16}
   m_SizeDelta: {x: 331.3, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463132588
@@ -5112,12 +5112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63322e0b836ba7244b5d1e5ffb53d3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EnemyBasicPrefab: {fileID: 2033937512213836478, guid: ba65e7de0a16bed42bb1980fddf8f06b,
-    type: 3}
-  m_EnemyToughPrefab: {fileID: 2033937512213836478, guid: 27046064c8ba8a24682d3dc973c883d8,
-    type: 3}
-  m_EnemyFastPrefab: {fileID: 2033937512213836478, guid: 81a3e78b5e5a6c04b84b261a979793ea,
-    type: 3}
   m_EnemyJeepPrefab: {fileID: 8550967594882420472, guid: 6a9502d119ddbc540a3b85d30ec5f48e,
     type: 3}
   m_EnemyTankPrefab: {fileID: 3779930671721662985, guid: 9e0968b8096cf1749a7d9132e0f43d9f,
@@ -5125,6 +5119,8 @@ MonoBehaviour:
   m_EnemyHeavyTankPrefab: {fileID: 3779930671721662985, guid: 57c736df9dc91ff4a9fa8844c8cf854d,
     type: 3}
   m_EnemyBuggyPrefab: {fileID: 3779930671721662985, guid: 834997442c79f0a4885e20cabc19a1d2,
+    type: 3}
+  m_EnemyGunshipPrefab: {fileID: 3779930671721662985, guid: 2189b02693120a14788399db09c68037,
     type: 3}
   m_TimeBetweenWaves: 10
   waveCountdownText: {fileID: 1988763483}
@@ -5742,7 +5738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -75.200195, y: 32}
+  m_AnchoredPosition: {x: -75.19922, y: 32}
   m_SizeDelta: {x: 150.3, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1988763482

@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
 		Jeep,
 		Tank,
 		HeavyTank,
-		Buggy
+		Buggy,
+		Gunship
 	};
 	NavMeshAgent agent;
 
