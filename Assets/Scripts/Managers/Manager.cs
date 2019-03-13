@@ -14,13 +14,8 @@ public partial class Manager : MonoBehaviour
 	public bool erraseData;// debug bool to clean temp
 
 	//crap to save
-	public string playerName;
 	public int score;
 	public int moneyAmount;
-
-	// should be safe now that manager should always be valid
-	public bool PlaySound = true;
-	public bool PlayMusic = true;
 
 	public bool[] upgrades;
 	public int[] upgradesLevel;
@@ -29,11 +24,16 @@ public partial class Manager : MonoBehaviour
 	public List<string> neutralTerittories;
 	public List<string> computerTerittories;
 
+    //settings data
+    public string playerName;
 
-	// save data stuff
-	BinaryFormatter bf = new BinaryFormatter();
+    // should be safe now that manager should always be valid
+    public bool PlaySound;
+    public bool PlayMusic;
+
+    // save data stuff
+    BinaryFormatter bf = new BinaryFormatter();
 	FileStream file; //generic filestream for serialized data 
-	SaveData saveData; // object type player data
 
 	void Awake()
 	{
@@ -47,15 +47,18 @@ public partial class Manager : MonoBehaviour
 			Destroy(gameObject); //kill this game object
 		}
 		DontDestroyOnLoad(gameObject); // don't destroy this game object to have it persists between scenes
-		NewVars(); //init data crap
+		NewVars<SaveData>(); //init data crap
+        NewVars<SettingsData>();
 
 		if (erraseData)
 		{
-			EraseData();
+			EraseData<SaveData>();
+			EraseData<SettingsData>();
 		}
 		else
 		{
-			LoadData();
+			LoadData<SaveData>();
+			LoadData<SettingsData>();
 		}
 	}
 
@@ -64,102 +67,126 @@ public partial class Manager : MonoBehaviour
 		MouseInput();
 		if (Input.GetKeyDown(KeyCode.F11))
 		{
-			SaveData();
+			SaveData<SaveData>();
 		}
-	}
+        if (Input.GetKeyDown(KeyCode.T)) SaveData<SaveData>();
+        if (Input.GetKeyDown(KeyCode.Y)) LoadData<SaveData>();
+        if (Input.GetKeyDown(KeyCode.U)) EraseData<SaveData>();
+        if (Input.GetKeyDown(KeyCode.G)) SaveData<SettingsData>();
+        if (Input.GetKeyDown(KeyCode.H)) LoadData<SettingsData>();
+        if (Input.GetKeyDown(KeyCode.J)) EraseData<SettingsData>();
+    }
 
-	public void LoadData()
+	public void LoadData<T>() //trying to pass T as type
 	{
-		if (File.Exists(Application.persistentDataPath + "/SaveFile.dat"))
-		{
-			file = File.Open(Application.persistentDataPath + "/SaveFile.dat", FileMode.Open); // load found file from the path into the generic file stream
-			saveData = (SaveData)bf.Deserialize(file); //cast whatever you found in the file as the playerdata object
-			file.Close();
-			SetVarsForLoading();//change the values into the local variables
-		}
-	}
+        print("loading data");
+        if (typeof(T)==typeof(SaveData)) { // check if it's SaveData
+            print("savedata");
+            if (File.Exists(Application.persistentDataPath + "/SaveFile.dat")) {
+                file = File.Open(Application.persistentDataPath + "/SaveFile.dat", FileMode.Open); // load found file from the path into the generic file stream
+                SaveData t = (SaveData)bf.Deserialize(file); //cast whatever you found in the file as the playerdata object
+                file.Close();
 
-	public void SaveData()
+                score = t.score;
+                moneyAmount = t.moneyAmount;
+                upgrades = t.upgrades;
+                upgradesLevel = t.upgradesLevel;
+                playerTerittories = t.playerTerittories;
+                neutralTerittories = t.neutralTerittories;
+                computerTerittories = t.computerTerittories;
+
+            }
+        } else if (typeof(T) == typeof(SettingsData)) {
+            print("settngsdata");
+
+            if (File.Exists(Application.persistentDataPath + "/SettingsFile.dat")) {
+                file = File.Open(Application.persistentDataPath + "/SettingsFile.dat", FileMode.Open); // load found file from the path into the generic file stream
+                SettingsData t = (SettingsData)bf.Deserialize(file); //cast whatever you found in the file as the settingsdata object
+                file.Close();
+
+                t.playerName = playerName;
+                t.playSound = PlaySound;
+                t.playMusic = PlayMusic;
+            }
+
+        }
+    }
+
+	public void SaveData<T>()
 	{
-		//string _saveFileName = Manager.manager.SetFileName();
-		saveData = new SaveData(); // get a blank saveData
-		SetVarsForSaving(); //set the values from memory
-		file = File.Create(Application.persistentDataPath + "/SaveFile.dat"); //create the file with the specified file path (dynamic per platform)
-										      //print("saving to: "+Application.persistentDataPath + "/SaveFile.dat");
-										      // C:/ Users / viordan / AppData / LocalLow / NullLogic / NullTower / SaveFile.dat
-		bf.Serialize(file, saveData);//serialize the object to the file we just created
-		file.Close();//close <- REALLY? lol old code man. 
-	}
+        print("saving data");
+        if (typeof(T) == typeof(SaveData)) {
+            print("Savedata");
+            SaveData t = new SaveData();
+            t.score = score;
+            t.moneyAmount = moneyAmount;
 
-	public void NewVars()
+
+            t.upgrades = upgrades;
+            t.upgradesLevel = upgradesLevel;
+
+            t.playerTerittories = playerTerittories;
+            t.neutralTerittories = neutralTerittories;
+            t.computerTerittories = computerTerittories;
+            file = File.Create(Application.persistentDataPath + "/SaveFile.dat"); //create the file with the specified file path (dynamic per platform)
+            bf.Serialize(file, t);//serialize the object to the file we just created
+            file.Close();
+
+        } else if (typeof(T) == typeof(SettingsData)) {
+            print("settingsdata");
+            SettingsData t = new SettingsData(); // get a blank saveData
+            t.playerName = playerName;
+            t.playSound = PlaySound;
+            t.playMusic = PlayMusic;
+
+            file = File.Create(Application.persistentDataPath + "/SettingsFile.dat"); //create the file with the specified file path (dynamic per platform)
+            bf.Serialize(file, t);//serialize the object to the file we just created
+            file.Close();
+        }
+    }
+
+	public void NewVars<T>()
 	{
-		playerName = "";
-		score = 0;
-		moneyAmount = 0;
-		upgrades = new bool[2];
-		upgradesLevel = new int[2];
+        if (typeof(T) == typeof(SaveData)) {
+            score = 0;
+            moneyAmount = 0;
+            upgrades = new bool[2];
+            upgradesLevel = new int[2];
 
-		playerTerittories = new List<string>();
-		neutralTerittories = new List<string>();
-		computerTerittories = new List<string>();
-	}
+            playerTerittories = new List<string>();
+            neutralTerittories = new List<string>();
+            computerTerittories = new List<string>();
+        } else if (typeof(T) == typeof(SettingsData)) {
+            playerName = "";
+            PlaySound = false;
+            PlayMusic = false;
+        }
 
-	public void SetVarsForLoading()
+    }
+
+	public void EraseData<T>()
 	{
-		print("loading vars...");
+        print("errase data");
+       if (typeof(T) == typeof(SaveData)) {
+            print("savedata");
+            if (File.Exists(Application.persistentDataPath + "/SaveFile.dat")) {// if the file exists
+                File.Delete(Application.persistentDataPath + "/SaveFile.dat");//delete file
+            }
+        } else if (typeof(T) == typeof(SettingsData)) {
+            print("settingsdata");
 
-		playerName = saveData.playerName;
-		score = saveData.score;
-		moneyAmount = saveData.moneyAmount;
-
-		PlaySound = saveData.playSound;
-		PlayMusic = saveData.playMusic;
-
-		upgrades = saveData.upgrades;
-		upgradesLevel = saveData.upgradesLevel;
-
-		playerTerittories = saveData.playerTerittories;
-		neutralTerittories = saveData.neutralTerittories;
-		computerTerittories = saveData.computerTerittories;
-	}
-
-	public void SetVarsForSaving()
-	{
-		print("saving vars...");
-
-		saveData.playerName = playerName;
-		saveData.score = score;
-		saveData.moneyAmount = moneyAmount;
-
-		saveData.playSound = PlaySound;
-		saveData.playMusic = PlayMusic;
-
-		saveData.upgrades = upgrades;
-		saveData.upgradesLevel = upgradesLevel;
-
-		saveData.playerTerittories = playerTerittories;
-		saveData.neutralTerittories = neutralTerittories;
-		saveData.computerTerittories = computerTerittories;
-	}
-
-	public void EraseData()
-	{
-		if (File.Exists(Application.persistentDataPath + "/SaveFile.dat"))
-		{// if the file exists
-			File.Delete(Application.persistentDataPath + "/SaveFile.dat");//delete file
-		}
+            if (File.Exists(Application.persistentDataPath + "/SettingsData.dat")) {// if the file exists
+                File.Delete(Application.persistentDataPath + "/SettingsData.dat");//delete file
+            }
+        }
 	}
 }
 
 [Serializable]
 public class SaveData
 {
-	public string playerName;
 	public int score;
 	public int moneyAmount;
-
-	public bool playSound;
-	public bool playMusic;
 
 	public bool[] upgrades;
 	public int[] upgradesLevel;
@@ -167,4 +194,12 @@ public class SaveData
 	public List<string> playerTerittories;
 	public List<string> neutralTerittories;
 	public List<string> computerTerittories;
+}
+
+[Serializable]
+public class SettingsData
+{
+    public string playerName;
+    public bool playSound;
+    public bool playMusic;
 }
