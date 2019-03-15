@@ -33,7 +33,6 @@ public partial class Manager : MonoBehaviour
 
 	// save data stuff
 	BinaryFormatter bf = new BinaryFormatter();
-	FileStream file; //generic filestream for serialized data 
 
 	void Awake()
 	{
@@ -79,76 +78,55 @@ public partial class Manager : MonoBehaviour
 
 	public void LoadData<T>() //trying to pass T as type
 	{
-		print("loading data");
-		if (typeof(T) == typeof(SaveData))
-		{ // check if it's SaveData
-			print("savedata");
-			if (File.Exists(Application.persistentDataPath + "/SaveFile.dat"))
-			{
-				file = File.Open(Application.persistentDataPath + "/SaveFile.dat", FileMode.Open); // load found file from the path into the generic file stream
-				SaveData t = (SaveData)bf.Deserialize(file); //cast whatever you found in the file as the playerdata object
-				file.Close();
+        if (typeof(T) == typeof(SaveData)) {
+            print("load SaveData");
+            SaveData t = DeserializeByType<SaveData>();
 
-				score = t.score;
-				moneyAmount = t.moneyAmount;
-				upgrades = t.upgrades;
-				upgradesLevel = t.upgradesLevel;
-				playerTerittories = t.playerTerittories;
-				neutralTerittories = t.neutralTerittories;
-				computerTerittories = t.computerTerittories;
-			}
-		}
-		else if (typeof(T) == typeof(SettingsData))
-		{
-			print("settngsdata");
+            score = t.score;
+			moneyAmount = t.moneyAmount;
+			upgrades = t.upgrades;
+			upgradesLevel = t.upgradesLevel;
+			playerTerittories = t.playerTerittories;
+			neutralTerittories = t.neutralTerittories;
+			computerTerittories = t.computerTerittories;
 
-			if (File.Exists(Application.persistentDataPath + "/SettingsFile.dat"))
-			{
-				file = File.Open(Application.persistentDataPath + "/SettingsFile.dat", FileMode.Open); // load found file from the path into the generic file stream
-				SettingsData t = (SettingsData)bf.Deserialize(file); //cast whatever you found in the file as the settingsdata object
-				file.Close();
+		} else if (typeof(T) == typeof(SettingsData)) {
+            print("load SettingsData");
+            SettingsData t = DeserializeByType<SettingsData>();
 
-				playerName = t.playerName;
-				PlaySound = t.playSound;
-				PlayMusic = t.playMusic;
-			}
+            playerName = t.playerName;
+			PlaySound = t.playSound;
+			PlayMusic = t.playMusic;
 		}
 	}
 
 	public void SaveData<T>()
 	{
-		print("saving data");
-		if (typeof(T) == typeof(SaveData))
-		{
-			print("Savedata");
-			SaveData t = new SaveData();
-			t.score = score;
-			t.moneyAmount = moneyAmount;
+        if (typeof(T) == typeof(SaveData)) {
+            print("save SaveData");
+
+            SaveData t = new SaveData();
+            t.score = score;
+		    t.moneyAmount = moneyAmount;
 
 
-			t.upgrades = upgrades;
-			t.upgradesLevel = upgradesLevel;
+		    t.upgrades = upgrades;
+		    t.upgradesLevel = upgradesLevel;
 
-			t.playerTerittories = playerTerittories;
-			t.neutralTerittories = neutralTerittories;
-			t.computerTerittories = computerTerittories;
-			file = File.Create(Application.persistentDataPath + "/SaveFile.dat"); //create the file with the specified file path (dynamic per platform)
-			bf.Serialize(file, t);//serialize the object to the file we just created
-			file.Close();
-
-		}
-		else if (typeof(T) == typeof(SettingsData))
-		{
-			print("settingsdata");
-			SettingsData t = new SettingsData(); // get a blank saveData
-			t.playerName = playerName;
+		    t.playerTerittories = playerTerittories;
+		    t.neutralTerittories = neutralTerittories;
+		    t.computerTerittories = computerTerittories;
+            SerializeByType<T>(t);
+        }
+        else if (typeof(T) == typeof(SettingsData)) {
+            print("save SettingsData");
+            SettingsData t = new SettingsData();
+            t.playerName = playerName;
 			t.playSound = PlaySound;
 			t.playMusic = PlayMusic;
 
-			file = File.Create(Application.persistentDataPath + "/SettingsFile.dat"); //create the file with the specified file path (dynamic per platform)
-			bf.Serialize(file, t);//serialize the object to the file we just created
-			file.Close();
-		}
+            SerializeByType<T>(t);
+        }
 	}
 
 	public void NewVars<T>()
@@ -173,27 +151,37 @@ public partial class Manager : MonoBehaviour
 
 	}
 
-	public void EraseData<T>()
-	{
-		print("errase data");
-		if (typeof(T) == typeof(SaveData))
-		{
-			print("savedata");
-			if (File.Exists(Application.persistentDataPath + "/SaveFile.dat"))
-			{// if the file exists
-				File.Delete(Application.persistentDataPath + "/SaveFile.dat");//delete file
-			}
-		}
-		else if (typeof(T) == typeof(SettingsData))
-		{
-			print("settingsdata");
+    public void EraseData<T>()
+    {
+        NewVars<T>();
+        SaveData<T>();
+        print("replaced " + typeof(T).ToString());
+    }
 
-			if (File.Exists(Application.persistentDataPath + "/SettingsData.dat"))
-			{// if the file exists
-				File.Delete(Application.persistentDataPath + "/SettingsData.dat");//delete file
-			}
-		}
-	}
+    void SerializeByType<T>(object t)
+    {
+        FileStream file = File.Create(Application.persistentDataPath + "/" + typeof(T).ToString() + ".dat"); //create the file with the specified file path (dynamic per platform)
+        bf.Serialize(file, t);//serialize the object to the file we just created
+        file.Close();
+    }
+
+    T DeserializeByType<T>()
+    {
+        if (File.Exists(Application.persistentDataPath + "/" + typeof(T).ToString() + ".dat")) {
+            FileStream file = File.Open(Application.persistentDataPath + "/" + typeof(T).ToString() + ".dat", FileMode.Open); // load found file from the path into the generic file stream
+            T t = (T)bf.Deserialize(file); //cast whatever you found in the file as the playerdata object
+            file.Close();
+            return t;
+        } else {
+            NewVars<T>();
+            SaveData<T>();
+            FileStream file = File.Open(Application.persistentDataPath + "/" + typeof(T).ToString() + ".dat", FileMode.Open); // load found file from the path into the generic file stream
+            T t = (T)bf.Deserialize(file); //cast whatever you found in the file as the playerdata object
+            file.Close();
+            print("couldn't find " + typeof(T).ToString() + " created new");
+            return t;
+        }
+    }
 }
 
 [Serializable]
