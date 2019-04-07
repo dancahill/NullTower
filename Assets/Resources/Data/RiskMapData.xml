@@ -36,7 +36,7 @@
 				<Enemy type="" delay="2" />
 				<Enemy type="Tank"/>
 				<Enemy type="" delay="2" />
-				<Enemy type="Gunship" count="5" />
+				<Enemy type="Gunship"  />
 			</Wave>
 			<Wave>
 				<Enemy type="HeavyTank" />

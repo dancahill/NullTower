@@ -33,9 +33,15 @@ public class CameraController : MonoBehaviour
 		if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
 		{
 			if (Input.GetKeyDown(KeyCode.M))
+			{
 				GameManager.instance.Settings.PlayMusic = !GameManager.instance.Settings.PlayMusic;
+				GameSave.SaveSettings();
+			}
 			if (Input.GetKeyDown(KeyCode.S))
+			{
 				GameManager.instance.Settings.PlaySound = !GameManager.instance.Settings.PlaySound;
+				GameSave.SaveSettings();
+			}
 		}
 		else
 		{

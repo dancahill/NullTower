@@ -18,8 +18,7 @@ public class Enemy : MonoBehaviour
 	public float startSpeed = 10f;
 	public float startHealth = 100f;
 
-	[HideInInspector]
-	public float speed;
+	[HideInInspector] public float speed;
 	private float health;
 	public int worth = 50;
 
@@ -41,12 +40,16 @@ public class Enemy : MonoBehaviour
 	public GameObject bulletPrefab;
 	public Transform firePoint;
 
+	public Transform canvas;
+
 	public Image healthBar;
 
 	private bool isDead = false;
 
 	void Start()
 	{
+		canvas = transform.Find("Canvas");
+
 		//agent = GetComponent<NavMeshAgent>();
 		////agent = gameObject.AddComponent<NavMeshAgent>();
 		//if (agent) agent.SetDestination(GameObject.Find("End(Clone)").transform.position);
@@ -171,12 +174,7 @@ public class Enemy : MonoBehaviour
 
 	void FixMeter()
 	{
-		Transform t = gameObject.transform.Find("Canvas");
-		if (t == null) return;
-		// not quite right, but good enough for now
-		//Vector3 v = new Vector3(transform.position.x, transform.position.y, transform.position.z + 50);
-		//t.LookAt(v);
-		Camera cam = Camera.main;
-		t.LookAt(t.position + cam.transform.rotation * Vector3.forward, cam.transform.rotation * Vector3.up);
+		Transform cam = Camera.main.transform;
+		canvas.LookAt(canvas.position + cam.rotation * Vector3.forward, cam.rotation * Vector3.up);
 	}
 }

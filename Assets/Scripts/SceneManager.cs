@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 public class SceneManager : MonoBehaviour
 {
@@ -25,6 +24,7 @@ public class SceneManager : MonoBehaviour
 		GameManager.instance.soundManager.PlayMusic();
 		if (scene == "GameOver")
 		{
+			Application.Quit();
 			return;
 		}
 		if (scene != "MainMenu")

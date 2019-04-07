@@ -80,11 +80,12 @@
     <Compile Include="Assets\Scripts\Battleground\UI\RoundsSurvived.cs" />
     <Compile Include="Assets\Scripts\Battleground\Waypoints.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameSave.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Map\RiskMap.cs" />
     <Compile Include="Assets\Scripts\Map\RiskMap.Toast.cs" />
     <Compile Include="Assets\Scripts\Map\RiskMapMouse.cs" />
-    <Compile Include="Assets\Scripts\SaveDataManager.cs" />
+    <Compile Include="Assets\Scripts\Map\TerritoryFlag.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\SceneManager.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />

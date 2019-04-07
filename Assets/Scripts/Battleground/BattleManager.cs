@@ -62,6 +62,18 @@ public partial class BattleManager : MonoBehaviour
 		GameIsOver = true;
 		completeLevelUI.SetActive(true);
 		GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Victory);
+		Debug.Log("level " + GameManager.instance.Territory + " won");
+		Territory t = GameManager.instance.Game.territories.Find(f => f.name == GameManager.instance.Territory);
+		if (t != null)
+		{
+			int score = 0;
+			if (stats.Lives == t.startLives) score = 3;
+			else if (stats.Lives > t.startLives / 2) score = 2;
+			else if (stats.Lives > 0) score = 1;
+			if (t.highScore < score) t.highScore = score;
+			t.ownership = Territory.Ownership.Player;
+			GameSave.SaveGame();
+		}
 	}
 
 	public void ReturnToMap()

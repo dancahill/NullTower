@@ -55,8 +55,8 @@ public class BGLevelBuilder : MonoBehaviour
 		m_Nodes = new GameObject("Nodes");
 		m_Waypoints = new GameObject("Waypoints");
 
-		BattleManager.instance.stats.Money = territory.startmoney;
-		BattleManager.instance.stats.Lives = territory.startlives;
+		BattleManager.instance.stats.Money = territory.startMoney;
+		BattleManager.instance.stats.Lives = territory.startLives;
 
 		/* SET UP A GROUND PLANE */
 		GameObject gp = Instantiate(m_GroundPlanePrefab, new Vector3(0, -1, 0), Quaternion.identity, m_Environment.transform);

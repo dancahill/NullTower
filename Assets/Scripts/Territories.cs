@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Xml;
+using UnityEngine;
 
-//[System.Serializable]
+[Serializable]
 public struct MapPoint
 {
 	public float x;
 	public float y;
 }
 
-//[System.Serializable]
+[Serializable]
 public class EnemyWave
 {
 	public Enemy.Type type;
@@ -28,24 +29,42 @@ public class EnemyWave
 	public float delay = 0;
 }
 
-//[System.Serializable]
+[Serializable]
 public class Territory
 {
-	public GameObject gameobject = null;
+	public enum Ownership
+	{
+		Neutral,
+		Player,
+		AI
+	}
 	public string name = "Unknown";
-	public int startmoney = 200;
-	public int startlives = 5;
-	public MapPoint map;
-	public int[] neighbours;
+	public Ownership ownership = Ownership.Neutral;
+	public int highScore = 0;
+	// other stuff for making the game work
+	[NonSerialized] public int startMoney = 200;
+	[NonSerialized] public int startLives = 5;
+	[NonSerialized] public GameObject gameobject = null;
+	/// <summary>
+	/// x,y coordinates of territory's icon on world map
+	/// </summary>
+	[NonSerialized] public MapPoint map;
+	/// <summary>
+	/// array of adjacent territories attackable from this one
+	/// </summary>
+	[NonSerialized] public int[] neighbours;
 	/// <summary>
 	/// nodes where turrets can be built
 	/// </summary>
-	public MapPoint[] turretnodes;
+	[NonSerialized] public MapPoint[] turretnodes;
 	/// <summary>
 	/// waypoints enemies follow (in order)
 	/// </summary>
-	public MapPoint[] waypoints;
-	public EnemyWave[][] waves;
+	[NonSerialized] public MapPoint[] waypoints;
+	/// <summary>
+	/// array of information about attacking waves and units
+	/// </summary>
+	[NonSerialized] public EnemyWave[][] waves;
 }
 
 public class Territories
@@ -81,8 +100,8 @@ public class Territories
 		}
 		Territory t = new Territory();
 		t.name = territoryname;
-		t.startlives = int.Parse(xmlterritory.Attributes["startlives"].Value);
-		t.startmoney = int.Parse(xmlterritory.Attributes["startmoney"].Value);
+		t.startLives = int.Parse(xmlterritory.Attributes["startlives"].Value);
+		t.startMoney = int.Parse(xmlterritory.Attributes["startmoney"].Value);
 		string[] mapxy = xmlterritory.Attributes["mapxy"].Value.Split(',');
 		t.map.x = int.Parse(mapxy[0]);
 		t.map.y = int.Parse(mapxy[1]);
@@ -177,8 +196,8 @@ public class Territories
 					new EnemyWave{ type=Enemy.Type.Tank, count=1 }
 				}
 			};
-			t.startlives = 1;
-			t.startmoney = 100;
+			t.startLives = 1;
+			t.startMoney = 100;
 		}
 	}
 }

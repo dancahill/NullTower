@@ -8,10 +8,8 @@ public class Node : MonoBehaviour
 	public Color notEnoughMoneyColor = Color.red;
 	public Vector3 positionOffset;
 
-	[HideInInspector]
-	public GameObject turret;
-	[HideInInspector]
-	public TurretBlueprint turretBlueprint;
+	[HideInInspector] public GameObject turret;
+	[HideInInspector] public TurretBlueprint turretBlueprint;
 	public bool isUpgraded = false;
 
 	private Renderer rend;

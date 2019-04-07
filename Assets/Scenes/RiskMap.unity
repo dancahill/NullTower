@@ -560,7 +560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 428369636}
-  turretPrefab: {fileID: 2027353805, guid: c824412222c5dc841bcb6f0489c9da8b, type: 3}
+  flagPrefab: {fileID: 88708307681400858, guid: 86211a130d2a1c1498b25a1347505c5a,
+    type: 3}
   TerritoryLabel: {fileID: 398978719}
   m_ToastText: {fileID: 1830622516}
 --- !u!1 &714732367

@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
 		}
 		else if (name == "Tank")
 		{
-			Application.Quit();
+			GameManager.instance.sceneController.FadeAndLoadScene("GameOver");
 		}
 	}
 }

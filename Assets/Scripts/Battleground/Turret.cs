@@ -45,10 +45,13 @@ public class Turret : MonoBehaviour
 
 	public GameObject deathEffect;
 
+	public Transform canvas;
+
 	public Image healthBar;
 
 	void Start()
 	{
+		canvas = transform.Find("Canvas");
 		health = startHealth;
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
@@ -100,6 +103,7 @@ public class Turret : MonoBehaviour
 
 	void Update()
 	{
+		FixMeter();
 		if (target == null)
 		{
 			if (useLaser)
@@ -193,5 +197,11 @@ public class Turret : MonoBehaviour
 		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		Destroy(gameObject);
+	}
+
+	void FixMeter()
+	{
+		Transform cam = Camera.main.transform;
+		canvas.LookAt(canvas.position + cam.rotation * Vector3.forward, cam.rotation * Vector3.up);
 	}
 }
