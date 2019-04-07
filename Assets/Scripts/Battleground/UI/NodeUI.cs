@@ -13,9 +13,21 @@ public class NodeUI : MonoBehaviour
 
 	public Text upgradeCost;
 	public Button upgradeButton;
+	public Text repairCost;
+	public Button repairButton;
 	public Text sellAmount;
 	public Button sellButton;
 	private Node target;
+
+	public void Update()
+	{
+		if (UpgradeUI.activeSelf && target)
+		{
+			int cost = target.RepairCost();
+			repairCost.text = "$" + cost;
+			repairButton.interactable = (cost > 0 && Time.time >= target.RepairCooldown);
+		}
+	}
 
 	public void SetBuildTarget(Node _target)
 	{
@@ -74,6 +86,13 @@ public class NodeUI : MonoBehaviour
 	public void Upgrade()
 	{
 		target.UpgradeTurret();
+		BGBuildManager.instance.DeselectNode();
+	}
+
+	public void Repair()
+	{
+		if (Time.time < target.RepairCooldown) return;
+		target.RepairTurret();
 		BGBuildManager.instance.DeselectNode();
 	}
 

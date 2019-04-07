@@ -15,6 +15,8 @@ public class Node : MonoBehaviour
 	private Renderer rend;
 	private Color startColor;
 
+	public float RepairCooldown;
+
 	private void Start()
 	{
 		rend = GetComponent<Renderer>();
@@ -81,6 +83,7 @@ public class Node : MonoBehaviour
 
 	public void UpgradeTurret()
 	{
+		if (turret == null) return;
 		if (BattleManager.instance.stats.Money < turretBlueprint.upgradeCost)
 		{
 			GameToast.Add("Not enough money to upgrade that!");
@@ -104,8 +107,34 @@ public class Node : MonoBehaviour
 		GameToast.Add("Turret upgraded!");
 	}
 
+	public int RepairCost()
+	{
+		if (turret == null) return 0;
+		Turret t = turret.GetComponent<Turret>();
+		if (t == null) return 0;
+		float percent = 1f - t.health / t.startHealth;
+		float cost = (turretBlueprint.cost + (isUpgraded ? turretBlueprint.upgradeCost : 0)) / 1f * percent;
+		return Mathf.CeilToInt(cost / 5f) * 5;
+	}
+
+	public void RepairTurret()
+	{
+		if (turret == null) return;
+		int cost = RepairCost();
+		if (BattleManager.instance.stats.Money < cost)
+		{
+			GameToast.Add("Not enough money to repair that!");
+			return;
+		}
+		Turret t = turret.GetComponent<Turret>();
+		t.health = t.startHealth;
+		BattleManager.instance.stats.Money -= cost;
+		RepairCooldown = Time.time + 5f;
+	}
+
 	public void SellTurret()
 	{
+		if (turret == null) return;
 		BattleManager.instance.stats.Money += turretBlueprint.GetSellAmount();
 		GameObject effects = GameObject.Find("Effects");
 		if (!effects) effects = new GameObject("Effects");

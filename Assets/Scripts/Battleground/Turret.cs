@@ -105,6 +105,7 @@ public class Turret : MonoBehaviour
 
 	void Update()
 	{
+		healthBar.fillAmount = health / startHealth;
 		FixMeter();
 		if (target == null)
 		{
