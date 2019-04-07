@@ -55,7 +55,7 @@ public class Territories
 	private static bool LoadXML()
 	{
 		if (mapxml != null) return false;
-		TextAsset asset = (TextAsset)Resources.Load("RiskMapData", typeof(TextAsset));
+		TextAsset asset = (TextAsset)Resources.Load("Data/RiskMapData", typeof(TextAsset));
 		if (asset == null)
 		{
 			Debug.Log("RiskMapData asset is null");

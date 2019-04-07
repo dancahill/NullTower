@@ -2,26 +2,16 @@
 
 public class MainMenu : MonoBehaviour
 {
-	[HideInInspector]
-	GameObject faderObject;
-	[HideInInspector]
-	FaderTest sceneFader;
-
-	private void Awake()
+	private void OnMouseDown()
 	{
-		AppGlobals.Start();
-		faderObject = new GameObject("FaderThing");
-		sceneFader = faderObject.AddComponent<FaderTest>();
-	}
-
-	public void Play()
-	{
-		sceneFader.FadeTo("RiskMap");
-	}
-
-	public void Quit()
-	{
-		Debug.Log("App Quit");
-		Application.Quit();
+		//Debug.Log("mouse event: '" + name + "'");
+		if (name == "Turret")
+		{
+			GameManager.instance.sceneController.FadeAndLoadScene("RiskMap");
+		}
+		else if (name == "Tank")
+		{
+			Application.Quit();
+		}
 	}
 }
