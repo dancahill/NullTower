@@ -2,7 +2,7 @@
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Attacker : MonoBehaviour
 {
 	public enum Type
 	{

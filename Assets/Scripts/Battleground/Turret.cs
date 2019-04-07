@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour
 	public GameObject node;
 
 	private Transform target;
-	private Enemy targetEnemy;
+	private Attacker targetEnemy;
 
 	[Header("General")]
 	public float range = 15f;
@@ -93,7 +93,7 @@ public class Turret : MonoBehaviour
 		if (nearestEnemy != null && shortestDistance <= range)
 		{
 			target = nearestEnemy.transform;
-			targetEnemy = nearestEnemy.GetComponent<Enemy>();
+			targetEnemy = nearestEnemy.GetComponent<Attacker>();
 		}
 		else
 		{

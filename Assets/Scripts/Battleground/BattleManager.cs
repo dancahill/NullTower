@@ -18,7 +18,7 @@ public class PlayerStats
 	}
 }
 
-public partial class BattleManager : MonoBehaviour
+public class BattleManager : MonoBehaviour
 {
 	#region Singleton
 	public static BattleManager instance;
@@ -28,16 +28,21 @@ public partial class BattleManager : MonoBehaviour
 	public GameObject gameOverUI;
 	public GameObject completeLevelUI;
 	public PlayerStats stats;
+	public bool attackMode;
+	public Territory territory;
 
 	private void Awake()
 	{
 		instance = this;
 		stats = new PlayerStats();
-		//AppGlobals.Start();
 	}
 
 	private void Start()
 	{
+		territory = GameManager.instance.Game.territories.Find(f => f.name == GameManager.instance.TerritoryName);
+		//attackMode = GameManager.instance.attackMode;
+		attackMode = (territory.ownership != Territory.Ownership.Player);
+		if (attackMode) GetComponent<BGLevelBuilder>().AddAIDefenders();
 		GameIsOver = false;
 	}
 
@@ -52,27 +57,50 @@ public partial class BattleManager : MonoBehaviour
 
 	void EndGame()
 	{
+		Territory t = GameManager.instance.Game.territories.Find(f => f.name == GameManager.instance.TerritoryName);
 		GameIsOver = true;
-		gameOverUI.SetActive(true);
-		GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Defeat);
+		// attacker won
+		if (attackMode)
+		{
+			completeLevelUI.SetActive(true);
+			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Victory);
+			if (t != null)
+			{
+				t.ownership = Territory.Ownership.Player;
+				GameSave.SaveGame();
+			}
+		}
+		else
+		{
+			gameOverUI.SetActive(true);
+			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Defeat);
+		}
 	}
 
 	public void WinLevel()
 	{
+		Territory t = GameManager.instance.Game.territories.Find(f => f.name == GameManager.instance.TerritoryName);
 		GameIsOver = true;
-		completeLevelUI.SetActive(true);
-		GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Victory);
-		Debug.Log("level " + GameManager.instance.Territory + " won");
-		Territory t = GameManager.instance.Game.territories.Find(f => f.name == GameManager.instance.Territory);
-		if (t != null)
+		// defender won
+		if (!attackMode)
 		{
-			int score = 0;
-			if (stats.Lives == t.startLives) score = 3;
-			else if (stats.Lives > t.startLives / 2) score = 2;
-			else if (stats.Lives > 0) score = 1;
-			if (t.highScore < score) t.highScore = score;
-			t.ownership = Territory.Ownership.Player;
-			GameSave.SaveGame();
+			completeLevelUI.SetActive(true);
+			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Victory);
+			if (t != null)
+			{
+				int score = 0;
+				if (stats.Lives == t.startLives) score = 3;
+				else if (stats.Lives > t.startLives / 2) score = 2;
+				else if (stats.Lives > 0) score = 1;
+				if (t.highScore < score) t.highScore = score;
+				t.ownership = Territory.Ownership.Player;
+				GameSave.SaveGame();
+			}
+		}
+		else
+		{
+			gameOverUI.SetActive(true);
+			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Defeat);
 		}
 	}
 

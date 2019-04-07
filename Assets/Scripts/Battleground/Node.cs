@@ -35,6 +35,7 @@ public class Node : MonoBehaviour
 
 	public void SelectNode()
 	{
+		if (BattleManager.instance.attackMode) return;
 		if (turret != null)
 		{
 			buildManager.SelectNodeToUpgrade(this);
@@ -66,6 +67,12 @@ public class Node : MonoBehaviour
 		turretBlueprint = blueprint;
 		GameObject effects = GameObject.Find("Effects");
 		if (!effects) effects = new GameObject("Effects");
+		if (!buildManager)
+		{
+			//Debug.Log("buildmanager is null");
+			buildManager = BGBuildManager.instance;
+		}
+		if (!buildManager) Debug.Log("buildmanager is still null");
 		GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity, effects.transform);
 		Destroy(effect, 5f);
 		GameToast.Add("Turret Built!");

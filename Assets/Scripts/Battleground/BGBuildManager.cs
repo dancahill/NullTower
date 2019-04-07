@@ -4,6 +4,12 @@ public class BGBuildManager : MonoBehaviour
 {
 	public static BGBuildManager instance;
 
+	public GameObject buildEffect;
+	public GameObject sellEffect;
+
+	private Node selectedNode;
+	public NodeUI nodeUI;
+
 	private void Awake()
 	{
 		if (instance != null)
@@ -13,12 +19,6 @@ public class BGBuildManager : MonoBehaviour
 		}
 		instance = this;
 	}
-
-	public GameObject buildEffect;
-	public GameObject sellEffect;
-
-	private Node selectedNode;
-	public NodeUI nodeUI;
 
 	public void SelectNodeToBuild(Node node)
 	{

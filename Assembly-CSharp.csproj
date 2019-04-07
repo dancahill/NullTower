@@ -60,14 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Battleground\Attacker.cs" />
+    <Compile Include="Assets\Scripts\Battleground\AttackerMovement.cs" />
     <Compile Include="Assets\Scripts\Battleground\BattleManager.cs" />
     <Compile Include="Assets\Scripts\Battleground\BGBuildManager.cs" />
     <Compile Include="Assets\Scripts\Battleground\BGLevelBuilder.cs" />
     <Compile Include="Assets\Scripts\Battleground\BGMenuOptions.cs" />
     <Compile Include="Assets\Scripts\Battleground\BGWaveManager.cs" />
     <Compile Include="Assets\Scripts\Battleground\Bullet.cs" />
-    <Compile Include="Assets\Scripts\Battleground\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Battleground\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Battleground\Node.cs" />
     <Compile Include="Assets\Scripts\Battleground\TankBullet.cs" />
     <Compile Include="Assets\Scripts\Battleground\Turret.cs" />

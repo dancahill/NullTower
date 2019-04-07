@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class BGWaveManager : MonoBehaviour
 	public GameObject m_EnemyBuggyPrefab;
 	public GameObject m_EnemyGunshipPrefab;
 
-	GameObject m_Enemies;
+	GameObject m_Attackers;
 
 	public static int EnemiesAlive = 0;
 	public static int waveNumber = 0;
@@ -28,8 +29,8 @@ public class BGWaveManager : MonoBehaviour
 	private void Start()
 	{
 		battleManager = GetComponent<BattleManager>();
-		territory = Territories.Get(GameManager.instance.Territory);
-		m_Enemies = new GameObject("Enemies");
+		territory = Territories.Get(GameManager.instance.TerritoryName);
+		m_Attackers = new GameObject("Attackers");
 		spawnPoint = null;
 		totalWaves = territory.waves.Length;
 		waveNumber = 0;
@@ -38,25 +39,31 @@ public class BGWaveManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (EnemiesAlive > 0)
+		if (battleManager.attackMode)
 		{
-			return;
 		}
-		if (BattleManager.GameIsOver) return;
-		if (waveNumber == territory.waves.Length && BattleManager.instance.stats.Lives > 0)
+		else
 		{
-			battleManager.WinLevel();
-			this.enabled = false;
+			if (EnemiesAlive > 0)
+			{
+				return;
+			}
+			if (BattleManager.GameIsOver) return;
+			if (waveNumber == territory.waves.Length && BattleManager.instance.stats.Lives > 0)
+			{
+				battleManager.WinLevel();
+				this.enabled = false;
+			}
+			if (countdown <= 0)
+			{
+				StartCoroutine(SpawnWave());
+				countdown = m_TimeBetweenWaves;
+				return;
+			}
+			countdown -= Time.deltaTime;
+			countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+			waveCountdownText.text = countdown > 0 ? string.Format("{0:0.0}", countdown) : "";
 		}
-		if (countdown <= 0)
-		{
-			StartCoroutine(SpawnWave());
-			countdown = m_TimeBetweenWaves;
-			return;
-		}
-		countdown -= Time.deltaTime;
-		countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-		waveCountdownText.text = countdown > 0 ? string.Format("{0:0.0}", countdown) : "";
 	}
 
 	IEnumerator SpawnWave()
@@ -69,7 +76,7 @@ public class BGWaveManager : MonoBehaviour
 
 		for (int i = 0; i < wave.Length; i++)
 		{
-			if (wave[i].type != Enemy.Type.None) EnemiesAlive += wave[i].count;
+			if (wave[i].type != Attacker.Type.None) EnemiesAlive += wave[i].count;
 		}
 		string s = string.Format("Wave {0} ({1} enemies)", waveNumber, EnemiesAlive);
 		//Debug.Log(s);
@@ -78,41 +85,44 @@ public class BGWaveManager : MonoBehaviour
 		{
 			for (int j = 0; j < wave[i].count; j++)
 			{
-				switch (wave[i].type)
-				{
-					//case Enemy.Type.Basic:
-					//	SpawnEnemy(m_EnemyBasicPrefab);
-					//	break;
-					//case Enemy.Type.Tough:
-					//	SpawnEnemy(m_EnemyToughPrefab);
-					//	break;
-					//case Enemy.Type.Fast:
-					//	SpawnEnemy(m_EnemyFastPrefab);
-					//	break;
-					case Enemy.Type.Jeep:
-						SpawnEnemy(m_EnemyJeepPrefab);
-						break;
-					case Enemy.Type.Tank:
-						SpawnEnemy(m_EnemyTankPrefab);
-						break;
-					case Enemy.Type.HeavyTank:
-						SpawnEnemy(m_EnemyHeavyTankPrefab);
-						break;
-					case Enemy.Type.Buggy:
-						SpawnEnemy(m_EnemyBuggyPrefab);
-						break;
-					case Enemy.Type.Gunship:
-						SpawnEnemy(m_EnemyGunshipPrefab);
-						break;
-					default:
-						break;
-				}
+				SpawnAttackerType(wave[i].type);
 				float delay = wave[i].delay > 0 ? wave[i].delay : 1f / wave[i].rate;
 				yield return new WaitForSeconds(delay);
 			}
 		}
 		//waveIndex++;
 	}
+
+	public void SpawnAttackerType(string type)
+	{
+		Attacker.Type t = (Attacker.Type)Enum.Parse(typeof(Attacker.Type), type);
+		SpawnAttackerType(t);
+	}
+
+	public void SpawnAttackerType(Attacker.Type type)
+	{
+		switch (type)
+		{
+			case Attacker.Type.Jeep:
+				SpawnEnemy(m_EnemyJeepPrefab);
+				break;
+			case Attacker.Type.Tank:
+				SpawnEnemy(m_EnemyTankPrefab);
+				break;
+			case Attacker.Type.HeavyTank:
+				SpawnEnemy(m_EnemyHeavyTankPrefab);
+				break;
+			case Attacker.Type.Buggy:
+				SpawnEnemy(m_EnemyBuggyPrefab);
+				break;
+			case Attacker.Type.Gunship:
+				SpawnEnemy(m_EnemyGunshipPrefab);
+				break;
+			default:
+				break;
+		}
+	}
+
 	private void SpawnEnemy(GameObject enemy)
 	{
 		if (spawnPoint == null)
@@ -120,8 +130,8 @@ public class BGWaveManager : MonoBehaviour
 			spawnPoint = GameObject.Find("Start").transform;
 		}
 		Vector3 sp = new Vector3(spawnPoint.transform.position.x, 0.5f, spawnPoint.transform.position.z);
-		GameObject e = Instantiate(enemy, sp, spawnPoint.rotation, m_Enemies.transform);
-		// bit of a cheat. will breat with multiple spawn points
+		GameObject e = Instantiate(enemy, sp, spawnPoint.rotation, m_Attackers.transform);
+		// bit of a cheat. will break with multiple spawn points
 		if (Waypoints.points.Length > 2) e.transform.LookAt(Waypoints.points[1]);
 	}
 }

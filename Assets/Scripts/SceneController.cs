@@ -40,15 +40,17 @@ public class SceneController : MonoBehaviour
 
 	public void FadeAndLoadScene(string scenename)
 	{
-		GameManager.instance.Territory = "";
+		GameManager.instance.TerritoryName = "";
+		GameManager.instance.attackMode = false;
 		if (!isFading) StartCoroutine(FadeAndSwitchScenes(scenename));
 	}
 
-	public void FadeAndLoadScene(string scenename, string territory)
+	public void FadeAndLoadScene(string scenename, string territory, bool attackmode)
 	{
 		if (!isFading)
 		{
-			GameManager.instance.Territory = territory;
+			GameManager.instance.TerritoryName = territory;
+			GameManager.instance.attackMode = attackmode;
 			//Time.timeScale = 1;
 			StartCoroutine(FadeAndSwitchScenes(scenename));
 		}

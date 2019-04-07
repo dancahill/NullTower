@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //[RequireComponent(typeof(Enemy))]
-public class EnemyMovement : MonoBehaviour
+public class AttackerMovement : MonoBehaviour
 {
 	//public GameObject movementDirection;
 /*

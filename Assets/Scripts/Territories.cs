@@ -12,7 +12,7 @@ public struct MapPoint
 [Serializable]
 public class EnemyWave
 {
-	public Enemy.Type type;
+	public Attacker.Type type;
 	/// <summary>
 	/// number of enemies to spawn (1 if not provided)
 	/// </summary>
@@ -156,16 +156,16 @@ public class Territories
 			foreach (XmlNode enemy in enemies)
 			{
 				t.waves[i][j] = new EnemyWave { };
-				Enemy.Type type;
+				Attacker.Type type;
 				string enemytype = enemy.Attributes["type"] != null ? enemy.Attributes["type"].Value : "";
 				switch (enemytype)
 				{
-					case "Jeep": type = Enemy.Type.Jeep; break;
-					case "Tank": type = Enemy.Type.Tank; break;
-					case "HeavyTank": type = Enemy.Type.HeavyTank; break;
-					case "Buggy": type = Enemy.Type.Buggy; break;
-					case "Gunship": type = Enemy.Type.Gunship; break;
-					default: type = Enemy.Type.None; break;
+					case "Jeep": type = Attacker.Type.Jeep; break;
+					case "Tank": type = Attacker.Type.Tank; break;
+					case "HeavyTank": type = Attacker.Type.HeavyTank; break;
+					case "Buggy": type = Attacker.Type.Buggy; break;
+					case "Gunship": type = Attacker.Type.Gunship; break;
+					default: type = Attacker.Type.None; break;
 				}
 				t.waves[i][j].type = type;
 				XmlAttribute xacount = enemy.Attributes["count"];
@@ -193,7 +193,7 @@ public class Territories
 		{
 			t.waves = new EnemyWave[1][] {
 				new EnemyWave[1] {
-					new EnemyWave{ type=Enemy.Type.Tank, count=1 }
+					new EnemyWave{ type=Attacker.Type.Tank, count=1 }
 				}
 			};
 			t.startLives = 1;

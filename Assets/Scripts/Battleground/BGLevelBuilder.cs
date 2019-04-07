@@ -10,6 +10,7 @@ public class BGLevelBuilder : MonoBehaviour
 	public GameObject m_WaypointPrefab;
 	public GameObject m_StartPrefab;
 	public GameObject m_EndPrefab;
+	public TurretBlueprint[] blueprints;
 	[Header("Runtime Stuff")]
 	public GameObject m_Environment;
 	public GameObject m_Nodes;
@@ -45,10 +46,10 @@ public class BGLevelBuilder : MonoBehaviour
 			ground.transform.localScale = new Vector3(4.9f, 1, 4.9f);
 		}
 
-		Territory territory = Territories.Get(GameManager.instance.Territory);
+		Territory territory = Territories.Get(GameManager.instance.TerritoryName);
 		if (territory == null)
 		{
-			print("territory is null name='" + GameManager.instance.Territory + "'");
+			print("territory is null name='" + GameManager.instance.TerritoryName + "'");
 		}
 
 		m_Environment = new GameObject("Environment");
@@ -135,5 +136,18 @@ public class BGLevelBuilder : MonoBehaviour
 		NavMeshSurface nms = m_Environment.AddComponent<NavMeshSurface>();
 		nms.layerMask = 1 << LayerMask.NameToLayer("Environment");
 		nms.BuildNavMesh();
+	}
+
+	public void AddAIDefenders()
+	{
+		GameObject nodes = GameObject.Find("Nodes");
+		Node[] nl = nodes.GetComponentsInChildren<Node>();
+		foreach (Node n in nl)
+		{
+			BGBuildManager.instance.SelectNodeToBuild(n);
+			n.BuildTurret(blueprints[0]);
+		}
+		NodeUI ui = FindObjectOfType<NodeUI>();
+		ui.Hide();
 	}
 }

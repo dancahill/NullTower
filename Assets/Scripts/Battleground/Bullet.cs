@@ -68,10 +68,10 @@ public class Bullet : MonoBehaviour
 
 	void Damage(Transform enemy)
 	{
-		Enemy e = enemy.GetComponent<Enemy>();
+		Attacker e = enemy.GetComponent<Attacker>();
 
 		// test for rockets hitting gunships
-		if (e == null) e = enemy.parent.GetComponent<Enemy>();
+		if (e == null) e = enemy.parent.GetComponent<Attacker>();
 
 		if (e != null)
 		{
