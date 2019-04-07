@@ -194,7 +194,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 388213281}
-        m_MethodName: Continue
+        m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1100,7 +1100,6 @@ GameObject:
   - component: {fileID: 451511965}
   - component: {fileID: 451511964}
   - component: {fileID: 451511963}
-  - component: {fileID: 451511962}
   m_Layer: 5
   m_Name: Waves
   m_TagString: Untagged
@@ -1120,26 +1119,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 860740169}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 85, y: -16}
   m_SizeDelta: {x: 170, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &451511962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451511960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e040baa664f8854a8b72efde6cc274c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_WavesText: {fileID: 451511964}
 --- !u!114 &451511963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,7 +1296,6 @@ GameObject:
   - component: {fileID: 463132590}
   - component: {fileID: 463132589}
   - component: {fileID: 463132588}
-  - component: {fileID: 463132591}
   m_Layer: 5
   m_Name: Territory
   m_TagString: Untagged
@@ -1330,7 +1315,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 860740169}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1394,19 +1379,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463132586}
   m_CullTransparentMesh: 0
---- !u!114 &463132591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463132586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0d5b11b3442ed441b05bb345a20dde7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  territoryText: {fileID: 463132589}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1620,6 @@ GameObject:
   - component: {fileID: 627159657}
   - component: {fileID: 627159656}
   - component: {fileID: 627159658}
-  - component: {fileID: 627159659}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -1668,7 +1639,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 860740169}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1732,19 +1703,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
---- !u!114 &627159659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627159654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c395f21698d234bbaef5026d453306, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyText: {fileID: 627159656}
 --- !u!1 &655071779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,6 +2245,7 @@ GameObject:
   - component: {fileID: 860740169}
   - component: {fileID: 860740171}
   - component: {fileID: 860740170}
+  - component: {fileID: 860740172}
   m_Layer: 5
   m_Name: GameStatsPanel
   m_TagString: Untagged
@@ -2305,11 +2264,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 451511961}
   - {fileID: 1399263401}
   - {fileID: 627159655}
-  - {fileID: 1587770730}
   - {fileID: 463132587}
+  - {fileID: 451511961}
+  - {fileID: 1587770730}
   - {fileID: 1988763481}
   - {fileID: 1613864356}
   m_Father: {fileID: 388213280}
@@ -2357,6 +2316,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860740168}
   m_CullTransparentMesh: 0
+--- !u!114 &860740172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860740168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c74f8ce6e242ae469c3f4609c22a4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livesText: {fileID: 1399263403}
+  moneyText: {fileID: 627159656}
+  territoryText: {fileID: 463132589}
+  wavesText: {fileID: 451511964}
 --- !u!1 &1042252146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3427,7 +3402,6 @@ GameObject:
   - component: {fileID: 1399263404}
   - component: {fileID: 1399263403}
   - component: {fileID: 1399263402}
-  - component: {fileID: 1399263405}
   m_Layer: 5
   m_Name: Lives
   m_TagString: Untagged
@@ -3447,7 +3421,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 860740169}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3511,19 +3485,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399263400}
   m_CullTransparentMesh: 0
---- !u!114 &1399263405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399263400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb64c7c171912534aa75ba270fba5d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  livesText: {fileID: 1399263403}
 --- !u!1 &1439662644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,7 +3885,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 860740169}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3971,8 +3932,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Toggle
+      - m_Target: {fileID: 388213281}
+        m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

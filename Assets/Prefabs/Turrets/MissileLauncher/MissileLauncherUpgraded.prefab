@@ -343,7 +343,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 875247972992713850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b91df3b6623c144f86856ffeae23547, type: 3}
+  m_Script: {fileID: 11500000, guid: 89626904bf19875458a1633281d5bd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 850771195}

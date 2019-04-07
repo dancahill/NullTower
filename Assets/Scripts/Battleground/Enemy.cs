@@ -174,9 +174,9 @@ public class Enemy : MonoBehaviour
 		Transform t = gameObject.transform.Find("Canvas");
 		if (t == null) return;
 		// not quite right, but good enough for now
-		Vector3 v = new Vector3(transform.position.x, transform.position.y, transform.position.z + 50);
-		t.LookAt(v);
-		//Camera cam = GameManager.instance.ActiveCamera;
-		//overheadCanvas.transform.LookAt(overheadCanvas.transform.position + cam.transform.rotation * Vector3.forward, cam.transform.rotation * Vector3.up);
+		//Vector3 v = new Vector3(transform.position.x, transform.position.y, transform.position.z + 50);
+		//t.LookAt(v);
+		Camera cam = Camera.main;
+		t.LookAt(t.position + cam.transform.rotation * Vector3.forward, cam.transform.rotation * Vector3.up);
 	}
 }

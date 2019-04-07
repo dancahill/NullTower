@@ -6,7 +6,6 @@ public class BGMenuOptions : MonoBehaviour
 
 	private void Update()
 	{
-		// use GetKeyDown, not GetKey - holding the key shouldn't toggle the menu continuously
 		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
 		{
 			TogglePause();
@@ -16,34 +15,30 @@ public class BGMenuOptions : MonoBehaviour
 	public void TogglePause()
 	{
 		pauseMenu.SetActive(!pauseMenu.activeSelf);
-		if (pauseMenu.activeSelf)
-		{
-			Time.timeScale = 0f;
-		}
-		else
-		{
-			Time.timeScale = 1;
-		}
+		Time.timeScale = pauseMenu.activeSelf ? 0f : 1f;
 	}
 
 	public void Continue()
 	{
+		Time.timeScale = 1f;
 		GameManager.instance.sceneController.FadeAndLoadScene("RiskMap");
 	}
 
 	public void MainMenu()
 	{
+		Time.timeScale = 1f;
 		GameManager.instance.sceneController.FadeAndLoadScene("MainMenu");
 	}
 
 	public void MapMenu()
 	{
+		Time.timeScale = 1f;
 		GameManager.instance.sceneController.FadeAndLoadScene("RiskMap");
 	}
 
 	public void Retry()
 	{
-		//GameManager.instance.sceneController.FadeAndLoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, GameManager.instance.Territory);
-		GameManager.instance.sceneController.FadeAndLoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+		Time.timeScale = 1f;
+		GameManager.instance.sceneController.FadeAndLoadScene(GameManager.instance.sceneController.CurrentScene, GameManager.instance.Territory);
 	}
 }

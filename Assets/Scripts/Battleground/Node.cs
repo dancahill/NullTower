@@ -32,6 +32,11 @@ public class Node : MonoBehaviour
 	private void OnMouseDown()
 	{
 		if (EventSystem.current.IsPointerOverGameObject()) return;
+		SelectNode();
+	}
+
+	public void SelectNode()
+	{
 		if (turret != null)
 		{
 			buildManager.SelectNodeToUpgrade(this);
@@ -44,6 +49,7 @@ public class Node : MonoBehaviour
 		//if (!buildManager.CanBuild) return;
 		//BuildTurret(buildManager.GetTurretToBuild());
 	}
+
 
 	public void BuildTurret(TurretBlueprint blueprint)
 	{

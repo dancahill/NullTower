@@ -72,7 +72,7 @@ public class BGWaveManager : MonoBehaviour
 			if (wave[i].type != Enemy.Type.None) EnemiesAlive += wave[i].count;
 		}
 		string s = string.Format("Wave {0} ({1} enemies)", waveNumber, EnemiesAlive);
-		Debug.Log(s);
+		//Debug.Log(s);
 		GameToast.Add(s);
 		for (int i = 0; i < wave.Length; i++)
 		{

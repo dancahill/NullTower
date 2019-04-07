@@ -47,8 +47,10 @@ public class NodeUI : MonoBehaviour
 		UpgradeUI.SetActive(true);
 		Vector3 v = m_Camera.transform.position - UpgradeUI.transform.position;
 		v.x = 0;
-		//UpgradeUI.transform.LookAt(m_Camera.transform);
-		UpgradeUI.transform.LookAt(transform.position - v);
+		//UpgradeUI.transform.LookAt(transform.position - v);
+		Transform t = UpgradeUI.transform;
+		Camera cam = Camera.main;
+		t.LookAt(t.position + cam.transform.rotation * Vector3.forward, cam.transform.rotation * Vector3.up);
 	}
 
 	public void Hide()

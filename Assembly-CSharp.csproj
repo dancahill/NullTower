@@ -60,8 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scenes\NavMeshTest\NavMeshTest.cs" />
-    <Compile Include="Assets\Scenes\NavMeshTest\Player.cs" />
     <Compile Include="Assets\Scripts\Battleground\BattleManager.cs" />
     <Compile Include="Assets\Scripts\Battleground\BGBuildManager.cs" />
     <Compile Include="Assets\Scripts\Battleground\BGLevelBuilder.cs" />
@@ -74,14 +72,12 @@
     <Compile Include="Assets\Scripts\Battleground\TankBullet.cs" />
     <Compile Include="Assets\Scripts\Battleground\Turret.cs" />
     <Compile Include="Assets\Scripts\Battleground\TurretBlueprint.cs" />
+    <Compile Include="Assets\Scripts\Battleground\TurretHead.cs" />
     <Compile Include="Assets\Scripts\Battleground\UI\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Battleground\UI\GameStats.cs" />
     <Compile Include="Assets\Scripts\Battleground\UI\GameToast.cs" />
-    <Compile Include="Assets\Scripts\Battleground\UI\LivesUI.cs" />
-    <Compile Include="Assets\Scripts\Battleground\UI\MoneyUI.cs" />
     <Compile Include="Assets\Scripts\Battleground\UI\NodeUI.cs" />
     <Compile Include="Assets\Scripts\Battleground\UI\RoundsSurvived.cs" />
-    <Compile Include="Assets\Scripts\Battleground\UI\TerritoryLabel.cs" />
-    <Compile Include="Assets\Scripts\Battleground\UI\WavesUI.cs" />
     <Compile Include="Assets\Scripts\Battleground\Waypoints.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
