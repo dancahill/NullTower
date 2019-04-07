@@ -152,7 +152,7 @@ public class Attacker : MonoBehaviour
 	void Die()
 	{
 		isDead = true;
-		BattleManager.instance.stats.Money += worth;
+		if (!BattleManager.instance.attackMode) BattleManager.instance.stats.Money += worth;
 		GameObject effects = GameObject.Find("Effects");
 		if (!effects) effects = new GameObject("Effects");
 		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity, effects.transform);
@@ -167,7 +167,11 @@ public class Attacker : MonoBehaviour
 		if (agent.hasPath && agent.remainingDistance > 1) return;
 		if (agent.remainingDistance > 1f) return;
 		BGWaveManager.EnemiesAlive--;
-		if (BattleManager.instance.stats.Lives > 0) BattleManager.instance.stats.Lives--;
+		if (BattleManager.instance.stats.Lives > 0)
+		{
+			BattleManager.instance.stats.Lives--;
+			if (BattleManager.instance.attackMode) BattleManager.instance.stats.Money += 100;
+		}
 		if (BattleManager.instance.stats.Lives > 0 && BGWaveManager.EnemiesAlive < 1) BattleManager.instance.stats.Rounds++;
 		Destroy(gameObject);
 	}

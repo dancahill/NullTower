@@ -14,19 +14,6 @@ public partial class RiskMap : MonoBehaviour
 		GameManager.instance.soundManager.PlayMusic();
 		try
 		{
-			//if (flagPrefab == null)
-			//{
-			//	flagPrefab = (GameObject)Resources.Load("StandardTurret", typeof(GameObject));
-			//}
-			//if (flagPrefab == null)
-			//{
-			//	print("turretprefab is still null");
-			//	return;
-			//}
-			//else
-			//{
-			//	//print("found turretprefab");
-			//}
 			MapSetupRisk();
 			GameSave.LoadGame();
 			turrets = new GameObject("Turrets On Map");
@@ -37,9 +24,6 @@ public partial class RiskMap : MonoBehaviour
 				territory.gameobject.transform.rotation = Quaternion.Euler(-90, 0, 0);
 				TerritoryFlag tf = territory.gameobject.GetComponent<TerritoryFlag>();
 				tf.territory = territory;
-				// seek and destroy all mesh colliders so virgil's mouse code doesn't shit itself
-				//MeshCollider mc = territory.gameobject.GetComponentInChildren<MeshCollider>();
-				//if (mc != null) mc.enabled = false;
 			}
 		}
 		catch (Exception ex)
@@ -56,7 +40,6 @@ public partial class RiskMap : MonoBehaviour
 	public void GoToBattleground(string territory)
 	{
 		GameManager.instance.sceneController.FadeAndLoadScene("BattleGround", territory, true);
-		//sceneFader.FadeTo("BattleGround", territory);
 	}
 
 	private void MapSetupRisk()

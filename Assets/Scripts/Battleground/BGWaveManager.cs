@@ -35,12 +35,26 @@ public class BGWaveManager : MonoBehaviour
 		totalWaves = territory.waves.Length;
 		waveNumber = 0;
 		EnemiesAlive = 0;
+		if (battleManager.attackMode)
+		{
+			countdown = 180;
+		}
 	}
 
 	private void Update()
 	{
+		if (BattleManager.GameIsOver) return;
 		if (battleManager.attackMode)
 		{
+			if (countdown <= 0)
+			{
+				//Debug.Log("time's up. you lose.");
+				battleManager.WinLevel();
+				return;
+			}
+			countdown -= Time.deltaTime;
+			countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+			waveCountdownText.text = countdown > 0 ? string.Format("{0:0.0}", countdown) : "";
 		}
 		else
 		{
@@ -48,7 +62,6 @@ public class BGWaveManager : MonoBehaviour
 			{
 				return;
 			}
-			if (BattleManager.GameIsOver) return;
 			if (waveNumber == territory.waves.Length && BattleManager.instance.stats.Lives > 0)
 			{
 				battleManager.WinLevel();
@@ -96,7 +109,21 @@ public class BGWaveManager : MonoBehaviour
 	public void SpawnAttackerType(string type)
 	{
 		Attacker.Type t = (Attacker.Type)Enum.Parse(typeof(Attacker.Type), type);
-		SpawnAttackerType(t);
+		int cost;
+		switch (t)
+		{
+			case Attacker.Type.Jeep: cost = 50; break;
+			case Attacker.Type.Tank: cost = 150; break;
+			case Attacker.Type.HeavyTank: cost = 250; break;
+			case Attacker.Type.Buggy: cost = 50; break;
+			case Attacker.Type.Gunship: cost = 100; break;
+			default: cost = 50; break;
+		}
+		if (BattleManager.instance.stats.Money >= cost)
+		{
+			BattleManager.instance.stats.Money -= cost;
+			SpawnAttackerType(t);
+		}
 	}
 
 	public void SpawnAttackerType(Attacker.Type type)

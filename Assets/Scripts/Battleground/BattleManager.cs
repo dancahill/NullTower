@@ -35,15 +35,15 @@ public class BattleManager : MonoBehaviour
 	{
 		instance = this;
 		stats = new PlayerStats();
+		GameIsOver = false;
+		if (!GameManager.instance) return;
+		territory = GameManager.instance.Game.territories.Find(f => f.name == GameManager.instance.TerritoryName);
+		attackMode = (territory.ownership != Territory.Ownership.Player);
 	}
 
 	private void Start()
 	{
-		territory = GameManager.instance.Game.territories.Find(f => f.name == GameManager.instance.TerritoryName);
-		//attackMode = GameManager.instance.attackMode;
-		attackMode = (territory.ownership != Territory.Ownership.Player);
 		if (attackMode) GetComponent<BGLevelBuilder>().AddAIDefenders();
-		GameIsOver = false;
 	}
 
 	void Update()
@@ -64,17 +64,15 @@ public class BattleManager : MonoBehaviour
 		{
 			completeLevelUI.SetActive(true);
 			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Victory);
-			if (t != null)
-			{
-				t.ownership = Territory.Ownership.Player;
-				GameSave.SaveGame();
-			}
+			t.ownership = Territory.Ownership.Player;
 		}
 		else
 		{
 			gameOverUI.SetActive(true);
 			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Defeat);
+			t.ownership = Territory.Ownership.AI;
 		}
+		GameSave.SaveGame();
 	}
 
 	public void WinLevel()
@@ -86,22 +84,21 @@ public class BattleManager : MonoBehaviour
 		{
 			completeLevelUI.SetActive(true);
 			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Victory);
-			if (t != null)
-			{
-				int score = 0;
-				if (stats.Lives == t.startLives) score = 3;
-				else if (stats.Lives > t.startLives / 2) score = 2;
-				else if (stats.Lives > 0) score = 1;
-				if (t.highScore < score) t.highScore = score;
-				t.ownership = Territory.Ownership.Player;
-				GameSave.SaveGame();
-			}
+			t.ownership = Territory.Ownership.Player;
+
+			int score = 0;
+			if (stats.Lives == t.startLives) score = 3;
+			else if (stats.Lives > t.startLives / 2) score = 2;
+			else if (stats.Lives > 0) score = 1;
+			if (t.highScore < score) t.highScore = score;
 		}
 		else
 		{
 			gameOverUI.SetActive(true);
 			GameManager.instance.soundManager.PlayMusic(SoundManager.Music.Defeat);
+			t.ownership = Territory.Ownership.AI;
 		}
+		GameSave.SaveGame();
 	}
 
 	public void ReturnToMap()

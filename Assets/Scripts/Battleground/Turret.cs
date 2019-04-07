@@ -49,6 +49,8 @@ public class Turret : MonoBehaviour
 
 	public Image healthBar;
 
+	private bool isDead = false;
+
 	void Start()
 	{
 		canvas = transform.Find("Canvas");
@@ -186,12 +188,13 @@ public class Turret : MonoBehaviour
 	{
 		health -= amount;
 		healthBar.fillAmount = health / startHealth;
-		//if (health <= 0 && !isDead) Die();
-		if (health <= 0) Die();
+		if (health <= 0 && !isDead) Die();
 	}
 
 	void Die()
 	{
+		isDead = true;
+		if (BattleManager.instance.attackMode) BattleManager.instance.stats.Money += 50;
 		GameObject effects = GameObject.Find("Effects");
 		if (!effects) effects = new GameObject("Effects");
 		GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity, effects.transform);

@@ -7,30 +7,17 @@ public class TerritoryFlag : MonoBehaviour
 	public Text text;
 	public Territory territory;
 
-	void Start()
+	void Update()
 	{
 		FixRotation();
 		//text.text = territory.name + "\n" + territory.highScore + "/" + 3;
-		text.text = "";
-		if (territory.highScore == 3)
-		{
-			text.text += "***";
+		text.text = "***".Substring(0, territory.highScore) + "---".Substring(territory.highScore, 3 - territory.highScore);
+		if (territory.ownership == Territory.Ownership.Player)
 			text.color = Color.green;
-		}
-		else if (territory.highScore == 2)
-		{
-			text.text += "**";
-			text.color = Color.yellow;
-		}
-		else if (territory.highScore == 1)
-		{
-			text.text += "*";
+		else if (territory.ownership == Territory.Ownership.AI)
 			text.color = Color.red;
-		}
 		else
-		{
-			canvas.gameObject.SetActive(false);
-		}
+			text.color = Color.yellow;
 	}
 
 	void FixRotation()
