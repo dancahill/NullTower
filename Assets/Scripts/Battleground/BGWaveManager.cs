@@ -22,7 +22,7 @@ public class BGWaveManager : MonoBehaviour
 	public float m_TimeBetweenWaves = 10f;
 	private float countdown = 10f;
 	public Text waveCountdownText;
-	public BattleManager battleManager;
+	BattleManager battleManager;
 
 	Territory territory;
 
@@ -37,7 +37,7 @@ public class BGWaveManager : MonoBehaviour
 		EnemiesAlive = 0;
 		if (battleManager.attackMode)
 		{
-			countdown = 180;
+			countdown = 300;
 		}
 	}
 

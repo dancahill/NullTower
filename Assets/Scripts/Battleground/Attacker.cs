@@ -164,8 +164,15 @@ public class Attacker : MonoBehaviour
 
 	void CheckEndPath()
 	{
-		if (agent.hasPath && agent.remainingDistance > 1) return;
-		if (agent.remainingDistance > 1f) return;
+		float endradius = 1.5f;
+		//Transform end = GameObject.Find("End").transform;
+		//float distance = Vector3.Distance(transform.position, end.position);
+		//if (distance < 3)
+		//{
+		//	Debug.Log("agent.remainingDistance=" + agent.remainingDistance + ",distance=" + distance);
+		//}
+		if (agent.hasPath && agent.remainingDistance > endradius) return;
+		if (agent.remainingDistance > endradius) return;
 		BGWaveManager.EnemiesAlive--;
 		if (BattleManager.instance.stats.Lives > 0)
 		{

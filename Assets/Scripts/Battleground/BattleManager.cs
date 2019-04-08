@@ -27,8 +27,8 @@ public class BattleManager : MonoBehaviour
 	public static bool GameIsOver;
 	public GameObject gameOverUI;
 	public GameObject completeLevelUI;
-	public PlayerStats stats;
 	public bool attackMode;
+	public PlayerStats stats;
 	public Territory territory;
 
 	private void Awake()
@@ -41,10 +41,11 @@ public class BattleManager : MonoBehaviour
 		attackMode = (territory.ownership != Territory.Ownership.Player);
 	}
 
-	private void Start()
-	{
-		if (attackMode) GetComponent<BGLevelBuilder>().AddAIDefenders();
-	}
+	//private void Start()
+	//{
+	//	//if (BattleManager.instance.attackMode) GetComponent<BGLevelBuilder>().AddAIDefenders();
+	//	//if (GameManager.instance.attackMode) AddAIDefenders();
+	//}
 
 	void Update()
 	{

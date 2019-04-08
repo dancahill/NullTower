@@ -11,10 +11,10 @@ public class BGLevelBuilder : MonoBehaviour
 	public GameObject m_StartPrefab;
 	public GameObject m_EndPrefab;
 	public TurretBlueprint[] blueprints;
-	[Header("Runtime Stuff")]
-	public GameObject m_Environment;
-	public GameObject m_Nodes;
-	public GameObject m_Waypoints;
+	//[Header("Runtime Stuff")]
+	GameObject m_Environment;
+	GameObject m_Nodes;
+	GameObject m_Waypoints;
 
 	void Start()
 	{
@@ -30,22 +30,23 @@ public class BGLevelBuilder : MonoBehaviour
 		{
 			return new Vector3(x * 5, 1f, -y * 5);
 		}
-		void setpathnode(Node[] nodes, float x, float y)
+		void removenodeat(Node[] nodes, float x, float y)
 		{
-			// this foreach is probably unnecessary if we're only placing a small number of initial nodes
 			foreach (Node n in nodes)
 			{
 				if (n.transform.position.x / 5 == x && -n.transform.position.z / 5 == y)
 				{
+					n.gameObject.SetActive(false);
 					Destroy(n.gameObject);
-					//Renderer rend = n.GetComponent<Renderer>();
-					//rend.material.color = Color.grey;
 				}
 			}
+		}
+		void setpathnode(Node[] nodes, float x, float y)
+		{
+			removenodeat(nodes, x, y);
 			GameObject ground = Instantiate(m_GroundPrefab, nodecords(x, y), Quaternion.identity, m_Environment.transform);
 			ground.transform.localScale = new Vector3(4.9f, 1, 4.9f);
 		}
-
 		Territory territory = Territories.Get(GameManager.instance.TerritoryName);
 		if (territory == null)
 		{
@@ -105,10 +106,22 @@ public class BGLevelBuilder : MonoBehaviour
 		GameObject startnode = Instantiate(m_StartPrefab, endcords(territory.waypoints[0].x, territory.waypoints[0].y), Quaternion.identity);
 		startnode.transform.localScale = new Vector3(4, 4, 4);
 		startnode.name = "Start";
+
+		Node[] nl = m_Nodes.GetComponentsInChildren<Node>();
+
+		for (int y = -2; y < 3; y++)
+			for (int x = -2; x < 3; x++)
+				removenodeat(nl, territory.waypoints[0].x + x, territory.waypoints[0].y + y);
+
 		BGWaveManager.spawnPoint = startnode.transform;
 		GameObject endnode = Instantiate(m_EndPrefab, endcords(territory.waypoints[territory.waypoints.Length - 1].x, territory.waypoints[territory.waypoints.Length - 1].y), Quaternion.identity);
 		endnode.transform.localScale = new Vector3(4, 4, 4);
 		endnode.name = "End";
+
+		for (int y = -1; y < 2; y++)
+			for (int x = -1; x < 2; x++)
+				removenodeat(nl, territory.waypoints[territory.waypoints.Length - 1].x + x, territory.waypoints[territory.waypoints.Length - 1].y + y);
+
 		/* SET UP WAYPOINTS */
 		Waypoints.points = new Transform[territory.waypoints.Length];
 		int i2 = 0;
@@ -118,7 +131,6 @@ public class BGLevelBuilder : MonoBehaviour
 			Waypoints.points[i2++] = waypoint.transform;
 		}
 		/* SET UP WAYPOINT PATH TILES */
-		Node[] nl = Resources.FindObjectsOfTypeAll<Node>();
 		for (int i = 0; i < territory.waypoints.Length - 1; i++)
 		{
 			int minx = Mathf.Min((int)territory.waypoints[i].x, (int)territory.waypoints[i + 1].x);
@@ -130,12 +142,11 @@ public class BGLevelBuilder : MonoBehaviour
 				for (int y = miny; y <= maxy; y++)
 					setpathnode(nl, x, y);
 		}
-
 		// rebuild the nav mesh
-		//GameObject env = GameObject.Find("Environment");
 		NavMeshSurface nms = m_Environment.AddComponent<NavMeshSurface>();
 		nms.layerMask = 1 << LayerMask.NameToLayer("Environment");
 		nms.BuildNavMesh();
+		if (BattleManager.instance.attackMode) AddAIDefenders();
 	}
 
 	public void AddAIDefenders()
@@ -144,6 +155,10 @@ public class BGLevelBuilder : MonoBehaviour
 		Node[] nl = nodes.GetComponentsInChildren<Node>();
 		foreach (Node n in nl)
 		{
+			//if (!n.gameObject.activeSelf)
+			//{
+			//	Debug.Log("!n.gameObject.activeSelf");
+			//}
 			BGBuildManager.instance.SelectNodeToBuild(n);
 			n.BuildTurret(blueprints[0]);
 		}

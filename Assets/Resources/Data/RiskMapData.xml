@@ -121,7 +121,7 @@
 			</Wave>
 		</Waves>
 	</Territory>
-	<Territory name="Ontario" startlives="2" startmoney="200" mapxy="-185,96" neighbours="1,2,3,5,6,7">
+	<Territory name="Ontario" startlives="2" startmoney="3000" mapxy="-185,96" neighbours="1,2,3,5,6,7">
 		<TurretNodes>
 		</TurretNodes>
 		<Waypoints>
