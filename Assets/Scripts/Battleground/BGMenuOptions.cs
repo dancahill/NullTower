@@ -39,6 +39,6 @@ public class BGMenuOptions : MonoBehaviour
 	public void Retry()
 	{
 		Time.timeScale = 1f;
-		GameManager.instance.sceneController.FadeAndLoadScene(GameManager.instance.sceneController.CurrentScene, GameManager.instance.TerritoryName, GameManager.instance.attackMode);
+		GameManager.instance.sceneController.FadeAndLoadScene(GameManager.instance.sceneController.CurrentScene, GameManager.instance.TerritoryName);
 	}
 }

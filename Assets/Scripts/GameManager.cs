@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 	[HideInInspector] public SoundManager soundManager;
 	[HideInInspector] public SceneController sceneController;
 	public string TerritoryName;
-	public bool attackMode;
+	//public bool attackMode;
 
 	private void Awake()
 	{

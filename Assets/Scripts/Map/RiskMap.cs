@@ -39,7 +39,7 @@ public partial class RiskMap : MonoBehaviour
 
 	public void GoToBattleground(string territory)
 	{
-		GameManager.instance.sceneController.FadeAndLoadScene("BattleGround", territory, true);
+		GameManager.instance.sceneController.FadeAndLoadScene("BattleGround", territory);
 	}
 
 	private void MapSetupRisk()
